@@ -15,15 +15,34 @@ spec:
           - "--global.sendanonymoususage=false"
           - "--global.checknewversion=false"
         additionalArguments:
-          - "--log.format=json"
           - "--serversTransport.insecureSkipVerify=true"
+          - "--log.level=INFO"
+        deployment:
+          enabled: true
+          replicas: 1
+          annotations: {}
+          podAnnotations: {}
+          additionalContainers: []
+          initContainers: []
 
-        ports: { web: { redirectTo: websecure } }
+        ports:
+          web: { redirectTo: websecure }
+          websecure: { tls: { enabled: true } }
+
         ingressRoute: { dashboard: { enabled: false } }
-        service: { ipFamilyPolicy: "PreferDualStack" }
+        rbac: { enabled: true }
+
         providers:
-          kubernetesCRD: { enabled: true, ingressClass: traefik }
-          kubernetesIngress: { enabled: true, publishedService: { enabled: true } }
+          kubernetesCRD:
+            enabled: true
+            ingressClass: traefik
+          kubernetesIngress:
+            enabled: true
+            publishedService: { enabled: true }
+
+        service:
+          ipFamilyPolicy: "PreferDualStack"
+
   destination:
     namespace: traefik
     server: https://kubernetes.default.svc
