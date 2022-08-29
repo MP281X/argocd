@@ -1,0 +1,23 @@
+kind: AppProject
+apiVersion: argoproj.io/v1alpha1
+metadata: { name: dicantieri, namespace: argocd }
+spec:
+  description: dicantieri
+  sourceRepos: ["*"]
+  destinations: [{ namespace: "*", server: "*" }]
+  clusterResourceWhitelist: [{ group: "*", kind: "*" }]
+
+---
+kind: Application
+apiVersion: argoproj.io/v1alpha1
+metadata: { name: dicantieri, namespace: argocd }
+spec:
+  project: dicantieri
+  source:
+    repoURL: https://github.com/MP281X/dicantieri
+    targetRevision: project-setup
+    path: k8s
+  destination: { server: https://kubernetes.default.svc, namespace: argocd }
+  syncPolicy:
+    syncOptions: [CreateNamespace=true]
+    automated: { selfHeal: true, prune: true }
