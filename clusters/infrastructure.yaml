@@ -32,3 +32,4 @@ spec:
         path: infrastructure
       destination:
         server: "{{url}}"
+        namespace: infrastructure
