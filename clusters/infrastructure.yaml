@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: infrastructure
+  namespace: argocd
+  finalizers: [resources-finalizer.argocd.argoproj.io]
+spec:
+  description: infrastructure related apps
+  sourceRepos: ["*"]
+  destinations: [{ namespace: "*", server: "*" }]
+  clusterResourceWhitelist: [{ group: "*", kind: "*" }]
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: infrastructure
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - { cluster: dev, url: https://kubernetes.default.svc }
+  template:
+    metadata:
+      name: "{{cluster}}-infrastructure"
+    spec:
+      project: infrastructure
+      source:
+        repoURL: https://github.com/MP281X/argocd
+        targetRevision: HEAD
+        path: infrastructure
+      destination:
+        server: "{{url}}"

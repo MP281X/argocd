@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: monitoring
+  namespace: argocd
+  finalizers: [resources-finalizer.argocd.argoproj.io]
+spec:
+  description: monitoring related apps
+  sourceRepos: ["*"]
+  destinations: [{ namespace: "*", server: "*" }]
+  clusterResourceWhitelist: [{ group: "*", kind: "*" }]
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: monitoring
+spec:
+  project: monitoring
+  source:
+    path: monitoring
+    targetRevision: HEAD
+    repoURL: https://github.com/MP281X/argocd
+  destination:
+    namespace: monitoring
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    syncOptions: [CreateNamespace=true]
+    automated: { selfHeal: true, prune: true }

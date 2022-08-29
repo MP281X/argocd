@@ -1,0 +1,126 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: grafana
+  namespace: argocd
+spec:
+  project: monitoring
+  source:
+    chart: grafana
+    repoURL: https://grafana.github.io/helm-charts
+    targetRevision: 10.24.0
+    helm:
+      values: |-
+        globalArguments:
+        interval: 5m
+        chart:
+          spec:
+            chart: grafana
+            interval: 1m
+            sourceRef:
+              kind: HelmRepository
+              name: grafana
+              namespace: monitoring
+        values:
+          ingress: { enabled: true }
+          datasources:
+            datasources.yaml:
+              apiVersion: 1
+              datasources:
+                - name: Prometheus
+                  type: prometheus
+                  url: http://prometheus-server
+                  access: proxy
+                  isDefault: true
+                - name: Loki
+                  type: loki
+                  url: http://loki:3100
+                  access: proxy
+          dashboardProviders:
+            dashboardproviders.yaml:
+              apiVersion: 1
+              providers:
+                - name: "default"
+                  orgId: 1
+                  folder: ""
+                  type: file
+                  disableDeletion: false
+                  editable: true
+                  options:
+                    path: /var/lib/grafana/dashboards/default
+          dashboards:
+            default:
+              kubernetes:
+                gnetId: 10000
+                revision: 1
+                datasource: Prometheus
+  syncPolicy:
+    syncOptions: [CreateNamespace=true]
+    automated: { prune: true, selfHeal: true }
+
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata: { name: grafana, namespace: monitoring }
+spec: { interval: 1m, url: https://grafana.github.io/helm-charts }
+
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata: { name: grafana, namespace: monitoring }
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: grafana
+      interval: 1m
+      sourceRef:
+        kind: HelmRepository
+        name: grafana
+        namespace: monitoring
+  values:
+    ingress: { enabled: true }
+    datasources:
+      datasources.yaml:
+        apiVersion: 1
+        datasources:
+          - name: Prometheus
+            type: prometheus
+            url: http://prometheus-server
+            access: proxy
+            isDefault: true
+          - name: Loki
+            type: loki
+            url: http://loki:3100
+            access: proxy
+    dashboardProviders:
+      dashboardproviders.yaml:
+        apiVersion: 1
+        providers:
+          - name: "default"
+            orgId: 1
+            folder: ""
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/default
+    dashboards:
+      default:
+        kubernetes:
+          gnetId: 10000
+          revision: 1
+          datasource: Prometheus
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: grafana
+  namespace: monitoring
+  annotations: { kubernetes.io/ingress.class: traefik }
+spec:
+  entryPoints: [websecure]
+  routes:
+    - match: Host(`grafana.local.mp281x.xyz`)
+      kind: Rule
+      services: [{ name: grafana, port: 80 }]
