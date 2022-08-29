@@ -24,6 +24,3 @@ spec:
         providers:
           kubernetesCRD: { enabled: true, ingressClass: traefik }
           kubernetesIngress: { enabled: true, publishedService: { enabled: true } }
-  syncPolicy:
-    syncOptions: [CreateNamespace=true]
-    automated: { prune: true, selfHeal: true }

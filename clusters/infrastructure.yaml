@@ -33,3 +33,6 @@ spec:
       destination:
         server: "{{url}}"
         namespace: infrastructure
+      syncPolicy:
+        syncOptions: [CreateNamespace=true]
+        automated: { prune: true, selfHeal: true }
