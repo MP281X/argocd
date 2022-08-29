@@ -17,14 +17,7 @@ spec:
         additionalArguments:
           - "--serversTransport.insecureSkipVerify=true"
           - "--log.level=INFO"
-        deployment:
-          enabled: true
-          replicas: 1
-          annotations: {}
-          podAnnotations: {}
-          additionalContainers: []
-          initContainers: []
-
+          
         ports:
           web: { redirectTo: websecure }
           websecure: { tls: { enabled: true } }
