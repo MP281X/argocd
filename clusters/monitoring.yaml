@@ -12,19 +12,24 @@ spec:
 
 ---
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
-  namespace: argocd
   name: monitoring
+  namespace: argocd
 spec:
-  project: monitoring
-  source:
-    path: monitoring
-    targetRevision: HEAD
-    repoURL: https://github.com/MP281X/argocd
-  destination:
-    namespace: monitoring
-    server: https://kubernetes.default.svc
-  syncPolicy:
-    syncOptions: [CreateNamespace=true]
-    automated: { selfHeal: true, prune: true }
+  generators:
+    - list:
+        elements:
+          - { cluster: dev, url: https://kubernetes.default.svc }
+  template:
+    metadata:
+      name: "{{cluster}}-monitoring"
+    spec:
+      project: monitoring
+      source:
+        repoURL: https://github.com/MP281X/argocd
+        targetRevision: HEAD
+        path: monitoring
+      destination:
+        server: "{{url}}"
+        namespace: monitoring
