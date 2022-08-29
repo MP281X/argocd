@@ -54,7 +54,7 @@ spec:
                 gnetId: 10000
                 revision: 1
                 datasource: Prometheus
-  destination: { namespace: monitoring }
+  destination: { server: https://kubernetes.default.svc, namespace: monitoring }
   syncPolicy:
     syncOptions: [CreateNamespace=true]
     automated: { prune: true, selfHeal: true }

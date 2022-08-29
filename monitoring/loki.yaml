@@ -9,6 +9,7 @@ spec:
     chart: loki-stack
     repoURL: https://grafana.github.io/helm-charts
     targetRevision: 2.8.0
+  destination: { server: https://kubernetes.default.svc, namespace: monitoring }
   syncPolicy:
     syncOptions: [CreateNamespace=true]
     automated: { prune: true, selfHeal: true }
