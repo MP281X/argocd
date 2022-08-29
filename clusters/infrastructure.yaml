@@ -8,7 +8,7 @@ spec:
   clusterResourceWhitelist: [{ group: "*", kind: "*" }]
 
 ---
-kind: AppProject
+kind: Application
 apiVersion: argoproj.io/v1alpha1
 metadata: { name: infrastructure, namespace: argocd }
 spec:
