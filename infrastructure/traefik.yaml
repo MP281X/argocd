@@ -24,9 +24,7 @@ spec:
         providers:
           kubernetesCRD: { enabled: true, ingressClass: traefik }
           kubernetesIngress: { enabled: true, publishedService: { enabled: true } }
-  destination:
-    namespace: traefik
-    server: https://kubernetes.default.svc
+  destination: { namespace: traefik }
   syncPolicy:
     syncOptions: [CreateNamespace=true]
     automated: { prune: true, selfHeal: true }
