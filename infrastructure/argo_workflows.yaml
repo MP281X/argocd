@@ -28,12 +28,17 @@ spec:
     chart: argo-workflows
     repoURL: https://argoproj.github.io/argo-helm
     targetRevision: 0.17.1
+    helm:
+      values: |-
+        server:
+          extraArgs: [--auth-mode=server]
   destination:
     namespace: argo-workflows
     server: https://kubernetes.default.svc
   syncPolicy:
     syncOptions: [CreateNamespace=true]
     automated: { prune: true, selfHeal: true }
+
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
