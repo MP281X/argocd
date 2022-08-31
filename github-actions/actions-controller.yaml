@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Namespace
+metadata: { name: actions-runner-system }
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: actions-controller
+  namespace: argocd
+  annotations: { argocd.argoproj.io/sync-wave: "2" }
+spec:
+  project: github-actions
+  source:
+    chart: actions-runner-controller
+    repoURL: https://actions-runner-controller.github.io/actions-runner-controller
+    targetRevision: 0.20.2
+  destination:
+    namespace: actions-runner-system
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    syncOptions: [CreateNamespace=true]
+    automated: { prune: true, selfHeal: true }

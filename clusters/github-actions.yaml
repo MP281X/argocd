@@ -1,0 +1,29 @@
+kind: AppProject
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: github-actions
+  namespace: argocd
+  annotations: { argocd.argoproj.io/sync-wave: "0" }
+spec:
+  description: dashboard related apps
+  sourceRepos: ["*"]
+  destinations: [{ namespace: "*", server: "*" }]
+  clusterResourceWhitelist: [{ group: "*", kind: "*" }]
+
+---
+kind: Application
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: github-actions
+  namespace: argocd
+  annotations: { argocd.argoproj.io/sync-wave: "2" }
+spec:
+  project: github-actions
+  source:
+    repoURL: https://github.com/MP281X/argocd
+    targetRevision: HEAD
+    path: github-actions
+  destination: { server: https://kubernetes.default.svc, namespace: argocd }
+  syncPolicy:
+    syncOptions: [CreateNamespace=true]
+    automated: { selfHeal: true, prune: true }
