@@ -1,6 +1,9 @@
 kind: AppProject
 apiVersion: argoproj.io/v1alpha1
-metadata: { name: infrastructure, namespace: argocd }
+metadata:
+  name: infrastructure
+  namespace: argocd
+  annotations: { argocd.argoproj.io/sync-wave: "0" }
 spec:
   description: infrastructure related apps
   sourceRepos: ["*"]
@@ -10,7 +13,10 @@ spec:
 ---
 kind: Application
 apiVersion: argoproj.io/v1alpha1
-metadata: { name: infrastructure, namespace: argocd }
+metadata:
+  name: infrastructure
+  namespace: argocd
+  annotations: { argocd.argoproj.io/sync-wave: "1" }
 spec:
   project: infrastructure
   source:

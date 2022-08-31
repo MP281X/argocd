@@ -1,6 +1,9 @@
 kind: AppProject
 apiVersion: argoproj.io/v1alpha1
-metadata: { name: monitoring, namespace: argocd }
+metadata:
+  name: monitoring
+  namespace: argocd
+  annotations: { argocd.argoproj.io/sync-wave: "0" }
 spec:
   description: monitoring related apps
   sourceRepos: ["*"]
@@ -10,7 +13,10 @@ spec:
 ---
 kind: Application
 apiVersion: argoproj.io/v1alpha1
-metadata: { name: monitoring, namespace: argocd }
+metadata:
+  name: monitoring
+  namespace: argocd
+  annotations: { argocd.argoproj.io/sync-wave: "2" }
 spec:
   project: monitoring
   source:
