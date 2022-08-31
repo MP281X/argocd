@@ -93,4 +93,4 @@ spec:
             backend:
               service:
                 name: grafana
-                port: { number: 80 }
+                port: { number: 3000 }
