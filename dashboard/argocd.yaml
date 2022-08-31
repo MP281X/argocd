@@ -9,4 +9,4 @@ spec:
   routes:
     - match: Host(`argocd.local.mp281x.xyz`)
       kind: Rule
-      services: [{ name: argocd-server, port: 80 }]
+      services: [{ name: argocd-server, port: 443 }]
