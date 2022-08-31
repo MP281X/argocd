@@ -1,44 +1,44 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: traefik
-  namespace: argocd
-spec:
-  project: infrastructure
-  source:
-    chart: traefik
-    repoURL: https://helm.traefik.io/traefik
-    targetRevision: 10.24.0
-    helm:
-      values: |-
-        globalArguments:
-          - "--global.sendanonymoususage=false"
-          - "--global.checknewversion=false"
-        additionalArguments:
-          - "--serversTransport.insecureSkipVerify=true"
-          - "--log.level=INFO"
-          
-        ports:
-          web: { redirectTo: websecure }
-          websecure: { tls: { enabled: true } }
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: traefik
+#   namespace: argocd
+# spec:
+#   project: infrastructure
+#   source:
+#     chart: traefik
+#     repoURL: https://helm.traefik.io/traefik
+#     targetRevision: 10.24.0
+#     helm:
+#       values: |-
+#         globalArguments:
+#           - "--global.sendanonymoususage=false"
+#           - "--global.checknewversion=false"
+#         additionalArguments:
+#           - "--serversTransport.insecureSkipVerify=true"
+#           - "--log.level=INFO"
 
-        ingressRoute: { dashboard: { enabled: false } }
-        rbac: { enabled: true }
+#         ports:
+#           web: { redirectTo: websecure }
+#           websecure: { tls: { enabled: true } }
 
-        providers:
-          kubernetesCRD:
-            enabled: true
-            ingressClass: traefik
-          kubernetesIngress:
-            enabled: true
-            publishedService: { enabled: true }
+#         ingressRoute: { dashboard: { enabled: false } }
+#         rbac: { enabled: true }
 
-        service:
-          ipFamilyPolicy: "PreferDualStack"
+#         providers:
+#           kubernetesCRD:
+#             enabled: true
+#             ingressClass: traefik
+#           kubernetesIngress:
+#             enabled: true
+#             publishedService: { enabled: true }
 
-  destination:
-    namespace: traefik
-    server: https://kubernetes.default.svc
-  syncPolicy:
-    syncOptions: [CreateNamespace=true]
-    automated: { prune: true, selfHeal: true }
+#         service:
+#           ipFamilyPolicy: "PreferDualStack"
+
+#   destination:
+#     namespace: traefik
+#     server: https://kubernetes.default.svc
+#   syncPolicy:
+#     syncOptions: [CreateNamespace=true]
+#     automated: { prune: true, selfHeal: true }
