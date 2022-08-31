@@ -4,7 +4,7 @@ metadata:
   name: grafana
   namespace: argocd
 spec:
-  project: monitoring
+  project: dashboard
   source:
     chart: grafana
     repoURL: https://grafana.github.io/helm-charts
@@ -54,7 +54,7 @@ spec:
                 gnetId: 10000
                 revision: 1
                 datasource: Prometheus
-  destination: { server: https://kubernetes.default.svc, namespace: monitoring }
+  destination: { server: https://kubernetes.default.svc, namespace: dashboard }
   syncPolicy:
     syncOptions: [CreateNamespace=true]
     automated: { prune: true, selfHeal: true }
@@ -64,7 +64,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: grafana
-  namespace: monitoring
+  namespace: dashboard
   annotations: { kubernetes.io/ingress.class: traefik }
 spec:
   entryPoints: [websecure]
