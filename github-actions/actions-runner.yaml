@@ -7,6 +7,7 @@ apiVersion: actions.summerwind.dev/v1alpha1
 kind: RunnerDeployment
 metadata:
   name: runner-deployment
+  namespace: github-runner
 spec:
   template:
     spec:
@@ -16,6 +17,7 @@ apiVersion: actions.summerwind.dev/v1alpha1
 kind: HorizontalRunnerAutoscaler
 metadata:
   name: runner-deployment-autoscaler
+  namespace: github-runner
 spec:
   scaleTargetRef:
     name: runner-deployment
