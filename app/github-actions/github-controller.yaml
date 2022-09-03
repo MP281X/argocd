@@ -3,23 +3,22 @@ kind: Namespace
 metadata:
   name: actions
   annotations: { argocd.argoproj.io/sync-wave: "0" }
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: runner
-  namespace: argocd
-  annotations: { argocd.argoproj.io/sync-wave: "2" }
-spec:
-  project: github-actions
-  source:
-    chart: actions-runner-controller
-    repoURL: https://actions-runner-controller.github.io/actions-runner-controller
-    targetRevision: 0.20.2
-  destination:
-    namespace: actions
-    server: https://kubernetes.default.svc
-  syncPolicy:
-    syncOptions: [CreateNamespace=true]
-    automated: { prune: true, selfHeal: true }
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: runner
+#   namespace: argocd
+#   annotations: { argocd.argoproj.io/sync-wave: "2" }
+# spec:
+#   project: github-actions
+#   source:
+#     chart: actions-runner-controller
+#     repoURL: https://actions-runner-controller.github.io/actions-runner-controller
+#     targetRevision: 0.20.2
+#   destination:
+#     namespace: actions
+#     server: https://kubernetes.default.svc
+#   syncPolicy:
+#     syncOptions: [CreateNamespace=true]
+#     automated: { prune: true, selfHeal: true }
