@@ -4,18 +4,9 @@ metadata:
   name: runner-1
   namespace: actions
 spec:
-  replicas: 2
+  replicas: 1
   template:
     spec:
       repository: MP281X/argocd
       labels: [argo-runner]
       env: []
-# ---
-# apiVersion: actions.summerwind.dev/v1alpha1
-# kind: Runner
-# metadata:
-#   name: runner-1
-#   namespace: actions
-# spec:
-#   repository: MP281X/argocd
-#   env: []
