@@ -3,6 +3,7 @@ kind: RunnerDeployment
 metadata:
   name: argo-runner
   namespace: github-actions
+  annotations: { argocd.argoproj.io/sync-wave: "2" }
 spec:
   replicas: 1
   template:
