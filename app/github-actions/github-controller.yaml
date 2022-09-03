@@ -1,6 +1,8 @@
 apiVersion: v1
 kind: Namespace
-metadata: { name: github-actions }
+metadata:
+  name: github-actions
+  annotations: { argocd.argoproj.io/sync-wave: "0" }
 
 ---
 apiVersion: argoproj.io/v1alpha1
@@ -8,7 +10,7 @@ kind: Application
 metadata:
   name: github-controller
   namespace: argocd
-  annotations: { argocd.argoproj.io/sync-wave: "1" }
+  annotations: { argocd.argoproj.io/sync-wave: "2" }
 spec:
   project: github-actions
   source:
