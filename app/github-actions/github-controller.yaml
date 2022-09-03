@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: github-actions
+  name: actions
   annotations: { argocd.argoproj.io/sync-wave: "0" }
 
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: github-controller
+  name: runner
   namespace: argocd
   annotations: { argocd.argoproj.io/sync-wave: "2" }
 spec:
@@ -18,7 +18,7 @@ spec:
     repoURL: https://actions-runner-controller.github.io/actions-runner-controller
     targetRevision: 0.20.2
   destination:
-    namespace: github-actions
+    namespace: actions
     server: https://kubernetes.default.svc
   syncPolicy:
     syncOptions: [CreateNamespace=true]
