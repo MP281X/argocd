@@ -2,7 +2,7 @@ apiVersion: actions.summerwind.dev/v1alpha1
 kind: RunnerDeployment
 metadata:
   name: argo-runner
-  namespace: actions
+  namespace: github-actions
   annotations: { argocd.argoproj.io/sync-wave: "3" }
 spec:
   replicas: 1
