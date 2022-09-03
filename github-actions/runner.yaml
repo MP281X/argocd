@@ -1,0 +1,8 @@
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: Runner
+metadata:
+  name: runner-1
+  namespace: actions
+spec:
+  repository: MP281X/argocd
+  env: []
