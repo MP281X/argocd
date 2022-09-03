@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/MP281X/argocd
     targetRevision: HEAD
-    path: clusters
+    path: template
   destination: { server: https://kubernetes.default.svc, namespace: argocd }
   syncPolicy:
     syncOptions: [CreateNamespace=true]

@@ -22,7 +22,7 @@ spec:
   source:
     repoURL: https://github.com/MP281X/argocd
     targetRevision: HEAD
-    path: monitoring
+    path: app/monitoring
   destination: { server: https://kubernetes.default.svc, namespace: argocd }
   syncPolicy:
     syncOptions: [CreateNamespace=true]
