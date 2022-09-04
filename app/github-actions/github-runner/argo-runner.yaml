@@ -1,9 +1,8 @@
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: RunnerDeployment
 metadata:
-  name: argo-runner
+  name: test-runner
   namespace: github-actions
-  annotations: { argocd.argoproj.io/sync-wave: "3" }
 spec:
   replicas: 1
   template:

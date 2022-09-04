@@ -1,0 +1,15 @@
+kind: Application
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: github-runner
+  namespace: argocd
+  annotations: { argocd.argoproj.io/sync-wave: "3" }
+spec:
+  project: github-actions
+  source:
+    repoURL: https://github.com/MP281X/argocd
+    targetRevision: HEAD
+    path: app/github-actions/github-runner
+  destination: { server: https://kubernetes.default.svc, namespace: argocd }
+  syncPolicy:
+    automated: { prune: true }
