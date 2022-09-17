@@ -10,3 +10,15 @@ spec:
     - match: Host(`argocd.dev.mp281x.xyz`)
       kind: Rule
       services: [{ name: argocd-server, port: 443 }]
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: argocd-cert
+  namespace: argocd
+spec:
+  secretName: acme-crt-secret
+  dnsNames: [argocd.dev.mp281x.xyz]
+  issuerRef:
+    name: cloudflare-cert
+    kind: ClusterIssuer

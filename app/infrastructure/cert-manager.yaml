@@ -24,7 +24,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: acme-issuer
+  name: cloudflare-cert
   annotations: { argocd.argoproj.io/sync-wave: "4" }
 spec:
   acme:
@@ -33,7 +33,7 @@ spec:
     server: https://acme-staging-v02.api.letsencrypt.org/directory
 
     privateKeySecretRef:
-      name: cert-key
+      name: cloudflare-cert
     solvers:
       - dns01:
           cloudflare:
