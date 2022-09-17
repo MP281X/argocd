@@ -74,6 +74,6 @@ metadata:
 spec:
   entryPoints: [websecure]
   routes:
-    - match: Host(`grafana.local.mp281x.xyz`)
+    - match: Host(`grafana.dev.mp281x.xyz`)
       kind: Rule
       services: [{ name: grafana, port: 80 }]

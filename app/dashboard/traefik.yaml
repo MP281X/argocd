@@ -8,7 +8,7 @@ metadata:
 spec:
   entryPoints: [websecure]
   routes:
-    - match: Host(`traefik.local.mp281x.xyz`)
+    - match: Host(`traefik.dev.mp281x.xyz`)
       kind: Rule
       services:
         - name: api@internal

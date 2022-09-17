@@ -7,6 +7,6 @@ metadata:
 spec:
   entryPoints: [websecure]
   routes:
-    - match: Host(`argocd.local.mp281x.xyz`)
+    - match: Host(`argocd.dev.mp281x.xyz`)
       kind: Rule
       services: [{ name: argocd-server, port: 443 }]
