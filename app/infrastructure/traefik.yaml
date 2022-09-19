@@ -22,6 +22,12 @@ spec:
         ports:
           web: { redirectTo: websecure }
           websecure: { tls: { enabled: true } }
+          websecure: { tls: { enabled: true } }
+          postgresql:
+            expose: true
+            port: 5432
+            exposedPort: 5432
+            protocol: TCP
 
         ingressRoute: { dashboard: { enabled: false } }
         rbac: { enabled: true }
