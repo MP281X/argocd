@@ -17,6 +17,7 @@ spec:
           - "--global.checknewversion=false"
         additionalArguments:
           - "--serversTransport.insecureSkipVerify=true"
+          - "--entryPoints.postgresql.address=:5432/tcp"
           - "--log.level=INFO"
 
         ports:
