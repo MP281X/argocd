@@ -11,7 +11,7 @@ spec:
     - match: Host(`traefik.dev.mp281x.xyz`)
       kind: Rule
       services: [{ name: api@internal, kind: TraefikService }]
-      middlewares: [{ name: traefik-forward-auth }]
+      # middlewares: [{ name: traefik-forward-auth }]
 
 ---
 apiVersion: cert-manager.io/v1
