@@ -18,7 +18,7 @@ spec:
           ports: [{ containerPort: 4181, protocol: TCP }]
           env:
             - name: DOMAIN
-              value: "dev.mp281x.xyz"
+              value: "grafana.dev.mp281x.xyz"
             - name: DEFAULT_PROVIDER
               value: generic-oauth
             - name: SECRET
