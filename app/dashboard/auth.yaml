@@ -63,14 +63,3 @@ spec:
   type: ClusterIP
   selector: { app: traefik-forward-auth }
   ports: [{ name: auth-http, port: 4181, targetPort: 4181 }]
-
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: traefik-forward-auth
-  namespace: traefik
-spec:
-  forwardAuth:
-    address: http://traefik-forward-auth:4181
-    authResponseHeaders: [X-Forwarded-User]
