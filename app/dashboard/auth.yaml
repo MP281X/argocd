@@ -21,6 +21,8 @@ spec:
               value: "grafana.dev.mp281x.xyz"
             - name: DEFAULT_PROVIDER
               value: generic-oauth
+            - name: COOKIE_DOMAIN
+              value: "grafana.dev.mp281x.xyz"
             - name: SECRET
               valueFrom:
                 secretKeyRef:
