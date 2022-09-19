@@ -91,14 +91,13 @@ spec:
   issuerRef:
     name: letsencrypt-staging
     kind: ClusterIssuer
-
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: grafana-cert
-  namespace: dashboard
-spec:
-  forwardAuth:
-    address: https://auth.dev.mp281x.xyz/oauth2/auth
-    trustForwardHeader: true
+# ---
+# apiVersion: traefik.containo.us/v1alpha1
+# kind: Middleware
+# metadata:
+#   name: grafana-cert
+#   namespace: dashboard
+# spec:
+#   forwardAuth:
+#     address: https://auth.dev.mp281x.xyz/oauth2/auth
+#     trustForwardHeader: true
