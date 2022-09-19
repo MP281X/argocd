@@ -1,4 +1,3 @@
 **/*.x.yaml
 **/key
-**/Makefile
-**/password.env
+**/bootstrap-argocd.ps1

@@ -19,8 +19,11 @@ spec:
           env:
             - name: DOMAIN
               value: "dev.mp281x.xyz"
-            # - name: INSECURE_COOKIE
-            #   value: "true"
+            - name: SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: traefik-forward-auth-secrets
+                  key: secret
             - name: PROVIDERS_GENERIC_OAUTH_AUTH_URL
               valueFrom:
                 secretKeyRef:
