@@ -81,7 +81,7 @@ spec:
   routes:
     - match: Host(`auth.dev.mp281x.xyz`)
       kind: Rule
-      services: [{ name: traefik-forward-auth, port: 80 }]
+      services: [{ name: traefik-forward-auth, port: 4181 }]
 
 ---
 apiVersion: cert-manager.io/v1
