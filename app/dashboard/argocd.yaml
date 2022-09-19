@@ -11,6 +11,7 @@ spec:
     - match: Host(`argocd.dev.mp281x.xyz`)
       kind: Rule
       services: [{ name: argocd-server, port: 443 }]
+      middlewares: [{ name: traefik-forward-auth }]
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate

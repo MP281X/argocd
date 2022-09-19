@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: traefik-forward-auth
+  namespace: traefik
+  labels: { app: traefik-forward-auth }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: traefik-forward-auth } }
+  strategy: { type: Recreate }
+  template:
+    metadata: { labels: { app: traefik-forward-auth } }
+    spec:
+      terminationGracePeriodSeconds: 60
+      containers:
+        - image: thomseddon/traefik-forward-auth:2
+          name: traefik-forward-auth
+          ports: [{ containerPort: 4181, protocol: TCP }]
+          env:
+            - name: DOMAIN
+              value: "dev.mp281x.xyz"
+            # - name: INSECURE_COOKIE
+            #   value: "true"
+            - name: PROVIDERS_GENERIC_OAUTH_AUTH_URL
+              valueFrom:
+                secretKeyRef:
+                  name: traefik-forward-auth-secrets
+                  key: auth-url
+            - name: PROVIDERS_GENERIC_OAUTH_TOKEN_URL
+              valueFrom:
+                secretKeyRef:
+                  name: traefik-forward-auth-secrets
+                  key: token-url
+            - name: PROVIDERS_GENERIC_OAUTH_USER_URL
+              valueFrom:
+                secretKeyRef:
+                  name: traefik-forward-auth-secrets
+                  key: user-url
+            - name: PROVIDERS_GENERIC_OAUTH_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: traefik-forward-auth-secrets
+                  key: client-id
+            - name: PROVIDERS_GENERIC_OAUTH_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: traefik-forward-auth-secrets
+                  key: client-secret
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: traefik-forward-auth
+  namespace: traefik
+  labels: { app: traefik-forward-auth }
+spec:
+  type: ClusterIP
+  selector: { app: traefik-forward-auth }
+  ports: [{ name: auth-http, port: 4181, targetPort: 4181 }]
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: traefik-forward-auth
+  namespace: traefik
+spec:
+  forwardAuth:
+    address: http://traefik-forward-auth:4181
+    authResponseHeaders: [X-Forwarded-User]

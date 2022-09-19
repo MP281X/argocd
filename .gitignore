@@ -1,4 +1,4 @@
-**/secrets.json
+**/*.x.yaml
 **/key
 **/Makefile
 **/password.env
