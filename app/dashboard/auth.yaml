@@ -19,7 +19,7 @@ spec:
           env:
             - name: DOMAIN
               value: "dev.mp281x.xyz"
-            - name: PROVIDER
+            - name: DEFAULT_PROVIDER
               value: generic-oauth
             - name: SECRET
               valueFrom:
