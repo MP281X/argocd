@@ -78,7 +78,6 @@ spec:
     - match: Host(`grafana.dev.mp281x.xyz`)
       kind: Rule
       services: [{ name: grafana, port: 80 }]
-      middlewares: [{ name: traefik-forward-auth }]
 
 ---
 apiVersion: cert-manager.io/v1
@@ -92,14 +91,3 @@ spec:
   issuerRef:
     name: letsencrypt-staging
     kind: ClusterIssuer
-
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: traefik-forward-auth
-  namespace: dashboard
-spec:
-  forwardAuth:
-    address: http://traefik-forward-auth:4181
-    authResponseHeaders: [X-Forwarded-User]
