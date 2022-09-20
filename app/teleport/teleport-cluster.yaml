@@ -24,8 +24,8 @@ spec:
         persistence: {volumeSize: 5Gi}
         service: {type: ClusterIP}
         extraArgs:
-        - --insecure-no-tls
-        - --insecure
+          - --insecure-no-tls
+          - --insecure
 
   destination:
     namespace: teleport
