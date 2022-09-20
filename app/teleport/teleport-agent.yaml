@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: teleport-kube-agent
+  namespace: argocd
+  annotations: { argocd.argoproj.io/sync-wave: "0" }
+spec:
+  project: teleport
+  source:
+    chart: teleport-kube-agent
+    repoURL: https://charts.releases.teleport.dev
+    targetRevision: 10.2.2
+    helm:
+      values: |-
+        roles: app
+        proxyAddr: "10.43.32.137:443"
+        insecureSkipProxyTLSVerify: true
+        authToken: e5c8a583fcab5f9c975747fa1e69208a
+        apps:
+          - name: grafana
+            uri: http://10.43.92.20:80
+
+  destination:
+    namespace: teleport
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    syncOptions: [CreateNamespace=true]
+    automated: { prune: true, selfHeal: true }
