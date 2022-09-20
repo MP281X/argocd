@@ -78,6 +78,7 @@ spec:
     - match: Host(`grafana.dev.mp281x.xyz`)
       kind: Rule
       services: [{ name: grafana, port: 80 }]
+      middlewares: [{ name: auth-middleware }]
 
 ---
 apiVersion: cert-manager.io/v1
@@ -95,7 +96,7 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: grafana-cert
+  name: auth-middleware
   namespace: dashboard
 spec:
   forwardAuth:
