@@ -9,7 +9,7 @@ spec:
   entryPoints: [websecure]
   tls: { secretName: teleport-cert }
   routes:
-    - match: HostRegexp(`teleport.dev.mp281x.xyz`)
+    - match: Host(`teleport.dev.mp281x.xyz`)
       kind: Rule
       services: [{ name: teleport-cluster, port: 443 }]
 
