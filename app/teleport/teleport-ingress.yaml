@@ -12,7 +12,11 @@ spec:
   routes:
     - match: Host(`teleport.dev.mp281x.xyz`)
       kind: Rule
-      services: [{ name: teleport-cluster, port: 443 }]
+      services:
+        - kind: Service
+          name: teleport-cluster
+          port: 443
+          scheme: http
 
 ---
 apiVersion: cert-manager.io/v1
