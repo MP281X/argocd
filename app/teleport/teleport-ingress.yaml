@@ -9,7 +9,7 @@ spec:
   entryPoints: [websecure]
   tls: { secretName: teleport-cert }
   routes:
-    - match: Host(`teleport.dev.mp281x.xyz`)
+    - match: Host(`teleport.dev.mp281x.xyz`) || Host(`*.teleport.dev.mp281x.xyz`)
       kind: Rule
       services:
         - kind: Service
@@ -25,7 +25,7 @@ metadata:
   namespace: teleport
 spec:
   secretName: teleport-cert
-  dnsNames: [teleport.dev.mp281x.xyz]
+  dnsNames: ["teleport.dev.mp281x.xyz", "*.teleport.dev.mp281x.xyz"]
   issuerRef:
     name: letsencrypt-staging
     kind: ClusterIssuer
