@@ -19,7 +19,7 @@ spec:
     targetRevision: 10.2.2
     helm:
       values: |-
-        clusterName: teleport.dev.mp281x.xyz
+        clusterName: teleport-cluster.teleport-cluster.svc.cluster.local
         authenticationSecondFactor:
           secondFactor: "off"
         persistence:
