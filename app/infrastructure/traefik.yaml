@@ -9,7 +9,7 @@ spec:
   source:
     chart: traefik
     repoURL: https://helm.traefik.io/traefik
-    targetRevision: 10.24.0
+    targetRevision: 10.24.3
     helm:
       values: |-
         globalArguments:
