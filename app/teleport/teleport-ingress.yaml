@@ -1,3 +1,4 @@
+---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
@@ -7,7 +8,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`teleport.dev.mp281x.xyz`)
+    - match: HostRegexp(`teleport.{suffix:.*}`)
       kind: Rule
       services:
         - kind: Service
@@ -15,6 +16,7 @@ spec:
           port: 443
           scheme: http
   tls: {}
+
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRouteTCP
@@ -25,7 +27,7 @@ spec:
   entryPoints:
     - tp-kubernetes
   routes:
-    - match: HostSNI(`teleport.dev.mp281x.xyz`)
+    - match: HostSNI(`teleport.{suffix:.*}`)
       services:
         - name: teleport-cluster
           port: 3026
@@ -45,7 +47,7 @@ spec:
   entryPoints:
     - tp-database
   routes:
-    - match: HostSNI(`teleport.dev.mp281x.xyz`)
+    - match: HostSNI(`teleport.{suffix:.*}`)
       services:
         - name: teleport-cluster
           port: 3036
