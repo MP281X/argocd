@@ -5,15 +5,10 @@ apt-get update && apt-get upgrade -y
 apt-get install -y ufw sed sudo vim curl wget htop
 apt-get autoremove -y && apt update && apt upgrade -y
 
-echo " -------------- tailscale setup -------------- "
-curl -fsSL https://tailscale.com/install.sh | sh
-tailscale up
-
 echo " -------------- user setup -------------- "
 useradd -m -s /bin/bash mp281x
-echo mp281x:password | chpasswd
+echo mp281x:3002 | chpasswd
 usermod -aG sudo mp281x
-usermod -aG docker mp281x
 hostnamectl set-hostname dev.mp281x.xyz
 
 echo " ------- ssh key setup ------- "
@@ -24,8 +19,8 @@ echo " ------- firewall setup ------- "
 sed -i 's/IPV6=yes/IPV6=no/g' /etc/default/ufw
 ufw default deny incoming
 ufw default allow outgoing
-sudo ufw allow in on tailscale0
-sudo ufw allow 41641/udp
+ufw allow 6443
+ufw allow 22
 
 echo " ------- ssh configuration ------- "
 chmod -x /etc/update-motd.d/*
@@ -46,8 +41,9 @@ echo "" > /etc/motd
 service sshd restart
 
 echo " ------- k3s configuration ------- "
-curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644 --no-deploy traefik --node-name k3s-local
-sudo vi /etc/rancher/k3s/registries.yaml
+curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644 --no-deploy traefik --node-name k3s-dev
+vi /etc/rancher/k3s/registries.yaml
 echo 'export KUBECONFIG=/etc/rancher/k3s/k3s.yaml' >> /home/mp281x/.bashrc
 clear && cat /etc/rancher/k3s/k3s.yaml
+ufw enable
 

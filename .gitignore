@@ -1,3 +1,2 @@
 **/*.x.yaml
 **/key
-**/bootstrap-argocd.ps1
