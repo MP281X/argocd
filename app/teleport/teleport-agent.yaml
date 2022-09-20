@@ -18,7 +18,7 @@ spec:
         authToken: e5c8a583fcab5f9c975747fa1e69208a
         apps:
           - name: grafana
-            uri: http://10.43.92.20:3000
+            uri: https://grafana.dev.mp281x.xyz:443
 
   destination:
     namespace: teleport
