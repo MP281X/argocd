@@ -20,11 +20,15 @@ spec:
     helm:
       values: |-
         clusterName: teleport.dev.mp281x.xyz
-        persistence: {volumeSize: 5Gi}
-        service: {type: ClusterIP}
+        authenticationSecondFactor:
+          secondFactor: "off"
+        persistence:
+          volumeSize: 5Gi
+        service:
+          type: ClusterIP
         extraArgs:
-          - --insecure-no-tls
-          - --insecure
+        - --insecure-no-tls
+        - --insecure
 
   destination:
     namespace: teleport

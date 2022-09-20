@@ -15,7 +15,6 @@ spec:
           port: 443
           scheme: http
   tls: {}
-
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRouteTCP
