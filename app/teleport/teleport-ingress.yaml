@@ -1,0 +1,84 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: teleport-https
+  namespace: teleport
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: HostRegexp(`teleport.{suffix:.*}`)
+      kind: Rule
+      services:
+        - kind: Service
+          name: teleport-cluster
+          port: 443
+          scheme: http
+  tls: {}
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: teleport-kubernetes
+  namespace: teleport
+spec:
+  entryPoints:
+    - tp-kubernetes
+  routes:
+    - match: HostSNI(`teleport.{suffix:.*}`)
+      services:
+        - name: teleport-cluster
+          port: 3026
+          terminationDelay: 90000
+          proxyProtocol:
+            version: 1
+  tls:
+    passthrough: true
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: teleport-database
+  namespace: teleport
+spec:
+  entryPoints:
+    - tp-database
+  routes:
+    - match: HostSNI(`teleport.{suffix:.*}`)
+      services:
+        - name: teleport-cluster
+          port: 3036
+  tls:
+    passthrough: true
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: teleport-ssh-proxy
+  namespace: teleport
+spec:
+  entryPoints:
+    - tp-ssh-proxy
+  routes:
+    - match: HostSNI(`*`)
+      services:
+        - name: teleport-cluster
+          port: 3023
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: teleport-ssh-tunnel
+  namespace: teleport
+spec:
+  entryPoints:
+    - tp-ssh-tunnel
+  routes:
+    - match: HostSNI(`*`)
+      services:
+        - name: teleport-cluster
+          port: 3024
