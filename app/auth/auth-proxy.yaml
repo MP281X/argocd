@@ -8,7 +8,6 @@ metadata:
   labels: { k8s-app: oauth2-proxy }
   name: oauth2-proxy
   namespace: auth
-  annotations: { argocd.argoproj.io/sync-wave: "5" }
 spec:
   replicas: 1
   selector: { matchLabels: { k8s-app: oauth2-proxy } }
@@ -49,7 +48,6 @@ metadata:
   labels: { k8s-app: oauth2-proxy }
   name: oauth2-proxy
   namespace: auth
-  annotations: { argocd.argoproj.io/sync-wave: "6" }
 spec:
   selector: { k8s-app: oauth2-proxy }
   ports:
