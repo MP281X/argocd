@@ -19,13 +19,10 @@ spec:
     targetRevision: 10.2.2
     helm:
       values: |-
-        clusterName: teleport-cluster.teleport-cluster.svc.cluster.local
-        authenticationSecondFactor:
-          secondFactor: "off"
-        persistence:
-          volumeSize: 5Gi
-        service:
-          type: ClusterIP
+        clusterName: teleport.dev.mp281x.xyz
+        authenticationSecondFactor: {secondFactor: "off"}
+        persistence: {volumeSize: 5Gi}
+        service: {type: ClusterIP}
         extraArgs:
         - --insecure-no-tls
         - --insecure
