@@ -19,19 +19,3 @@ spec:
   syncPolicy:
     syncOptions: [CreateNamespace=true]
     automated: { prune: true, selfHeal: true }
-# ---
-# apiVersion: cert-manager.io/v1
-# kind: ClusterIssuer
-# metadata:
-#   name: letsencrypt-staging
-#   namespace: default
-#   annotations: { argocd.argoproj.io/sync-wave: "3" }
-# spec:
-#   acme:
-#     email: paludgnachmatteo.dev@gmail.com
-#     # server: https://acme-v02.api.letsencrypt.org/directory
-#     server: https://acme-staging-v02.api.letsencrypt.org/directory
-#     privateKeySecretRef: { name: letsencrypt-staging }
-#     solvers:
-#       - selector: {}
-#         http01: { ingress: { class: traefik } }
