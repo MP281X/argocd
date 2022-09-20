@@ -12,7 +12,6 @@ spec:
     - match: HostRegexp(`teleport.dev.mp281x.xyz`)
       kind: Rule
       services: [{ name: teleport-cluster, port: 443 }]
-  tls: {}
 
 ---
 apiVersion: cert-manager.io/v1
@@ -36,14 +35,14 @@ metadata:
   annotations: { kubernetes.io/ingress.class: traefik }
 spec:
   entryPoints: [tp-kubernetes]
-  tls: {passthrough: true}
+  tls: { passthrough: true }
   routes:
     - match: HostSNI(`teleport.dev.mp281x.xyz`)
       services:
         - name: teleport-cluster
           port: 3026
           terminationDelay: 90000
-          proxyProtocol: {version: 1}
+          proxyProtocol: { version: 1 }
 
 ---
 apiVersion: traefik.containo.us/v1alpha1
@@ -54,10 +53,10 @@ metadata:
   annotations: { kubernetes.io/ingress.class: traefik }
 spec:
   entryPoints: [tp-database]
-  tls: {passthrough: true}
+  tls: { passthrough: true }
   routes:
     - match: HostSNI(`teleport.dev.mp281x.xyz`)
-      services: [{name: teleport-cluster, port: 3036}]
+      services: [{ name: teleport-cluster, port: 3036 }]
 
 ---
 apiVersion: traefik.containo.us/v1alpha1
@@ -70,7 +69,7 @@ spec:
   entryPoints: [tp-ssh-proxy]
   routes:
     - match: HostSNI(`*`)
-      services: [{name: teleport-cluster, port: 3023}]
+      services: [{ name: teleport-cluster, port: 3023 }]
 
 ---
 apiVersion: traefik.containo.us/v1alpha1
@@ -83,4 +82,4 @@ spec:
   entryPoints: [tp-ssh-tunnel]
   routes:
     - match: HostSNI(`*`)
-      services: [{name: teleport-cluster, port: 3024}]
+      services: [{ name: teleport-cluster, port: 3024 }]
