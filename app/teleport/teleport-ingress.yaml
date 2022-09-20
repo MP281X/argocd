@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: HostRegexp(`teleport.{suffix:.*}`)
+    - match: Host(`grafana.dev.mp281x.xyz`)
       kind: Rule
       services:
         - kind: Service
@@ -26,7 +26,7 @@ spec:
   entryPoints:
     - tp-kubernetes
   routes:
-    - match: HostSNI(`teleport.{suffix:.*}`)
+    - match: HostSNI(`teleport.dev.mp281x.xyz`)
       services:
         - name: teleport-cluster
           port: 3026
@@ -46,7 +46,7 @@ spec:
   entryPoints:
     - tp-database
   routes:
-    - match: HostSNI(`teleport.{suffix:.*}`)
+    - match: HostSNI(`teleport.dev.mp281x.xyz`)
       services:
         - name: teleport-cluster
           port: 3036
