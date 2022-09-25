@@ -36,6 +36,7 @@ spec:
           kubernetesCRD:
             enabled: true
             ingressClass: traefik
+            allowCrossNamespace: true
           kubernetesIngress:
             enabled: true
             publishedService: { enabled: true }

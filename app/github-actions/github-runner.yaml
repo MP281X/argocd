@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 metadata:
   name: github-runner
   namespace: argocd
-  annotations: { argocd.argoproj.io/sync-wave: "3" }
+  annotations: { argocd.argoproj.io/sync-wave: "2" }
 spec:
   project: github-actions
   source:

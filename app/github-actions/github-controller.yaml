@@ -9,7 +9,7 @@ kind: Application
 metadata:
   name: github-controller
   namespace: argocd
-  annotations: { argocd.argoproj.io/sync-wave: "2" }
+  annotations: { argocd.argoproj.io/sync-wave: "1" }
 spec:
   project: github-actions
   source:
