@@ -23,31 +23,10 @@ spec:
         ports:
           web: { redirectTo: websecure }
           websecure: { tls: { enabled: true } }
-          websecure: { tls: { enabled: true } }
           postgresql:
             expose: true
             port: 5432
             exposedPort: 5432
-            protocol: TCP
-          tp-kubernetes:
-            port: 3026
-            expose: true
-            exposedPort: 3026
-            protocol: TCP
-          tp-database:
-            port: 3036
-            expose: true
-            exposedPort: 3036
-            protocol: TCP
-          tp-ssh-tunnel:
-            port: 3024
-            expose: true
-            exposedPort: 3024
-            protocol: TCP
-          tp-ssh-proxy:    
-            port: 3023
-            expose: true
-            exposedPort: 3023
             protocol: TCP
 
         ingressRoute: { dashboard: { enabled: false } }
