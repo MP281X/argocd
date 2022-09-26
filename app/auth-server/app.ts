@@ -45,10 +45,12 @@ app.get('/auth', async (req: Request, res: Response) => {
 			const token = jwt.sign(githubUser, process.env.jwtKey ?? '');
 			res.cookie('github-jwt', token, {
 				httpOnly: true,
-				domain: 'localhost',
-				secure: false
+				sameSite: 'strict',
+				secure: false,
+				maxAge: 60 * 60 * 24 * 2
 			});
 
+			res.status(200);
 			return res.json({ res: 'authorized' });
 		} else {
 			const tokenData = jwt.verify(token, process.env.jwtKey ?? '') as { username: string };
