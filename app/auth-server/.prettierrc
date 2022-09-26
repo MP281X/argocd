@@ -1,0 +1,10 @@
+{
+	"useTabs": true,
+	"singleQuote": true,
+	"trailingComma": "none",
+	"printWidth": 150,
+	"pluginSearchDirs": ["."],
+	"bracketSameLine": true,
+	"endOfLine": "auto",
+	"overrides": [{ "files": "*.ts", "options": { "parser": "typescript" } }]
+}

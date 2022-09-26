@@ -1,2 +1,6 @@
 **/*.x.yaml
 **/key
+
+**/.env
+**/node_modules
+**/build
