@@ -11,7 +11,7 @@ RUN yarn install && npx tsc \
 FROM node:16-alpine
 WORKDIR /app
 
-# copy the build and the package.json
+# copy the build and the package.json 
 COPY --from=build /app/package.json /app/package.json
 COPY --from=build /app/node_modules /app/node_modules
 COPY --from=build /app/build /app/build
