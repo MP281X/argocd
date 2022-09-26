@@ -83,4 +83,4 @@ spec:
   forwardAuth:
     address: https://auth.dev.mp281x.xyz/auth
     trustForwardHeader: true
-    insecureSkipVerify: true
+    tls: { insecureSkipVerify: true }
