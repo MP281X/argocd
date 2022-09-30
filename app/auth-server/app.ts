@@ -38,6 +38,9 @@ app.all('/auth', async (req: Request, res: Response) => {
 			ip: req.header('X-Forwarded-For')
 		};
 		let url = `${forwarded.protocol}://${forwarded.host}${forwarded.uri}`;
+		console.log(url);
+		console.log(forwarded.uri);
+		console.log(res.header);
 
 		const token = req.cookies['github-jwt'];
 
@@ -63,7 +66,7 @@ app.all('/auth', async (req: Request, res: Response) => {
 		} else {
 			const tokenData = jwt.verify(token, process.env.jwtKey ?? '') as { username: string };
 			if (tokenData.username !== 'MP281X') return res.json({ error: 'unauthorized' });
-			return res.json({ res: 'authorized' });
+			return res.redirect(302, url);
 		}
 	} catch (error) {
 		res.status(500);
