@@ -72,7 +72,6 @@ app.all('/', async (req: Request, res: Response) => {
 		console.log('____________________________');
 		const token = req.cookies['github-jwt'];
 		console.log(req.cookies);
-		console.log(token);
 		console.log('____________________________');
 
 		// if there isn't a token redirect to the auth page
