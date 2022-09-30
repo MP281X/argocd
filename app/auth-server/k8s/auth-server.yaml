@@ -11,6 +11,7 @@ metadata:
   labels: { app: auth-server }
 spec:
   replicas: 1
+  revisionHistoryLimit: 0
   selector: { matchLabels: { app: auth-server } }
   template:
     metadata: { labels: { app: auth-server } }
