@@ -28,11 +28,20 @@ async function getGithubUser({ code }: { code: string }) {
 	return { username: userData.login };
 }
 
-app.get('/auth', async (req: Request, res: Response) => {
+app.all('/auth', async (req: Request, res: Response) => {
 	try {
+		let forwarded = {
+			method: req.header('X-Forwarded-Method'),
+			protocol: req.header('X-Forwarded-Proto'),
+			host: req.header('X-Forwarded-Host'),
+			uri: req.header('X-Forwarded-Uri'),
+			ip: req.header('X-Forwarded-For')
+		};
+		let url = `${forwarded.protocol}://${forwarded.host}${forwarded.uri}`;
+
 		const token = req.cookies['github-jwt'];
 
-		if (token === undefined || token === '') {
+		if (token === undefined || token === '' || forwarded.method!.toUpperCase() !== 'GET') {
 			const code = req.query.code as string;
 			if (code === undefined || code === '') {
 				const redirect = `https://auth.dev.mp281x.xyz/auth?scope=user:email`;
@@ -50,8 +59,7 @@ app.get('/auth', async (req: Request, res: Response) => {
 				maxAge: 60 * 60 * 24 * 2
 			});
 
-			res.status(200);
-			return res.json({ res: 'authorized' });
+			return res.redirect(302, url);
 		} else {
 			const tokenData = jwt.verify(token, process.env.jwtKey ?? '') as { username: string };
 			if (tokenData.username !== 'MP281X') return res.json({ error: 'unauthorized' });
