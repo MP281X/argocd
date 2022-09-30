@@ -81,6 +81,6 @@ metadata:
   namespace: auth-server
 spec:
   forwardAuth:
-    address: https://auth.dev.mp281x.xyz/auth
+    address: https://auth.dev.mp281x.xyz/
     trustForwardHeader: true
     tls: { insecureSkipVerify: true }
