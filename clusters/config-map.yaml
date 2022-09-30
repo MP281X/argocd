@@ -6,14 +6,12 @@ metadata:
     app.kubernetes.io/part-of: argocd
   name: argocd-cm
   namespace: argocd
-  annotations: { argocd.argoproj.io/sync-wave: "2" }
 data:
   resource.customizations.health.bitnami.com_SealedSecret: |
     hs = {}
     hs.status = "Healthy"
     hs.message = "Controller doesn't report resource status"
     return hs
-
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -22,7 +20,6 @@ metadata:
     app.kubernetes.io/name: argocd-image-updater-config
     app.kubernetes.io/part-of: argocd-image-updater
   name: argocd-image-updater-config
-  annotations: { argocd.argoproj.io/sync-wave: "2" }
 data:
   registries.conf: |
     registries:
