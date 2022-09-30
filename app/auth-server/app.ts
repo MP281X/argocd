@@ -49,9 +49,8 @@ app.get('/auth', async (req: Request, res: Response) => {
 		const token = jwt.sign(githubUser, process.env.jwtKey ?? '');
 		res.cookie('github-jwt', token, {
 			httpOnly: true,
-			sameSite: 'none',
 			domain: 'https://grafana.dev.mp281x.xyz',
-			secure: true,
+			secure: false,
 			maxAge: 60 * 60 * 24 * 2
 		});
 		console.log('added the cookie to the browser');
