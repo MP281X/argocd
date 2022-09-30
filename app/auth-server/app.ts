@@ -42,32 +42,36 @@ app.all('/auth', async (req: Request, res: Response) => {
 		console.log(forwarded.uri);
 		console.log(res.header);
 
-		const token = req.cookies['github-jwt'];
+		console.log('________' + 'Autenticato' + '_________');
 
-		if (token === undefined || token === '') {
-			const code = req.query.code as string;
-			if (code === undefined || code === '') {
-				const redirect = `https://auth.dev.mp281x.xyz/auth?scope=user:email`;
-				return res.redirect(`https://github.com/login/oauth/authorize?client_id=${process.env.client_id}&redirect_uri=${redirect}`);
-			}
+		res.sendStatus(200);
 
-			const githubUser = await getGithubUser({ code });
-			if (githubUser.username !== 'MP281X') return res.json({ error: 'unauthorized' });
+		// const token = req.cookies['github-jwt'];
 
-			const token = jwt.sign(githubUser, process.env.jwtKey ?? '');
-			res.cookie('github-jwt', token, {
-				httpOnly: true,
-				sameSite: 'strict',
-				secure: false,
-				maxAge: 60 * 60 * 24 * 2
-			});
+		// if (token === undefined || token === '') {
+		// 	const code = req.query.code as string;
+		// 	if (code === undefined || code === '') {
+		// 		const redirect = `https://auth.dev.mp281x.xyz/auth?scope=user:email`;
+		// 		return res.redirect(`https://github.com/login/oauth/authorize?client_id=${process.env.client_id}&redirect_uri=${redirect}`);
+		// 	}
 
-			return res.redirect(302, url);
-		} else {
-			const tokenData = jwt.verify(token, process.env.jwtKey ?? '') as { username: string };
-			if (tokenData.username !== 'MP281X') return res.json({ error: 'unauthorized' });
-			return res.redirect(302, url);
-		}
+		// 	const githubUser = await getGithubUser({ code });
+		// 	if (githubUser.username !== 'MP281X') return res.json({ error: 'unauthorized' });
+
+		// 	const token = jwt.sign(githubUser, process.env.jwtKey ?? '');
+		// 	res.cookie('github-jwt', token, {
+		// 		httpOnly: true,
+		// 		sameSite: 'strict',
+		// 		secure: false,
+		// 		maxAge: 60 * 60 * 24 * 2
+		// 	});
+
+		// 	return res.redirect(302, url);
+		// } else {
+		// 	const tokenData = jwt.verify(token, process.env.jwtKey ?? '') as { username: string };
+		// 	if (tokenData.username !== 'MP281X') return res.json({ error: 'unauthorized' });
+		// 	return res.redirect(302, url);
+		// }
 	} catch (error) {
 		res.status(500);
 		return res.json({ res: 'unauthorized' });
