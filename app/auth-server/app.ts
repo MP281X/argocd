@@ -50,6 +50,7 @@ app.get('/auth', async (req: Request, res: Response) => {
 		res.cookie('github-jwt', token, {
 			httpOnly: true,
 			sameSite: 'none',
+			domain: 'https://grafana.dev.mp281x.xyz',
 			secure: true,
 			maxAge: 60 * 60 * 24 * 2
 		});
