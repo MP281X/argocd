@@ -1,3 +1,8 @@
+
+# install the argocd image updater
+kubectl apply -f clusters/key/github-registry.yaml;
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-image-updater/stable/manifests/install.yaml;
+
 # install the sealed secrets token
 kubectl create ns sealed-secrets;
 kubectl apply -f clusters/key/k3s-dev.key;
