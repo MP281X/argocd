@@ -1,5 +1,6 @@
 # install the sealed secrets token
 kubectl create ns sealed-secrets;
+kubectl apply -f clusters/key/github-registry.yaml;
 kubectl apply -f clusters/key/k3s-dev.key;
 
 # get the argocd password and login in the cli

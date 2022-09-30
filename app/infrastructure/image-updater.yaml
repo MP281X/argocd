@@ -64,6 +64,14 @@ metadata:
     app.kubernetes.io/name: argocd-image-updater-config
     app.kubernetes.io/part-of: argocd-image-updater
   name: argocd-image-updater-config
+data:
+  registries.conf: |
+    registries:
+    - name: github container registry
+      prefix: ghcr.io
+      api_url: https://ghcr.io
+      credentials: pullsecret:argocd/github-registry
+      default: true
 ---
 apiVersion: v1
 kind: ConfigMap
