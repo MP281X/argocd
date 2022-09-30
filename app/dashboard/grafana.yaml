@@ -77,7 +77,7 @@ spec:
   routes:
     - match: Host(`grafana.dev.mp281x.xyz`)
       kind: Rule
-      # middlewares: [{ name: auth-server, namespace: auth-server }]
+      middlewares: [{ name: auth-server, namespace: auth-server }]
       services: [{ name: grafana, port: 80 }]
 
 ---
