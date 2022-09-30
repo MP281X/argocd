@@ -19,7 +19,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "2"
     argocd-image-updater.argoproj.io/image-list: auth-server=ghcr.io/mp281x/auth-server
-    argocd-image-updater.argoproj.io/auth-server.update-strategy: latest
+    argocd-image-updater.argoproj.io/auth-server.update-strategy: digest
 spec:
   project: auth-server
   source:
