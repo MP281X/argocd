@@ -1,6 +1,5 @@
 {
 	"name": "auth-server",
-	"version": "1.0.13",
 	"description": "auth server",
 	"main": "index.js",
 	"scripts": {

@@ -16,7 +16,9 @@ apiVersion: argoproj.io/v1alpha1
 metadata:
   name: auth-server
   namespace: argocd
-  annotations: { argocd.argoproj.io/sync-wave: "2" }
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+    argocd-image-updater.argoproj.io/image-list: ghcr.io/mp281x/auth-server:latest
 spec:
   project: auth-server
   source:
