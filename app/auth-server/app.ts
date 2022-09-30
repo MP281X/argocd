@@ -34,6 +34,7 @@ app.get('/auth', async (req: Request, res: Response) => {
 
 		// check if there is a github token in the url, if not redirect to the github auth page
 		if (code === undefined || code === '') {
+			console.log('redirected to the github auth page');
 			const redirect = `https://auth.dev.mp281x.xyz/auth?scope=user:email`;
 			return res.redirect(`https://github.com/login/oauth/authorize?client_id=${process.env.client_id}&redirect_uri=${redirect}`);
 		}
@@ -52,11 +53,15 @@ app.get('/auth', async (req: Request, res: Response) => {
 			secure: false,
 			maxAge: 60 * 60 * 24 * 2
 		});
+		console.log('added the cookie to the browser');
 
 		// return a success message
+		console.log('authorized');
 		res.status(200);
 		return res.json({ res: 'authorized' });
 	} catch (error) {
+		console.log(error);
+
 		// return a error message
 		res.status(500);
 		return res.json({ res: 'unauthorized' });
@@ -68,7 +73,10 @@ app.all('/', async (req: Request, res: Response) => {
 		const token = req.cookies['github-jwt'];
 
 		// if there isn't a token redirect to the auth page
-		if (token === undefined || token === '') return res.redirect(302, 'https://auth.dev.mp281x.xyz/auth');
+		if (token === undefined || token === '') {
+			console.log('token not found');
+			return res.redirect(302, 'https://auth.dev.mp281x.xyz/auth');
+		}
 
 		// check if the token is valid
 		const tokenData = jwt.verify(token, process.env.jwtKey ?? '') as { username: string };
@@ -77,8 +85,12 @@ app.all('/', async (req: Request, res: Response) => {
 		if (tokenData.username !== 'MP281X') return res.json({ error: 'unauthorized' });
 
 		// redirect to the protected page
+		console.log('authorized');
 		return res.sendStatus(200);
 	} catch (error) {
-		return res.redirect(302, 'https://auth.dev.mp281x.xyz/auth');
+		console.log(error);
+
+		// return a error message
+		return res.json({ res: 'unauthorized' });
 	}
 });
