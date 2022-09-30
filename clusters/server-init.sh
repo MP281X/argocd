@@ -42,8 +42,14 @@ service sshd restart
 
 echo " ------- k3s configuration ------- "
 curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644 --no-deploy traefik --node-name k3s-dev
-vi /etc/rancher/k3s/registries.yaml
+mv /root/registry-k3s.yaml /etc/rancher/k3s/registries.yaml
+systemctl daemon-reload
+systemctl restart k3s.service
 echo 'export KUBECONFIG=/etc/rancher/k3s/k3s.yaml' >> /home/mp281x/.bashrc
-clear && cat /etc/rancher/k3s/k3s.yaml
-ufw enable
+cp /etc/rancher/k3s/k3s.yaml /home/mp281x/k3s.yaml
+sed -i 's/127.0.0.1/dev.mp281x.xyz/g' /home/mp281x/k3s.yaml
 
+echo " ------- argocd configuration ------- "
+kubectl create namespace argocd
+kubectl create ns sealed-secrets
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
