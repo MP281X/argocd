@@ -1,5 +1,5 @@
 name: Build auth server
-on: { push: { paths: ["app/auth-server/app/**"] } }
+on: { push: { paths: ["app/auth-server/app/**", ".github/workflows/**"] } }
 jobs:
   Build-node-js-runner:
     runs-on: self-hosted
