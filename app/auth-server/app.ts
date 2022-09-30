@@ -28,52 +28,57 @@ async function getGithubUser({ code }: { code: string }) {
 	return { username: userData.login };
 }
 
-app.all('/auth', async (req: Request, res: Response) => {
+app.get('/auth', async (req: Request, res: Response) => {
 	try {
-		let forwarded = {
-			method: req.header('X-Forwarded-Method'),
-			protocol: req.header('X-Forwarded-Proto'),
-			host: req.header('X-Forwarded-Host'),
-			uri: req.header('X-Forwarded-Uri'),
-			ip: req.header('X-Forwarded-For')
-		};
-		let url = `${forwarded.protocol}://${forwarded.host}${forwarded.uri}`;
-		console.log(url);
-		console.log(forwarded.uri);
-		console.log(res.header);
+		const code = req.query.code as string;
 
-		console.log('________' + 'Autenticato' + '_________');
+		// check if there is a github token in the url, if not redirect to the github auth page
+		if (code === undefined || code === '') {
+			const redirect = `https://auth.dev.mp281x.xyz/auth?scope=user:email`;
+			return res.redirect(`https://github.com/login/oauth/authorize?client_id=${process.env.client_id}&redirect_uri=${redirect}`);
+		}
 
-		res.sendStatus(200);
+		// check if the token is valid and get the user data
+		const githubUser = await getGithubUser({ code });
 
-		// const token = req.cookies['github-jwt'];
+		// check if the user has permission
+		if (githubUser.username !== 'MP281X') return res.json({ error: 'unauthorized' });
 
-		// if (token === undefined || token === '') {
-		// 	const code = req.query.code as string;
-		// 	if (code === undefined || code === '') {
-		// 		const redirect = `https://auth.dev.mp281x.xyz/auth?scope=user:email`;
-		// 		return res.redirect(`https://github.com/login/oauth/authorize?client_id=${process.env.client_id}&redirect_uri=${redirect}`);
-		// 	}
+		// add the cookie with the token to the browser
+		const token = jwt.sign(githubUser, process.env.jwtKey ?? '');
+		res.cookie('github-jwt', token, {
+			httpOnly: true,
+			sameSite: 'strict',
+			secure: false,
+			maxAge: 60 * 60 * 24 * 2
+		});
 
-		// 	const githubUser = await getGithubUser({ code });
-		// 	if (githubUser.username !== 'MP281X') return res.json({ error: 'unauthorized' });
-
-		// 	const token = jwt.sign(githubUser, process.env.jwtKey ?? '');
-		// 	res.cookie('github-jwt', token, {
-		// 		httpOnly: true,
-		// 		sameSite: 'strict',
-		// 		secure: false,
-		// 		maxAge: 60 * 60 * 24 * 2
-		// 	});
-
-		// 	return res.redirect(302, url);
-		// } else {
-		// 	const tokenData = jwt.verify(token, process.env.jwtKey ?? '') as { username: string };
-		// 	if (tokenData.username !== 'MP281X') return res.json({ error: 'unauthorized' });
-		// 	return res.redirect(302, url);
-		// }
+		// return a success message
+		res.status(200);
+		return res.json({ res: 'authorized' });
 	} catch (error) {
+		// return a error message
 		res.status(500);
 		return res.json({ res: 'unauthorized' });
+	}
+});
+
+app.all('/', async (req: Request, res: Response) => {
+	try {
+		const token = req.cookies['github-jwt'];
+
+		// if there isn't a token redirect to the auth page
+		if (token === undefined || token === '') return res.redirect(302, 'https://auth.dev.mp281x.xyz/auth');
+
+		// check if the token is valid
+		const tokenData = jwt.verify(token, process.env.jwtKey ?? '') as { username: string };
+
+		// check if the user has the permission
+		if (tokenData.username !== 'MP281X') return res.json({ error: 'unauthorized' });
+
+		// redirect to the protected page
+		return res.sendStatus(200);
+	} catch (error) {
+		return res.redirect(302, 'https://auth.dev.mp281x.xyz/auth');
 	}
 });
