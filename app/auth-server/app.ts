@@ -41,7 +41,7 @@ app.all('/auth', async (req: Request, res: Response) => {
 
 		const token = req.cookies['github-jwt'];
 
-		if (token === undefined || token === '' || forwarded.method!.toUpperCase() !== 'GET') {
+		if (token === undefined || token === '') {
 			const code = req.query.code as string;
 			if (code === undefined || code === '') {
 				const redirect = `https://auth.dev.mp281x.xyz/auth?scope=user:email`;
