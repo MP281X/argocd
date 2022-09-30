@@ -49,9 +49,6 @@ app.get('/auth', async (req: Request, res: Response) => {
 		const token = jwt.sign(githubUser, process.env.jwtKey ?? '');
 		res.cookie('github-jwt', token, {
 			httpOnly: true,
-			sameSite: 'none',
-			domain: 'https://auth.dev.mp281x.xyz/',
-			path: '/',
 			secure: true,
 			maxAge: 60 * 60 * 24 * 2
 		});

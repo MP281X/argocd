@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: auth-server
-          image: ghcr.io/mp281x/auth-server:1.0.12
+          image: ghcr.io/mp281x/auth-server:1.0.13
           ports: [containerPort: 3000]
           env:
             - name: client_secret
@@ -82,5 +82,4 @@ metadata:
 spec:
   forwardAuth:
     address: https://auth.dev.mp281x.xyz/
-    trustForwardHeader: true
     tls: {}
