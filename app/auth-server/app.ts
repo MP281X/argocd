@@ -49,7 +49,8 @@ app.get('/auth', async (req: Request, res: Response) => {
 		const token = jwt.sign(githubUser, process.env.jwtKey ?? '');
 		res.cookie('github-jwt', token, {
 			httpOnly: true,
-			secure: false,
+			sameSite: 'none',
+			secure: true,
 			maxAge: 60 * 60 * 24 * 2
 		});
 		console.log('added the cookie to the browser');
@@ -70,6 +71,8 @@ app.get('/auth', async (req: Request, res: Response) => {
 app.all('/', async (req: Request, res: Response) => {
 	try {
 		const token = req.cookies['github-jwt'];
+		console.log(req.cookies);
+		console.log(token);
 
 		// if there isn't a token redirect to the auth page
 		if (token === undefined || token === '') {
