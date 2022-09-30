@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: auth-server
-          image: ghcr.io/mp281x/auth-server:latest
+          image: ghcr.io/mp281x/auth-server
           ports: [containerPort: 3000]
           env:
             - name: client_secret
