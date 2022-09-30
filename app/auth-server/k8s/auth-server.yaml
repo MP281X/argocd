@@ -82,5 +82,7 @@ metadata:
 spec:
   forwardAuth:
     address: https://auth.dev.mp281x.xyz/
+    authResponseHeaders: ['github-jwt']
+    authRequestHeaders: ['Accept', 'github-jwt']
     trustForwardHeader: true
     tls: { insecureSkipVerify: true }
