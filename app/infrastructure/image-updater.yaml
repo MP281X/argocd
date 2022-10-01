@@ -13,12 +13,13 @@ spec:
     helm:
       values: |-
         extraArgs: ["--interval", "20s"]
-        registries:
-          - name: github container registry
-            prefix: ghcr.io
-            api_url: https://ghcr.io
-            credentials: pullsecret:argocd/github-registry
-            default: true
+        config:
+          registries:
+            - name: github container registry
+              prefix: ghcr.io
+              api_url: https://ghcr.io
+              credentials: pullsecret:argocd/github-registry
+              default: true
   destination:
     namespace: argocd
     server: https://kubernetes.default.svc
