@@ -3,6 +3,7 @@ kind: Application
 metadata:
   name: argocd-image-updater
   namespace: argocd
+  annotations: { argocd.argoproj.io/sync-wave: "0" }
 spec:
   project: infrastructure
   source:
