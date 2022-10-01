@@ -1,5 +1,7 @@
 name: Build node js runner
-on: { push: { paths: ["app/github-actions/github-runner/docker/**"] } }
+on:
+  push: { paths: ["app/github-actions/docker/**", ".github/workflows/**"] }
+
 jobs:
   Build-node-js-runner:
     runs-on: self-hosted

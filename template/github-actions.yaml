@@ -25,5 +25,5 @@ spec:
     path: app/github-actions
   destination: { server: https://kubernetes.default.svc, namespace: argocd }
   syncPolicy:
-    syncOptions: [CreateNamespace=true]
+    syncOptions: ["CreateNamespace=true", "Replace=true"]
     automated: { selfHeal: true, prune: true }

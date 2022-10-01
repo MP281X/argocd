@@ -25,7 +25,7 @@ spec:
   source:
     repoURL: https://github.com/MP281X/argocd
     targetRevision: HEAD
-    path: app/auth-server/k8s
+    path: app/auth-server
   destination: { server: https://kubernetes.default.svc, namespace: argocd }
   syncPolicy:
     syncOptions: [CreateNamespace=true]

@@ -1,15 +1,8 @@
-kind: Application
-apiVersion: argoproj.io/v1alpha1
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
 metadata:
-  name: github-runner
-  namespace: argocd
+  name: gitops-runner
+  namespace: github-actions
 spec:
-  project: github-actions
-  source:
-    repoURL: https://github.com/MP281X/argocd
-    targetRevision: HEAD
-    path: app/github-actions/github-runner
-  destination: { server: https://kubernetes.default.svc, namespace: argocd }
-  syncPolicy:
-    syncOptions: ["Replace=true"]
-    automated: { prune: true }
+  replicas: 1
+  template: { spec: { repository: MP281X/argocd } }

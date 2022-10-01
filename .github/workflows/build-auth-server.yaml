@@ -1,5 +1,5 @@
 name: Build auth server
-on: { push: { paths: ["app/auth-server/app/**", ".github/workflows/**"] } }
+on: { push: { paths: ["app/auth-server/docker/**", ".github/workflows/**"] } }
 jobs:
   Build-node-js-runner:
     runs-on: self-hosted
@@ -8,7 +8,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Build docker image
-        run: docker build -f ./app/auth-server/app/auth-server.Dockerfile -t ghcr.io/mp281x/auth-server:latest ./app/auth-server/app
+        run: docker build -f ./app/auth-server/docker/Dockerfile -t ghcr.io/mp281x/auth-server:latest ./app/auth-server/docker
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v2
         with:
