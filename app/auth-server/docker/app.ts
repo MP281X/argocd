@@ -50,6 +50,7 @@ app.get('/auth', async (req: Request, res: Response) => {
 		res.cookie('github-jwt', token, {
 			httpOnly: true,
 			secure: true,
+			domain: 'dev.mp281x.xyz',
 			maxAge: 60 * 60 * 24 * 2
 		});
 		console.log('added the cookie to the browser');
@@ -69,25 +70,22 @@ app.get('/auth', async (req: Request, res: Response) => {
 
 app.all('/', async (req: Request, res: Response) => {
 	try {
-		console.log('____________________________');
 		const token = req.cookies['github-jwt'];
-		console.log(req.cookies);
-		console.log('____________________________');
 
 		// if there isn't a token redirect to the auth page
-		// if (token === undefined || token === '') {
-		// 	console.log('token not found');
-		// 	return res.redirect(302, 'https://auth.dev.mp281x.xyz/auth');
-		// }
+		if (token === undefined || token === '') {
+			console.log('token not found');
+			return res.redirect(302, 'https://auth.dev.mp281x.xyz/auth');
+		}
 
-		// // check if the token is valid
-		// const tokenData = jwt.verify(token, process.env.jwtKey ?? '') as { username: string };
+		// check if the token is valid
+		const tokenData = jwt.verify(token, process.env.jwtKey ?? '') as { username: string };
 
-		// // check if the user has the permission
-		// if (tokenData.username !== 'MP281X') return res.json({ error: 'unauthorized' });
+		// check if the user has the permission
+		if (tokenData.username !== 'MP281X') return res.json({ error: 'unauthorized' });
 
 		// redirect to the protected page
-		console.log('authorized');
+		console.log(tokenData.username + ' authenticated');
 		return res.sendStatus(200);
 	} catch (error) {
 		console.log(error);
