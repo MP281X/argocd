@@ -58,7 +58,7 @@ spec:
   entryPoints: [websecure]
   tls: { secretName: auth-cert }
   routes:
-    - match: Host(`auth.dev.mp281x.xyz`)
+    - match: Host(`auth.mp281x.xyz`)
       kind: Rule
       services: [{ name: auth-server, port: 3000 }]
 
@@ -70,7 +70,7 @@ metadata:
   namespace: auth-server
 spec:
   secretName: auth-cert
-  dnsNames: [auth.dev.mp281x.xyz]
+  dnsNames: [auth.mp281x.xyz]
   issuerRef:
     name: letsencrypt-staging
     kind: ClusterIssuer
@@ -82,5 +82,5 @@ metadata:
   namespace: auth-server
 spec:
   forwardAuth:
-    address: https://auth.dev.mp281x.xyz/
+    address: https://auth.mp281x.xyz/
     tls: {}

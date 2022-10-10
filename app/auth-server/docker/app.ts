@@ -35,7 +35,7 @@ app.get('/auth', async (req: Request, res: Response) => {
 		// check if there is a github token in the url, if not redirect to the github auth page
 		if (code === undefined || code === '') {
 			console.log('redirected to the github auth page');
-			const redirect = `https://auth.dev.mp281x.xyz/auth?scope=user:email`;
+			const redirect = `https://auth.mp281x.xyz/auth?scope=user:email`;
 			return res.redirect(`https://github.com/login/oauth/authorize?client_id=${process.env.client_id}&redirect_uri=${redirect}`);
 		}
 
@@ -50,7 +50,7 @@ app.get('/auth', async (req: Request, res: Response) => {
 		res.cookie('github-jwt', token, {
 			httpOnly: true,
 			secure: true,
-			domain: 'dev.mp281x.xyz',
+			domain: 'mp281x.xyz',
 			maxAge: 60 * 60 * 24 * 2
 		});
 		console.log('added the cookie to the browser');
@@ -75,7 +75,7 @@ app.all('/', async (req: Request, res: Response) => {
 		// if there isn't a token redirect to the auth page
 		if (token === undefined || token === '') {
 			console.log('token not found');
-			return res.redirect(302, 'https://auth.dev.mp281x.xyz/auth');
+			return res.redirect(302, 'https://auth.mp281x.xyz/auth');
 		}
 
 		// check if the token is valid

@@ -8,7 +8,7 @@ spec:
   entryPoints: [websecure]
   tls: { secretName: traefik-cert }
   routes:
-    - match: Host(`traefik.dev.mp281x.xyz`)
+    - match: Host(`traefik.mp281x.xyz`)
       kind: Rule
       middlewares: [{ name: auth-server, namespace: auth-server }]
       services: [{ name: api@internal, kind: TraefikService }]
@@ -21,7 +21,7 @@ metadata:
   namespace: traefik
 spec:
   secretName: traefik-cert
-  dnsNames: [traefik.dev.mp281x.xyz]
+  dnsNames: [traefik.mp281x.xyz]
   issuerRef:
     name: letsencrypt-staging
     kind: ClusterIssuer

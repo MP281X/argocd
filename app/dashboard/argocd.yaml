@@ -8,7 +8,7 @@ spec:
   entryPoints: [websecure]
   tls: { secretName: argocd-cert }
   routes:
-    - match: Host(`argocd.dev.mp281x.xyz`)
+    - match: Host(`argocd.mp281x.xyz`)
       kind: Rule
       services: [{ name: argocd-server, port: 443 }]
 ---
@@ -19,7 +19,7 @@ metadata:
   namespace: argocd
 spec:
   secretName: argocd-cert
-  dnsNames: [argocd.dev.mp281x.xyz]
+  dnsNames: [argocd.mp281x.xyz]
   issuerRef:
     name: letsencrypt-staging
     kind: ClusterIssuer
