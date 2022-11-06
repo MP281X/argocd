@@ -2,7 +2,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: kasten-io
-  namespace: dashboard
+  namespace: kasten-io
   annotations: { kubernetes.io/ingress.class: traefik }
 spec:
   entryPoints: [websecure]
@@ -17,7 +17,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: kasten-io-cert
-  namespace: dashboard
+  namespace: kasten-io
 spec:
   secretName: kasten-io-cert
   dnsNames: [k10.mp281x.xyz]
