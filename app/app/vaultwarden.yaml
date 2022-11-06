@@ -19,9 +19,9 @@ spec:
         - name: vaultwarden
           image: vaultwarden/server:latest
           ports: [containerPort: 80]
-          volumeMounts: [{ name: vaultwarden-pvc, mountPath: /data }]
+          volumeMounts: [{ name: vol, mountPath: /data }]
       volumes:
-        - name: vaultwarden-pvc
+        - name: vol
           persistentVolumeClaim: { claimName: vaultwarden-pvc }
 
 ---
