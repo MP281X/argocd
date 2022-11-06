@@ -33,6 +33,7 @@ metadata:
 spec:
   accessModes: [ReadWriteOnce]
   storageClassName: longhorn
+  volumeName: longhorn-pv
   resources:
     requests:
       storage: 1Gi
