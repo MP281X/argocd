@@ -1,0 +1,26 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: kasten-io
+  namespace: dashboard
+  annotations: { kubernetes.io/ingress.class: traefik }
+spec:
+  entryPoints: [websecure]
+  tls: { secretName: kasten-io-cert }
+  routes:
+    - match: Host(`k10.mp281x.xyz`)
+      kind: Rule
+      middlewares: [{ name: auth-server, namespace: auth-server }]
+      services: [{ name: gateway, port: 8000 }]
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: kasten-io-cert
+  namespace: dashboard
+spec:
+  secretName: kasten-io-cert
+  dnsNames: [k10.mp281x.xyz]
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer
