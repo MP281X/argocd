@@ -10,6 +10,7 @@ spec:
   routes:
     - match: Host(`longhorn.mp281x.xyz`)
       kind: Rule
+      middlewares: [{ name: auth-server, namespace: auth-server }]
       services: [{ name: longhorn-frontend, port: 80 }]
 
 ---
