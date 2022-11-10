@@ -34,4 +34,4 @@ metadata:
 spec:
   ipWhiteList:
     sourceRange:
-      - 100.64.0.0/10
+      - 100.115.171.94
