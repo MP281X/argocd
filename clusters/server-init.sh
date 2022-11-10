@@ -24,7 +24,7 @@ systemctl enable firewalld
 # remove the active service from the default interface
 firewall-cmd --remove-service=ssh --permanent
 firewall-cmd --remove-service=dhcpv6-client --permanent
-firewall-cmd --set-target=DROP --permanent
+# firewall-cmd --set-target=DROP --permanent
 
 # create a new zone for tailscale
 firewall-cmd --new-zone=tailscale --permanent

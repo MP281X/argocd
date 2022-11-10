@@ -10,6 +10,7 @@ spec:
   routes:
     - match: Host(`traefik.mp281x.xyz`)
       kind: Rule
+      middlewares: [{ name: test-ipwhitelist, namespace: traefik }]
       services: [{ name: api@internal, kind: TraefikService }]
 # ---
 # apiVersion: cert-manager.io/v1
@@ -23,3 +24,14 @@ spec:
 #   issuerRef:
 #     name: letsencrypt-staging
 #     kind: ClusterIssuer
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: test-ipwhitelist
+  namespace: traefik
+spec:
+  ipWhiteList:
+    sourceRange:
+      - 100.64.0.0/10
