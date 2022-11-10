@@ -72,7 +72,8 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.24.7+k3s1 sh -s - --write-
     --bind-address $TAILSCALEIP \ 
     --node-ip $TAILSCALEIP \ 
     --node-external-ip $TAILSCALEIP 
-    
+
+mv /root/registry-k3s.yaml /etc/rancher/k3s/registries.yaml    
 systemctl daemon-reload
 systemctl restart k3s.service
 echo 'export KUBECONFIG=/etc/rancher/k3s/k3s.yaml' >> /home/mp281x/.bashrc
