@@ -42,6 +42,7 @@ spec:
             port: 5432
             exposedPort: 5432
             protocol: TCP
+          metrics: { expose: false }
 
         hostNetwork: true
         rbac: { enabled: true }
