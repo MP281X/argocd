@@ -63,6 +63,7 @@ spec:
 
         service:
           ipFamilyPolicy: "PreferDualStack"
+          externalTrafficPolicy: Local
 
   destination:
     namespace: traefik
