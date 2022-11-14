@@ -32,7 +32,9 @@ spec:
         rbac: { enabled: true }
         metrics: { prometheus: { enabled: false } }
         ingressRoute: { dashboard: { enabled: false } }
-        service: { ipFamilyPolicy: "PreferDualStack" }
+        service:
+          ipFamilyPolicy: "PreferDualStack"
+          spec: { externalTrafficPolicy: Local }
 
         providers:
           kubernetesCRD:
