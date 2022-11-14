@@ -44,3 +44,15 @@ spec:
     - match: Host(`whoami.mp281x.xyz`)
       kind: Rule
       services: [{ name: whoami, port: 80 }]
+      middlewares: [{ name: test-ipwhitelist, namespace: whoami }]
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: test-ipwhitelist
+  namespace: whoami
+spec:
+  ipWhiteList:
+    sourceRange:
+      - 127.0.0.1/32
+      - 100.64.0.0/10
