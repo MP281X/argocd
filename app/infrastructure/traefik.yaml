@@ -40,8 +40,8 @@ spec:
             enabled: true
             publishedService: { enabled: true }
         service:
-          ipFamilyPolicy: "PreferDualStack"
-          spec: { externalTrafficPolicy: Local }
+          enabled: false
+
   destination:
     namespace: traefik
     server: https://kubernetes.default.svc
