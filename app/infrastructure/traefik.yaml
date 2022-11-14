@@ -21,22 +21,22 @@ spec:
 
         ports:
           web:
-          port: 80
-          expose: true
-          protocol: TCP
-          exposePort: 80
-          redirectTo: websecure
-        websecure:
-          port: 443
-          expose: true
-          protocol: TCP
-          exposePort: 443
-          tls: { enable: true }
-        postgresql:
-          expose: true
-          port: 5432
-          exposedPort: 5432
-          protocol: TCP
+            port: 80
+            expose: true
+            protocol: TCP
+            exposePort: 80
+            redirectTo: websecure
+          websecure:
+            port: 443
+            expose: true
+            protocol: TCP
+            exposePort: 443
+            tls: { enable: true }
+          postgresql:
+            expose: true
+            port: 5432
+            exposedPort: 5432
+            protocol: TCP
 
         hostNetwork: true
         rbac: { enabled: true }
