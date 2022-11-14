@@ -44,15 +44,3 @@ spec:
     - match: Host(`whoami.mp281x.xyz`)
       kind: Rule
       services: [{ name: whoami, port: 80 }]
-      middlewares: [{ name: traefik-real-ip }]
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: traefik-real-ip
-  namespace: whoami
-spec:
-  plugin:
-    traefik-real-ip:
-      excludednets:
-        - "1.1.1.1/24"

@@ -21,8 +21,6 @@ spec:
           - "--serversTransport.insecureSkipVerify=true"
           - "--entryPoints.postgresql.address=:5432/tcp"
           - "--log.level=INFO"
-          - "--experimental.plugins.traefik-real-ip.modulename=github.com/soulbalz/traefik-real-ip"
-          - "--experimental.plugins.traefik-real-ip.version=v1.0.3"
           
         ports:
           web: { redirectTo: websecure }
