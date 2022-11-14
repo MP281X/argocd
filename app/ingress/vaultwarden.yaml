@@ -7,9 +7,8 @@ metadata:
 spec:
   entryPoints: [websecure]
   # tls: { secretName: vaultwarden-cert }
-  tls: { certResolver: tailscale-cert }
   routes:
-    - match: Host(`tailnet-8c4c.ts.net`)
+    - match: Host(`vaultwarden.mp281x.xyz`)
       kind: Rule
       services: [{ name: vaultwarden, port: 80 }]
       middlewares: [{ name: tailscale-whitelist, namespace: whoami }]
