@@ -18,6 +18,8 @@ spec:
         additionalArguments:
           - "--serversTransport.insecureSkipVerify=true"
           - "--entryPoints.postgresql.address=:5432/tcp"
+          - "--entryPoints.web.address=:80/tcp"
+          - "--entryPoints.websecure.address=:443/tcp"
           - "--log.level=INFO"
 
         ports:
@@ -25,7 +27,7 @@ spec:
             redirectTo: websecure
             expose: true
             port: 8000
-            hostPort: 80
+            hostPort: 8000
             hostIP: 192.168.0.1
             exposedPort: 80
             protocol: TCP
@@ -33,7 +35,7 @@ spec:
             tls: { enabled: true }
             expose: true
             port: 8443
-            hostPort: 80
+            hostPort: 8443
             hostIP: 192.168.0.1
             exposedPort: 443
             protocol: TCP
