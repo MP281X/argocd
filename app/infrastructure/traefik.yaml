@@ -52,6 +52,11 @@ spec:
           runAsNonRoot: false
           runAsUser: 0
 
+        certResolvers:
+          tailscale-cert:
+            tailscale: {}
+
+
         providers:
           kubernetesCRD:
             enabled: true
