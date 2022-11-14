@@ -47,6 +47,7 @@ spec:
 
         service:
           ipFamilyPolicy: "PreferDualStack"
+          spec: { externalTrafficPolicy: Local }
   destination:
     namespace: traefik
     server: https://kubernetes.default.svc
