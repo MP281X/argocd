@@ -11,7 +11,7 @@ spec:
     - match: Host(`vaultwarden.mp281x.xyz`)
       kind: Rule
       services: [{ name: vaultwarden, port: 80 }]
-      middlewares: [{ name: tailscale-whitelist, namespace: whoami }]
+      middlewares: [{ name: tailscale-whitelist, namespace: traefik }]
 # ---
 # apiVersion: cert-manager.io/v1
 # kind: Certificate

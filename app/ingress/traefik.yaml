@@ -11,7 +11,7 @@ spec:
     - match: Host(`traefik.mp281x.xyz`)
       kind: Rule
       services: [{ name: api@internal, kind: TraefikService }]
-      middlewares: [{ name: tailscale-whitelist, namespace: whoami }]
+      middlewares: [{ name: tailscale-whitelist, namespace: traefik }]
 # ---
 # apiVersion: cert-manager.io/v1
 # kind: Certificate
