@@ -21,20 +21,33 @@ spec:
           - "--entryPoints.postgresql.address=:5432/tcp"
 
         ports:
-          web: { redirectTo: websecure }
-          websecure: { tls: { enabled: true } }
+          web:
+          port: 80
+          expose: true
+          protocol: TCP
+          exposePort: 80
+          redirectTo: websecure
+        websecure:
+          port: 443
+          expose: true
+          protocol: TCP
+          exposePort: 443
+          tls: { enable: true }
           postgresql:
             expose: true
             port: 5432
             exposedPort: 5432
             protocol: TCP
 
+        hostNetwork: true
         rbac: { enabled: true }
         metrics: { prometheus: { enabled: false } }
         ingressRoute: { dashboard: { enabled: false } }
-        service:
-          ipFamilyPolicy: "PreferDualStack"
-          spec: { externalTrafficPolicy: Local }
+        service: { enabled: false }
+        securityContext:
+          capabilities: { add: [ NET_BIND_SERVICE ] }
+          runAsNonRoot: false
+          runAsUser: 0
 
         providers:
           kubernetesCRD:
