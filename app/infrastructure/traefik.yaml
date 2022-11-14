@@ -21,15 +21,33 @@ spec:
           - "--log.level=INFO"
 
         ports:
-          web: { redirectTo: websecure }
-          websecure: { tls: { enabled: true } }
+          web: 
+            redirectTo: websecure
+            expose: true
+            port: 8000
+            hostPort: 80
+            hostIP: 192.168.0.1
+            exposedPort: 80
+            protocol: TCP
+          websecure: 
+            tls: { enabled: true }
+            expose: true
+            port: 8443
+            hostPort: 80
+            hostIP: 192.168.0.1
+            exposedPort: 443
+            protocol: TCP
           postgresql:
             expose: true
             port: 5432
+            hostPort: 5432
+            hostIP: 192.168.0.1
             exposedPort: 5432
             protocol: TCP
 
         ingressRoute: { dashboard: { enabled: false } }
+        hostNetwork: true
+        metrics: {}
         rbac: { enabled: true }
 
         providers:
