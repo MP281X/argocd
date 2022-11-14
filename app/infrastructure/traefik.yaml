@@ -32,10 +32,6 @@ spec:
         rbac: { enabled: true }
         metrics: { prometheus: { enabled: false } }
         ingressRoute: { dashboard: { enabled: false } }
-        service:
-          enabled: false
-          ipFamilyPolicy: "PreferDualStack"
-          spec: { externalTrafficPolicy: Local }
 
         providers:
           kubernetesCRD:
@@ -46,6 +42,9 @@ spec:
             enabled: true
             publishedService: { enabled: true }
 
+        service:
+          enabled: false
+          ipFamilyPolicy: "PreferDualStack"
   destination:
     namespace: traefik
     server: https://kubernetes.default.svc
