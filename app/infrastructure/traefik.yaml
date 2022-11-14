@@ -33,10 +33,10 @@ spec:
           exposePort: 443
           tls: { enable: true }
         postgresql:
-            expose: true
-            port: 5432
-            exposedPort: 5432
-            protocol: TCP
+          expose: true
+          port: 5432
+          exposedPort: 5432
+          protocol: TCP
 
         hostNetwork: true
         rbac: { enabled: true }
