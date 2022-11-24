@@ -1,8 +1,8 @@
 kind: AppProject
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: ingress
-  namespace: tailscale
+  name: tailscale
+  namespace: argocd
   annotations: { argocd.argoproj.io/sync-wave: "0" }
 spec:
   description: tailscale ingress
@@ -14,8 +14,8 @@ spec:
 kind: Application
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: ingress
-  namespace: tailscale
+  name: tailscale
+  namespace: argocd
   annotations: { argocd.argoproj.io/sync-wave: "2" }
 spec:
   project: tailscale
