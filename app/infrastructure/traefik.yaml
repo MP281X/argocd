@@ -49,8 +49,7 @@ spec:
           type: ClusterIP
           spec:
             externalTrafficPolicy: ''
-            # clusterIP: 10.96.0.60 # da modificare
-
+            clusterIP: 10.43.0.100
         providers:
           kubernetesCRD:
             enabled: true
