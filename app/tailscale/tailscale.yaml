@@ -21,7 +21,7 @@ spec:
       image: ghcr.io/tailscale/tailscale:latest
       env:
         - { name: TS_USERSPACE, value: "false" }
-        - { name: TS_DEST_IP, value: 10.43.0.100 }
+        - { name: TS_DEST_IP, value: 10.43.204.239 }
         - { name: TS_KUBE_SECRET, value: tailscale-config }
         - { name: TS_EXTRA_ARGS, value: --hostname=tailscale-ingress }
         - name: TS_AUTH_KEY
