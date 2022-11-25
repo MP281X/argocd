@@ -7,8 +7,6 @@ metadata:
   #   cert-manager.io/cluster-issuer: letsencrypt
 spec:
   ingressClassName: private
-  tls: {}
-
   rules:
     - host: vaultwarden.mp281x.xyz
       http:
