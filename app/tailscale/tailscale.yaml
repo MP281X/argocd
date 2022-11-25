@@ -5,6 +5,7 @@ metadata:
   name: tailscale
   namespace: tailscale
   labels: { app: tailscale }
+  annotations: { argocd.argoproj.io/sync-wave: "1" }
 spec:
   replicas: 1
   selector: { matchLabels: { app: tailscale } }
