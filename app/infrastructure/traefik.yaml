@@ -65,15 +65,3 @@ spec:
   syncPolicy:
     syncOptions: [CreateNamespace=true]
     automated: { prune: true, selfHeal: true }
-
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: tailscale-whitelist
-  namespace: traefik
-spec:
-  ipWhiteList:
-    sourceRange:
-      - 127.0.0.1/32
-      - 100.64.0.0/10
