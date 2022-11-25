@@ -1,28 +1,72 @@
-apiVersion: apps/v1
-kind: Deployment
+# apiVersion: apps/v1
+# kind: Deployment
 
+# metadata:
+#   name: tailscale
+#   namespace: tailscale
+#   labels: { app: tailscale }
+#   annotations: { argocd.argoproj.io/sync-wave: "1" }
+# spec:
+#   replicas: 1
+#   selector: { matchLabels: { app: tailscale } }
+#   template:
+#     metadata: { labels: { app: tailscale } }
+#     spec:
+#       serviceAccountName: tailscale
+#       terminationGracePeriodSeconds: 60
+#       containers:
+#         - name: tailscale
+#           image: ghcr.io/tailscale/tailscale:latest
+#           securityContext: { capabilities: { add: [NET_ADMIN] } }
+#           env:
+#             - { name: TS_USERSPACE, value: "false" }
+#             - { name: TS_KUBE_SECRET, value: tailscale-config }
+#             - { name: TS_DEST_IP, value: 10.43.0.100 }
+#             - { name: TS_EXTRA_ARGS, value: --hostname=tailscale-ingress }
+#             - name: TS_AUTH_KEY
+#               valueFrom:
+#                 secretKeyRef: { name: tailscale-config, key: TS_AUTH_KEY }
+
+# ---
+apiVersion: v1
+kind: Pod
 metadata:
-  name: tailscale
-  namespace: tailscale
-  labels: { app: tailscale }
-  annotations: { argocd.argoproj.io/sync-wave: "1" }
+  name: proxy
 spec:
-  replicas: 1
-  selector: { matchLabels: { app: tailscale } }
-  template:
-    metadata: { labels: { app: tailscale } }
-    spec:
-      serviceAccountName: tailscale
-      terminationGracePeriodSeconds: 60
-      containers:
-        - name: tailscale
-          image: ghcr.io/tailscale/tailscale:latest
-          securityContext: { capabilities: { add: [NET_ADMIN] } }
-          env:
-            - { name: TS_USERSPACE, value: "false" }
-            - { name: TS_KUBE_SECRET, value: tailscale-config }
-            - { name: TS_DEST_IP, value: 10.43.0.100 }
-            - { name: TS_EXTRA_ARGS, value: --hostname=tailscale-ingress }
-            - name: TS_AUTH_KEY
-              valueFrom:
-                secretKeyRef: { name: tailscale-config, key: TS_AUTH_KEY }
+  serviceAccountName: tailscale
+  initContainers:
+    - name: sysctler
+      image: busybox
+      securityContext:
+        privileged: true
+      command: ["/bin/sh"]
+      args:
+        - -c
+        - sysctl -w net.ipv4.ip_forward=1 net.ipv6.conf.all.forwarding=1
+      resources:
+        requests:
+          cpu: 1m
+          memory: 1Mi
+  containers:
+    - name: tailscale
+      imagePullPolicy: Always
+      image: "ghcr.io/tailscale/tailscale:latest"
+      env:
+        - name: TS_KUBE_SECRET
+          value: tailscale-config
+        - name: TS_USERSPACE
+          value: "false"
+        - name: TS_AUTH_KEY
+          valueFrom:
+            secretKeyRef:
+              name: tailscale-config
+              key: TS_AUTH_KEY
+              optional: true
+        - name: TS_DEST_IP
+          value: 10.43.0.100
+        - name: TS_AUTH_ONCE
+          value: "true"
+      securityContext:
+        capabilities:
+          add:
+            - NET_ADMIN
