@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: tailscale-proxy
-  namespace: tailscale
+  namespace: traefik
   annotations: { argocd.argoproj.io/sync-wave: "1" }
 spec:
   serviceAccountName: tailscale
