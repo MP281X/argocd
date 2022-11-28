@@ -19,6 +19,7 @@ metadata:
   namespace: vaultwarden
 spec:
   secretName: vaultwarden-cert
+  commonName: "*.mp281x.xyz"
   dnsNames: ["*.mp281x.xyz", "mp281x.xyz"]
   issuerRef:
     name: tailscale-cert

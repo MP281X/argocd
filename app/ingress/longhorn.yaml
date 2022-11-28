@@ -19,6 +19,7 @@ metadata:
   namespace: longhorn-system
 spec:
   secretName: longhorn-cert
+  commonName: "*.mp281x.xyz"
   dnsNames: ["*.mp281x.xyz", "mp281x.xyz"]
   issuerRef:
     name: tailscale-cert
