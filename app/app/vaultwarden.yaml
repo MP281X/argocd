@@ -10,7 +10,7 @@ metadata:
   namespace: vaultwarden
   labels: { app: vaultwarden }
 spec:
-  replicas: 1
+  replicas: 0
   selector: { matchLabels: { app: vaultwarden } }
   template:
     metadata: { labels: { app: vaultwarden } }
@@ -24,18 +24,18 @@ spec:
         - name: vol
           persistentVolumeClaim: { claimName: vaultwarden-pvc }
 
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: vaultwarden-pvc
-  namespace: vaultwarden
-spec:
-  accessModes: [ReadWriteOnce]
-  storageClassName: longhorn
-  resources:
-    requests:
-      storage: 1Gi
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: vaultwarden-pvc
+#   namespace: vaultwarden
+# spec:
+#   accessModes: [ReadWriteOnce]
+#   storageClassName: longhorn
+#   resources:
+#     requests:
+#       storage: 1Gi
 
 ---
 apiVersion: v1
