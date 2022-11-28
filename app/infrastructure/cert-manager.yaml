@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: cert-manager
   namespace: argocd
-  annotations: { argocd.argoproj.io/sync-wave: "2" }
+  annotations: { argocd.argoproj.io/sync-wave: "1" }
 spec:
   project: infrastructure
   source:

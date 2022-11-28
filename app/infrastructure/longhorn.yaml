@@ -1,9 +1,16 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: longhorn-system
+  annotations: { argocd.argoproj.io/sync-wave: "-1" }
+
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: longhorn
   namespace: argocd
-  annotations: { argocd.argoproj.io/sync-wave: "0" }
+  annotations: { argocd.argoproj.io/sync-wave: "1" }
 spec:
   project: infrastructure
   source:
@@ -14,6 +21,8 @@ spec:
       values: |-
         defaultSettings:
           defaultReplicaCount: 1
+          backupTarget: s3://dev@us-east-1/
+          backupTargetCredentialSecret: s3-secrets
   destination:
     namespace: longhorn-system
     server: https://kubernetes.default.svc
