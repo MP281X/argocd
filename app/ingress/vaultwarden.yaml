@@ -6,21 +6,22 @@ metadata:
   annotations: { kubernetes.io/ingress.class: traefik }
 spec:
   entryPoints: [websecure]
-  tls: { secretName: vaultwarden-cert }
+  # tls: { secretName: vaultwarden-cert }
+  tls: {}
   routes:
     - match: Host(`vaultwarden.mp281x.xyz`)
       kind: Rule
       services: [{ name: vaultwarden, port: 80 }]
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: vaultwarden-cert
-  namespace: vaultwarden
-spec:
-  secretName: vaultwarden-cert
-  commonName: "*.mp281x.xyz"
-  dnsNames: ["*.mp281x.xyz", "mp281x.xyz"]
-  issuerRef:
-    name: tailscale-cert
-    kind: ClusterIssuer
+# ---
+# apiVersion: cert-manager.io/v1
+# kind: Certificate
+# metadata:
+#   name: vaultwarden-cert
+#   namespace: vaultwarden
+# spec:
+#   secretName: vaultwarden-cert
+#   commonName: "*.mp281x.xyz"
+#   dnsNames: ["*.mp281x.xyz", "mp281x.xyz"]
+#   issuerRef:
+#     name: tailscale-cert
+#     kind: ClusterIssuer
