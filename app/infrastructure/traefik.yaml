@@ -24,6 +24,21 @@ spec:
           - "--log.level=INFO"
           - "--serversTransport.insecureSkipVerify=true"
 
+        deployment:
+          enabled: true
+          additionalContainers:
+            - name: ts-sidecar
+              imagePullPolicy: Always
+              image: "ghcr.io/tailscale/tailscale:latest"
+              env:
+                - { name: TS_KUBE_SECRET, value: tailscale-config }
+                - { name: TS_USERSPACE, value: "false" }
+                - { name: TS_EXTRA_ARGS, value: --hostname=tailscale-sidecar }
+                - name: TS_AUTH_KEY
+                  valueFrom:
+                    secretKeyRef: { name: tailscale-config, key: TS_AUTH_KEY }
+              securityContext: { capabilities: { add: [NET_ADMIN] } }
+
         ports:
           web:
             port: 80
