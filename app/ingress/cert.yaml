@@ -3,7 +3,7 @@ kind: ClusterIssuer
 metadata:
   name: tailscale-cert
   namespace: default
-  annotations: { argocd.argoproj.io/sync-wave: "-1" }
+  annotations: { argocd.argoproj.io/sync-wave: "1" }
 spec:
   acme:
     solvers:
