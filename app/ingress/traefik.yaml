@@ -19,7 +19,7 @@ metadata:
   namespace: traefik
 spec:
   secretName: traefik-cert
-  dnsNames: [traefik.mp281x.xyz]
+  dnsNames: ["*.mp281x.xyz", "mp281x.xyz"]
   issuerRef:
     name: tailscale-cert
     kind: ClusterIssuer
