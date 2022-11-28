@@ -4,15 +4,16 @@ kind: ClusterIssuer
 metadata:
   name: tailscale-cert
 spec:
-  acme:
-    email: paludgnachmatteo.dev@gmail.com
-    # server: https://acme-v02.api.letsencrypt.org/directory
-    server: https://acme-staging-v02.api.letsencrypt.org/directory
-    privateKeySecretRef: { name: letsencrypt-key }
-    solvers:
-      - dns01:
-          cloudflare:
-            email: paludgnachmatteo.dev@gmail.com
-            apiTokenSecretRef:
-              name: cloudflare-api-token-secret
-              key: api-token
+  selfSigned: {}
+  # acme:
+  #   email: paludgnachmatteo.dev@gmail.com
+  #   # server: https://acme-v02.api.letsencrypt.org/directory
+  #   server: https://acme-staging-v02.api.letsencrypt.org/directory
+  #   privateKeySecretRef: { name: letsencrypt-key }
+  #   solvers:
+  #     - dns01:
+  #         cloudflare:
+  #           email: paludgnachmatteo.dev@gmail.com
+  #           apiTokenSecretRef:
+  #             name: cloudflare-api-token-secret
+  #             key: api-token
