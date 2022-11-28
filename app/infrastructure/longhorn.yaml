@@ -21,8 +21,8 @@ spec:
       values: |-
         defaultSettings:
           defaultReplicaCount: 1
-          backupTarget: s3://dev@us-east-1/
-          backupTargetCredentialSecret: s3-secrets
+          # backupTarget: s3://dev@us-east-1/
+          # backupTargetCredentialSecret: s3-secrets
   destination:
     namespace: longhorn-system
     server: https://kubernetes.default.svc
