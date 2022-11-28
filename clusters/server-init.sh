@@ -41,11 +41,21 @@ echo "" > /etc/motd
 service sshd restart
 
 echo " ------- k3s configuration ------- "
-curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.24.7+k3s1 sh -s - --write-kubeconfig-mode 644 --no-deploy traefik --node-name k3s-dev
+curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" INSTALL_K3S_VERSION="v1.24.7+k3s1" INSTALL_K3S_EXEC=" \
+    --flannel-backend=none \
+    --cluster-cidr=192.168.0.0/16 \
+    --disable-network-policy \
+    --disable=traefik \
+    --node-name k3s-dev" sh -
 
 vi /etc/rancher/k3s/registries.yaml    
 systemctl daemon-reload
 systemctl restart k3s.service
+
+echo " ------- Calico installation ------- "
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.24.5/manifests/tigera-operator.yaml
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.24.5/manifests/custom-resources.yaml
+
 
 echo " ------- argocd installation ------- "
 kubectl create namespace argocd
