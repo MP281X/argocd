@@ -4,8 +4,4 @@ cd C:\dev\argocd\app;
 Get-ChildItem -recurse | 
 where {$_.name -eq "secrets.x.yaml"} | 
 foreach { cd $_.DirectoryName; cat ./secrets.x.yaml | kubeseal --controller-name=sealed-secrets --controller-namespace=sealed-secrets --format=yaml > ./secrets.yaml };
-
-cd C:\dev\argocd\app\infrastructure;
-echo "---" >> ./secrets.yaml; cat ./secrets_tailscale.x.yaml | kubeseal --controller-name=sealed-secrets --controller-namespace=sealed-secrets --format=yaml >> ./secrets.yaml;
-
 cd C:\dev\argocd\

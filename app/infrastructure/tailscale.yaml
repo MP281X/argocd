@@ -17,15 +17,16 @@ spec:
     - name: tailscale
       imagePullPolicy: Always
       image: "ghcr.io/tailscale/tailscale:latest"
+      securityContext: { runAsUser: 1000, runAsGroup: 1000 }
       env:
         - { name: TS_USERSPACE, value: "true" }
-        - { name: TS_KUBE_SECRET, value: tailscale-config }
+        - { name: TS_KUBE_SECRET, value: tailscale-auth }
         - { name: TS_ROUTES, value: 10.43.0.0/16 }
         - { name: TS_EXTRA_ARGS, value: --hostname=k3s-dev-subnet-router }
         - name: TS_AUTH_KEY
           valueFrom:
-            secretKeyRef: { name: tailscale-config, key: TS_AUTH_KEY }
-      securityContext: { runAsUser: 1000, runAsGroup: 1000 }
+            secretKeyRef:
+              name: tailscale-auth, key: TS_AUTH_KEY, optional: true
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
