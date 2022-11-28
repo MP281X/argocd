@@ -21,6 +21,7 @@ spec:
         - { name: TS_USERSPACE, value: "true" }
         - { name: TS_KUBE_SECRET, value: tailscale-config }
         - { name: TS_ROUTES, value: 10.43.0.0/16 }
+        - { name: TS_EXTRA_ARGS, value: --hostname=k3s-dev-subnet-router }
         - name: TS_AUTH_KEY
           valueFrom:
             secretKeyRef: { name: tailscale-config, key: TS_AUTH_KEY }
