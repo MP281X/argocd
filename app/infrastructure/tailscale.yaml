@@ -18,7 +18,7 @@ spec:
       imagePullPolicy: Always
       image: "ghcr.io/tailscale/tailscale:latest"
       env:
-        - { name: TS_USERSPACE, value: true }
+        - { name: TS_USERSPACE, value: "true" }
         - { name: TS_KUBE_SECRET, value: tailscale-config }
         - { name: TS_ROUTES, value: 10.43.0.0/16 }
         - name: TS_AUTH_KEY
