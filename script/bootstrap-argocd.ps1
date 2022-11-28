@@ -1,6 +1,9 @@
 # configure the registry auth for the image updater
 kubectl apply -f clusters/key/registry-updater.yaml;
 
+# configure the tailscale auth
+kubectl apply -f clusters/key/tailscale.yaml;
+
 # install the sealed secrets token
 kubectl apply -f clusters/key/k3s-dev.key;
 
