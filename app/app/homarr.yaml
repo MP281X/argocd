@@ -1,0 +1,65 @@
+apiVersion: v1
+kind: Namespace
+metadata: { name: homarr }
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homarr
+  namespace: homarr
+  labels: { app: homarr }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: homarr } }
+  template:
+    metadata: { labels: { app: homarr } }
+    spec:
+      containers:
+        - name: homarr
+          image: ghcr.io/ajnart/homarr:latest
+          ports: [containerPort: 7575]
+          volumeMounts:
+            - { name: config, mountPath: /app/data/configs }
+            - { name: icons, mountPath: /app/public/icons }
+      volumes:
+        - name: config
+          persistentVolumeClaim: { claimName: homarr-config }
+        - name: icons
+          persistentVolumeClaim: { claimName: homarr-icons }
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: homarr-config
+  namespace: homarr
+spec:
+  accessModes: [ReadWriteOnce]
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: homarr-icons
+  namespace: homarr
+spec:
+  accessModes: [ReadWriteOnce]
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: homarr
+  namespace: homarr
+spec:
+  selector: { app: homarr }
+  ports: [{ port: 7575, name: homarr, targetPort: 7575 }]
