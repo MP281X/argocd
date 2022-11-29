@@ -10,7 +10,7 @@ spec:
   routes:
     - match: Host(`homarr.mp281x.xyz`)
       kind: Rule
-      services: [{ name: homarr-server, port: 7575 }]
+      services: [{ name: homarr, port: 7575 }]
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
