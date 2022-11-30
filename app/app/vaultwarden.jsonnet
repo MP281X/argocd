@@ -53,12 +53,13 @@ local createApp(name, image, port, data) = [
     metadata: {
       name: name + '_svc',
       namespace: name + '_ns',
-      spec: {
-        selector: { app: name },
-        ports: [{ port: port, name: name, targetPort: port }],
-      },
+    },
+    spec: {
+      selector: { app: name },
+      ports: [{ port: port, name: name, targetPort: port }],
     },
   },
+
 ];
 
 
