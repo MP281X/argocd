@@ -2,14 +2,14 @@ local createApp(name, image, port, data) = [
   {
     apiVersion: 'v1',
     kind: 'Namespace',
-    metadata: { name: name + '_ns' },
+    metadata: { name: name + '-ns' },
   },
   {
     apiVersion: 'apps/v1',
     kind: 'Deployment',
     metadata: {
       name: name,
-      namespace: name + '_ns',
+      namespace: name + '-ns',
       labels: { app: name },
     },
     spec: {
@@ -23,12 +23,12 @@ local createApp(name, image, port, data) = [
               name: name,
               image: image,
               ports: [{ containerPort: port }],
-              volumeMounts: [{ name: name + '_pvc', mountPath: data }],
+              volumeMounts: [{ name: name + '-pvc', mountPath: data }],
             },
           ],
           volumes: [{
-            name: name + '_pvc',
-            persistentVolumeClaim: { claimName: name + '_pvc' },
+            name: name + '-pvc',
+            persistentVolumeClaim: { claimName: name + '-pvc' },
           }],
         },
       },
@@ -38,8 +38,8 @@ local createApp(name, image, port, data) = [
     apiVersion: 'v1',
     kind: 'PersistentVolumeClaim',
     metadata: {
-      name: name + '_pvc',
-      namespace: name + '_ns',
+      name: name + '-pvc',
+      namespace: name + '-ns',
     },
     spec: {
       accessModes: ['ReadWriteOnce'],
@@ -51,8 +51,8 @@ local createApp(name, image, port, data) = [
     apiVersion: 'v1',
     kind: 'Service',
     metadata: {
-      name: name + '_svc',
-      namespace: name + '_ns',
+      name: name + '-svc',
+      namespace: name + '-ns',
     },
     spec: {
       selector: { app: name },
