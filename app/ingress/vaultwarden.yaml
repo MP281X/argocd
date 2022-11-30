@@ -10,7 +10,7 @@ spec:
   routes:
     - match: Host(`vaultwarden.mp281x.xyz`)
       kind: Rule
-      services: [{ name: vaultwarden, port: 80 }]
+      services: [{ name: vaultwarden-svc, port: 80 }]
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
