@@ -45,7 +45,7 @@ data:
         {
           "id": "9aa259f3-eac1-4081-9cda-6db6ec6ab12a",
           "type": "Other",
-          "name": "Traefik Test",
+          "name": "Traefik",
           "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/traefik.png",
           "url": "https://traefik.mp281x.xyz"
         },
