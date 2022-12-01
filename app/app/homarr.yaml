@@ -19,40 +19,8 @@ spec:
         - name: homarr
           image: ghcr.io/ajnart/homarr:latest
           ports: [containerPort: 7575]
-          volumeMounts:
-            - { name: config, mountPath: /app/data/configs }
-            - { name: icons, mountPath: /app/public/icons }
-      volumes:
-        - name: config
-          persistentVolumeClaim: { claimName: homarr-config }
-        - name: icons
-          persistentVolumeClaim: { claimName: homarr-icons }
-
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: homarr-config
-  namespace: homarr
-spec:
-  accessModes: [ReadWriteOnce]
-  storageClassName: longhorn
-  resources:
-    requests:
-      storage: 1Gi
-
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: homarr-icons
-  namespace: homarr
-spec:
-  accessModes: [ReadWriteOnce]
-  storageClassName: longhorn
-  resources:
-    requests:
-      storage: 1Gi
+          volumeMounts: [{ name: homarr, mountPath: /app/data/configs }]
+      volumes: [{ name: config, configMap: { name: homarr } }]
 
 ---
 apiVersion: v1
@@ -63,3 +31,62 @@ metadata:
 spec:
   selector: { app: homarr }
   ports: [{ port: 7575, name: homarr, targetPort: 7575 }]
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homarr
+  namespace: homarr
+data:
+  default.json: |
+    {
+      "name": "default",
+      "services": [
+        {
+          "id": "9aa259f3-eac1-4081-9cda-6db6ec6ab12a",
+          "type": "Other",
+          "name": "Traefik Test",
+          "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/traefik.png",
+          "url": "https://traefik.mp281x.xyz"
+        },
+        {
+          "id": "2c748195-c0bc-48cc-b987-80da923b7f3f",
+          "type": "Other",
+          "name": "Longhorn",
+          "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/longhorn.png",
+          "url": "https://longhorn.mp281x.xyz"
+        },
+        {
+          "id": "fe16ccb9-7b9b-4ea1-8497-3ff30b859a2e",
+          "type": "Other",
+          "name": "ArgoCD",
+          "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/argocd.png",
+          "url": "https://argocd.mp281x.xyz"
+        },
+        {
+          "id": "2153c5d0-7e02-429c-9a71-26055bf32e95",
+          "type": "Other",
+          "name": "Vaultwarden",
+          "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/bitwarden.png",
+          "url": "https://vaultwarden.mp281x.xyz"
+        }
+      ],
+      "settings": {
+        "searchUrl": "https://google.com/search?q=",
+        "widgetPosition": "right"
+      },
+      "modules": {
+        "Search Bar": {
+          "enabled": true
+        },
+        "calendar": {
+          "enabled": false
+        },
+        "ping": {
+          "enabled": true
+        },
+        "dashdot": {
+          "enabled": false
+        }
+      }
+    }
