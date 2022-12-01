@@ -73,20 +73,40 @@ data:
       ],
       "settings": {
         "searchUrl": "https://google.com/search?q=",
-        "widgetPosition": "right"
+        "widgetPosition": "right",
+        "appCardWidth": 1.2,
+        "title": "Dev Server",
+        "logo": "https://avatars.githubusercontent.com/u/42154987?v=4"
       },
       "modules": {
         "Search Bar": {
           "enabled": true
         },
         "calendar": {
-          "enabled": false
+          "enabled": true
         },
         "ping": {
           "enabled": true
         },
         "dashdot": {
           "enabled": false
+        },
+        "date": {
+          "enabled": true
+        },
+        "dlspeed": {
+          "enabled": false
+        },
+        "usenet": {
+          "enabled": false
+        },
+        "weather": {
+          "enabled": false,
+          "options": {
+            "location": {
+              "value": "Udine"
+            }
+          }
         }
       }
     }
