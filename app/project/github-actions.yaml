@@ -3,9 +3,6 @@ apiVersion: argoproj.io/v1alpha1
 metadata:
   name: github-actions
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/hook: "PreSync"
-    argocd.argoproj.io/sync-wave: "-10"
 spec:
   description: github-actions
   sourceRepos: ["*"]
@@ -18,9 +15,6 @@ apiVersion: argoproj.io/v1alpha1
 metadata:
   name: github-actions
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/hook: "Sync"
-    argocd.argoproj.io/sync-wave: "0"
 spec:
   project: github-actions
   source:

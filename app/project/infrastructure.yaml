@@ -8,27 +8,6 @@ spec:
   sourceRepos: ["*"]
   destinations: [{ namespace: "*", server: "*" }]
   clusterResourceWhitelist: [{ group: "*", kind: "*" }]
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: sealed-secrets
-  namespace: argocd
-  annotations:
-    argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/sync-wave: "-5"
-spec:
-  project: infrastructure
-  source:
-    chart: sealed-secrets
-    repoURL: https://bitnami-labs.github.io/sealed-secrets
-    targetRevision: 2.7.0
-  destination:
-    namespace: sealed-secrets
-    server: https://kubernetes.default.svc
-  syncPolicy:
-    syncOptions: [CreateNamespace=true]
-    automated: { prune: true, selfHeal: true }
 
 ---
 kind: Application
@@ -36,9 +15,7 @@ apiVersion: argoproj.io/v1alpha1
 metadata:
   name: infrastructure
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/sync-wave: "0"
+  annotations: { argocd.argoproj.io/hook: PreSync }
 spec:
   project: infrastructure
   source:

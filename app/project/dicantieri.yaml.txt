@@ -3,9 +3,6 @@ apiVersion: argoproj.io/v1alpha1
 metadata:
   name: dicantieri
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/hook: "PreSync"
-    argocd.argoproj.io/sync-wave: "-10"
 spec:
   description: dicantieri
   sourceRepos: ["*"]
