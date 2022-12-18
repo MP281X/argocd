@@ -1,11 +1,5 @@
-# configure the registry auth for the image updater
-kubectl apply -f key/registry-updater.yaml;
-
-# configure the tailscale auth
-kubectl apply -f key/tailscale.yaml;
-
-# install the sealed secrets token
-kubectl apply -f key/k3s-dev.key;
+# configure all the secrets
+kubectl apply -f key/secrets.yaml
 
 # get the argocd password and login in the cli
 $base64Password = kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath='{.data.password}';
