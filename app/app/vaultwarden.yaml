@@ -19,8 +19,14 @@ spec:
         - name: vaultwarden
           image: vaultwarden/server:latest
           ports: [containerPort: 80]
-          volumeMounts: [{ name: config, mountPath: /app/data/configs }]
-      volumes: [{ name: config, configMap: { name: homarr } }]
+          volumeMounts: [{ name: vaultwarden, mountPath: /data }]
+      volumes:
+        [
+          {
+            name: vaultwarden,
+            persistentVolumeClaim: { claimName: vaultwarden },
+          },
+        ]
 
 ---
 apiVersion: v1
