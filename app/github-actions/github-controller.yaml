@@ -3,7 +3,6 @@ kind: Application
 metadata:
   name: github-controller
   namespace: argocd
-  annotations: { argocd.argoproj.io/hook: PreSync }
 spec:
   project: github-actions
   source:
