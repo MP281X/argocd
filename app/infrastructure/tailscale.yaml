@@ -3,7 +3,6 @@ kind: Pod
 metadata:
   name: tailscale
   namespace: tailscale
-  annotations: { argocd.argoproj.io/sync-wave: "1" }
 spec:
   serviceAccountName: tailscale
   containers:
@@ -28,6 +27,7 @@ kind: Role
 metadata:
   name: tailscale
   namespace: tailscale
+  annotations: { argocd.argoproj.io/hook: PreSync }
 rules:
   - apiGroups: [""]
     resources: ["secrets"]
@@ -43,6 +43,7 @@ kind: RoleBinding
 metadata:
   name: tailscale
   namespace: tailscale
+  annotations: { argocd.argoproj.io/hook: PreSync }
 subjects:
   - kind: ServiceAccount
     name: tailscale
@@ -57,3 +58,4 @@ kind: ServiceAccount
 metadata:
   name: tailscale
   namespace: tailscale
+  annotations: { argocd.argoproj.io/hook: PreSync }
