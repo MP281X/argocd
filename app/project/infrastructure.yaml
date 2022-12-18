@@ -15,7 +15,7 @@ apiVersion: argoproj.io/v1alpha1
 metadata:
   name: infrastructure
   namespace: argocd
-  annotations: { argocd.argoproj.io/sync-wave: "-10" }
+  annotations: { argocd.argoproj.io/sync-wave: "-1" }
 spec:
   project: infrastructure
   source:

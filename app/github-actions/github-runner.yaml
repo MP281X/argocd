@@ -3,7 +3,7 @@ kind: RunnerDeployment
 metadata:
   name: gitops-runner
   namespace: github-actions
-  annotations: { argocd.argoproj.io/sync-wave: "10" }
+  annotations: { argocd.argoproj.io/sync-wave: "1" }
 spec:
   replicas: 1
   template: { spec: { repository: MP281X/argocd } }
