@@ -3,9 +3,11 @@ apiVersion: argoproj.io/v1alpha1
 metadata:
   name: infrastructure
   namespace: argocd
-  annotations: { argocd.argoproj.io/sync-wave: "0" }
+  annotations:
+    argocd.argoproj.io/hook: "PreSync"
+    argocd.argoproj.io/sync-wave: "-10"
 spec:
-  description: infrastructure related apps
+  description: infrastructure
   sourceRepos: ["*"]
   destinations: [{ namespace: "*", server: "*" }]
   clusterResourceWhitelist: [{ group: "*", kind: "*" }]
@@ -16,7 +18,9 @@ apiVersion: argoproj.io/v1alpha1
 metadata:
   name: infrastructure
   namespace: argocd
-  annotations: { argocd.argoproj.io/sync-wave: "1" }
+  annotations:
+    argocd.argoproj.io/hook: "PreSync"
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   project: infrastructure
   source:
@@ -24,6 +28,4 @@ spec:
     targetRevision: HEAD
     path: app/infrastructure
   destination: { server: https://kubernetes.default.svc, namespace: argocd }
-  syncPolicy:
-    syncOptions: [CreateNamespace=true]
-    automated: { selfHeal: true, prune: true }
+  syncPolicy: { automated: { selfHeal: true, prune: true } }

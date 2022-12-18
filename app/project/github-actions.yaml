@@ -3,9 +3,11 @@ apiVersion: argoproj.io/v1alpha1
 metadata:
   name: github-actions
   namespace: argocd
-  annotations: { argocd.argoproj.io/sync-wave: "0" }
+  annotations:
+    argocd.argoproj.io/hook: "PreSync"
+    argocd.argoproj.io/sync-wave: "-10"
 spec:
-  description: dashboard related apps
+  description: github-actions
   sourceRepos: ["*"]
   destinations: [{ namespace: "*", server: "*" }]
   clusterResourceWhitelist: [{ group: "*", kind: "*" }]
@@ -16,7 +18,9 @@ apiVersion: argoproj.io/v1alpha1
 metadata:
   name: github-actions
   namespace: argocd
-  annotations: { argocd.argoproj.io/sync-wave: "2" }
+  annotations:
+    argocd.argoproj.io/hook: "Sync"
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   project: github-actions
   source:
@@ -24,6 +28,4 @@ spec:
     targetRevision: HEAD
     path: app/github-actions
   destination: { server: https://kubernetes.default.svc, namespace: argocd }
-  syncPolicy:
-    syncOptions: ["CreateNamespace=true", "Replace=true"]
-    automated: { selfHeal: true, prune: true }
+  syncPolicy: { automated: { selfHeal: true, prune: true } }

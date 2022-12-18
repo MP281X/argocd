@@ -3,9 +3,11 @@ apiVersion: argoproj.io/v1alpha1
 metadata:
   name: ingress
   namespace: argocd
-  annotations: { argocd.argoproj.io/sync-wave: "0" }
+  annotations:
+    argocd.argoproj.io/hook: "PreSync"
+    argocd.argoproj.io/sync-wave: "-10"
 spec:
-  description: ingress for apps
+  description: ingress
   sourceRepos: ["*"]
   destinations: [{ namespace: "*", server: "*" }]
   clusterResourceWhitelist: [{ group: "*", kind: "*" }]
@@ -16,7 +18,9 @@ apiVersion: argoproj.io/v1alpha1
 metadata:
   name: ingress
   namespace: argocd
-  annotations: { argocd.argoproj.io/sync-wave: "2" }
+  annotations:
+    argocd.argoproj.io/hook: "Sync"
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   project: ingress
   source:
@@ -24,6 +28,4 @@ spec:
     targetRevision: HEAD
     path: app/ingress
   destination: { server: https://kubernetes.default.svc, namespace: argocd }
-  syncPolicy:
-    syncOptions: [CreateNamespace=true]
-    automated: { selfHeal: true, prune: true }
+  syncPolicy: { automated: { selfHeal: true, prune: true } }

@@ -3,7 +3,9 @@ apiVersion: argoproj.io/v1alpha1
 metadata:
   name: dicantieri
   namespace: argocd
-  annotations: { argocd.argoproj.io/sync-wave: "0" }
+  annotations:
+    argocd.argoproj.io/hook: "PreSync"
+    argocd.argoproj.io/sync-wave: "-10"
 spec:
   description: dicantieri
   sourceRepos: ["*"]
@@ -16,14 +18,14 @@ apiVersion: argoproj.io/v1alpha1
 metadata:
   name: dicantieri
   namespace: argocd
-  annotations: { argocd.argoproj.io/sync-wave: "2" }
+  annotations:
+    argocd.argoproj.io/hook: "Sync"
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   project: dicantieri
   source:
     repoURL: https://github.com/MP281X/dicantieri
     targetRevision: main
-    path: k8s
+    path: app/dicantieri
   destination: { server: https://kubernetes.default.svc, namespace: argocd }
-  syncPolicy:
-    syncOptions: [CreateNamespace=true]
-    automated: { selfHeal: true, prune: true }
+  syncPolicy: { automated: { selfHeal: true, prune: true } }
