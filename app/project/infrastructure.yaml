@@ -4,7 +4,7 @@ metadata:
   name: infrastructure
   namespace: argocd
   annotations:
-    argocd.argoproj.io/hook: "PreSync"
+    argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/sync-wave: "-10"
 spec:
   description: infrastructure
@@ -19,7 +19,7 @@ metadata:
   name: sealed-secrets
   namespace: argocd
   annotations:
-    argocd.argoproj.io/hook: "PreSync"
+    argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/sync-wave: "-5"
 spec:
   project: infrastructure
@@ -41,7 +41,7 @@ metadata:
   name: infrastructure
   namespace: argocd
   annotations:
-    argocd.argoproj.io/hook: "PreSync"
+    argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/sync-wave: "0"
 spec:
   project: infrastructure
