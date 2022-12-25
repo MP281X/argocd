@@ -46,5 +46,5 @@ metadata:
   namespace: vaultwarden
 spec:
   accessModes: ["ReadWriteOnce"]
-  storageClassName: "app"
+  storageClassName: "longhorn"
   resources: { requests: { storage: "1Gi" } }
