@@ -10,7 +10,7 @@ metadata:
   namespace: vaultwarden
   labels: { app: vaultwarden }
 spec:
-  replicas: 0
+  replicas: 1
   selector: { matchLabels: { app: vaultwarden } }
   template:
     metadata: { labels: { app: vaultwarden } }
