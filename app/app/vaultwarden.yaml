@@ -1,50 +1,50 @@
-apiVersion: v1
-kind: Namespace
-metadata: { name: vaultwarden }
+# apiVersion: v1
+# kind: Namespace
+# metadata: { name: vaultwarden }
 
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: vaultwarden
-  namespace: vaultwarden
-  labels: { app: vaultwarden }
-spec:
-  replicas: 0
-  selector: { matchLabels: { app: vaultwarden } }
-  template:
-    metadata: { labels: { app: vaultwarden } }
-    spec:
-      containers:
-        - name: vaultwarden
-          image: vaultwarden/server:latest
-          ports: [containerPort: 80]
-          volumeMounts: [{ name: vaultwarden, mountPath: /data }]
-      volumes:
-        [
-          {
-            name: vaultwarden,
-            persistentVolumeClaim: { claimName: vaultwarden },
-          },
-        ]
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: vaultwarden
+#   namespace: vaultwarden
+#   labels: { app: vaultwarden }
+# spec:
+#   replicas: 0
+#   selector: { matchLabels: { app: vaultwarden } }
+#   template:
+#     metadata: { labels: { app: vaultwarden } }
+#     spec:
+#       containers:
+#         - name: vaultwarden
+#           image: vaultwarden/server:latest
+#           ports: [containerPort: 80]
+#           volumeMounts: [{ name: vaultwarden, mountPath: /data }]
+#       volumes:
+#         [
+#           {
+#             name: vaultwarden,
+#             persistentVolumeClaim: { claimName: vaultwarden },
+#           },
+#         ]
 
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: vaultwarden
-  namespace: vaultwarden
-spec:
-  selector: { app: vaultwarden }
-  ports: [{ port: 80, name: vaultwarden, targetPort: 80 }]
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: vaultwarden
+#   namespace: vaultwarden
+# spec:
+#   selector: { app: vaultwarden }
+#   ports: [{ port: 80, name: vaultwarden, targetPort: 80 }]
 
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: vaultwarden
-  namespace: vaultwarden
-spec:
-  accessModes: ["ReadWriteOnce"]
-  storageClassName: "longhorn"
-  resources: { requests: { storage: "1Gi" } }
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: vaultwarden
+#   namespace: vaultwarden
+# spec:
+#   accessModes: ["ReadWriteOnce"]
+#   storageClassName: "longhorn"
+#   resources: { requests: { storage: "1Gi" } }
