@@ -21,14 +21,14 @@ spec:
           image: vaultwarden/server:latest
           ports: [containerPort: 80]
           volumeMounts: [{ name: vaultwarden, mountPath: /data }]
-  # volumeClaimTemplates:
-  #   - metadata:
-  #       name: vaultwarden
-  #       namespace: vaultwarden
-  #     spec:
-  #       accessModes: ["ReadWriteOnce"]
-  #       storageClassName: longhorn-storage
-  #       resources: { requests: { storage: "1Gi" } }
+  volumeClaimTemplates:
+    - metadata:
+        name: vaultwarden
+        namespace: vaultwarden
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: longhorn-storage
+        resources: { requests: { storage: "1Gi" } }
 
 ---
 apiVersion: v1
