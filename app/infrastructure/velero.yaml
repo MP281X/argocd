@@ -26,7 +26,12 @@ spec:
 
         credentials:
           useSecret: true
-          existingSecret: s3-secrets
+          # existingSecret: s3-secrets
+          secretContents:
+            cloud: |
+              [default]
+              aws_access_key_id=MYKEYID
+              aws_secret_access_key=MYKEYCONTENTS
 
   destination:
     namespace: velero
