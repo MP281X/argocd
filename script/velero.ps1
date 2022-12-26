@@ -1,0 +1,1 @@
+velero install --provider aws --use-restic --plugins velero/velero-plugin-for-aws:v1.5.0 --bucket backup --secret-file ../key/velero.secret --backup-location-config region=eu,s3ForcePathStyle="true",s3Url=https://eu2.contabostorage.com

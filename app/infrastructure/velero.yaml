@@ -1,35 +1,39 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: velero
-#   namespace: argocd
-# spec:
-#   project: infrastructure
-#   source:
-#     chart: velero
-#     repoURL: https://vmware-tanzu.github.io/helm-charts/
-#     targetRevision: 3.0.0
-#     helm:
-#       values: |-
-#         configuration:
-#           provider: aws
-#           backupStorageLocation:
-#             bucket: backup
-#             config:
-#               region: eu
-#               s3ForcePathStyle: "true"
-#               s3Url: https://eu2.contabostorage.com
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: velero
+  namespace: argocd
+spec:
+  project: infrastructure
+  source:
+    chart: velero
+    repoURL: https://vmware-tanzu.github.io/helm-charts/
+    targetRevision: 3.0.0
+    helm:
+      values: |-
+        configuration:
+          provider: aws
+          backupStorageLocation:
+            name: contabo
+            bucket: backup
+            config:
+              region: eu
+              s3ForcePathStyle: "true"
+              s3Url: https://eu2.contabostorage.com
 
-#         initContainers:
-#           - name: velero-plugin-for-aws
-#             image: velero/velero-plugin-for-aws:v1.5.0
+        initContainers:
+          - name: velero-plugin-for-aws
+            image: velero/velero-plugin-for-aws:v1.5.0
+            volumeMounts:
+              - mountPath: /target
+                name: plugins
 
-#         credentials:
-#           useSecret: true
-#           existingSecret: s3-secrets
+        credentials:
+          useSecret: true
+          existingSecret: s3-secrets
 
-#   destination:
-#     namespace: velero
-#     server: https://kubernetes.default.svc
-#   syncPolicy:
-#     automated: { prune: true, selfHeal: true }
+  destination:
+    namespace: velero
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated: { prune: true, selfHeal: true }
