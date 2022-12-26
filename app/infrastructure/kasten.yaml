@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kasten
+  namespace: argocd
+spec:
+  project: infrastructure
+  source:
+    chart: k10
+    repoURL: https://charts.kasten.io/
+    targetRevision: 5.5.2
+    # helm:
+    #   values: |-
+    #     c
+  destination:
+    namespace: kasten-io
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    syncOptions: [CreateNamespace=true]
+    automated: { prune: true, selfHeal: true }
