@@ -30,8 +30,8 @@ spec:
           secretContents:
             cloud: |
               [default]
-              aws_access_key_id=MYKEYID
-              aws_secret_access_key=MYKEYCONTENTS
+              aws_access_key_id=c90ffea3410e44e3b0835bfe7e42a590
+              aws_secret_access_key=91211563b380cbe9d208afc3d2993d7c
 
   destination:
     namespace: velero
