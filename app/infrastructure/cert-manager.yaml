@@ -4,7 +4,7 @@ metadata:
   name: cert-manager
   namespace: argocd
 spec:
-  project: ingress
+  project: infrastructure
   source:
     chart: cert-manager
     repoURL: https://charts.jetstack.io
@@ -26,24 +26,3 @@ spec:
     server: https://kubernetes.default.svc
   syncPolicy:
     automated: { prune: true, selfHeal: true }
-
----
-apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
-metadata:
-  name: tailscale-cert
-  annotations: { argocd.argoproj.io/sync-wave: "-10" }
-spec:
-  acme:
-    email: paludgnachmatteo.dev@gmail.com
-    # server: https://acme-v02.api.letsencrypt.org/directory
-    server: https://acme-staging-v02.api.letsencrypt.org/directory
-    privateKeySecretRef: { name: letsencrypt-key }
-    solvers:
-      - dns01:
-          cloudflare:
-            email: paludgnachmatteo.dev@gmail.com
-            apiTokenSecretRef:
-              name: cloudflare-api-token-secret
-              key: api-token
-        selector: { dnsZones: ["mp281x.xyz"] }

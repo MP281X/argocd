@@ -1,0 +1,25 @@
+kind: AppProject
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: infrastructure
+  namespace: argocd
+spec:
+  description: infrastructure
+  sourceRepos: ["*"]
+  destinations: [{ namespace: "*", server: "*" }]
+  clusterResourceWhitelist: [{ group: "*", kind: "*" }]
+
+---
+kind: Application
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: infrastructure
+  namespace: argocd
+spec:
+  project: infrastructure
+  source:
+    repoURL: https://github.com/MP281X/argocd
+    targetRevision: HEAD
+    path: app/infrastructure
+  destination: { server: https://kubernetes.default.svc, namespace: argocd }
+  syncPolicy: { automated: { selfHeal: true, prune: true } }
