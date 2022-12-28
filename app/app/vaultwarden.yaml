@@ -30,7 +30,7 @@ spec:
           name: vaultwarden-restore
           kind: PersistentVolumeClaim
         accessModes: ["ReadWriteOnce"]
-        storageClassName: longhorn-storage
+        storageClassName: local-path
         resources: { requests: { storage: "1Gi" } }
 
 ---
