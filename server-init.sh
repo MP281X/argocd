@@ -7,8 +7,8 @@ apt-get autoremove -y && apt update && apt upgrade -y
 
 echo " -------------- user -------------- "
 useradd -m -s /bin/bash mp281x
-echo mp281x:3002 | chpasswd
 usermod -aG sudo mp281x
+passwd -d mp281x
 hostnamectl set-hostname dev.mp281x.xyz
 
 echo " ------- ssh key ------- "
@@ -42,7 +42,7 @@ service sshd restart
 
 echo " ------- rclone ------- "
 curl https://rclone.org/install.sh | bash
-vi /home/mp281x/.config/rclone/rclone.conf
+vi /root/.config/rclone/rclone.conf
 
 echo " ------- k3s ------- "
 curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" INSTALL_K3S_VERSION="v1.24.7+k3s1" INSTALL_K3S_EXEC=" \

@@ -1,1 +1,1 @@
-ssh mp281x@dev.mp281x.xyz 'rclone sync -P /home/mp281x/storage contabo:/backup'
+ssh mp281x@dev.mp281x.xyz 'sudo rclone sync -P /home/mp281x/storage contabo:/backup'
