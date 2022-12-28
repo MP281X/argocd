@@ -3,9 +3,6 @@ kind: Pod
 metadata:
   name: tailscale
   namespace: tailscale
-  annotations:
-    argocd-image-updater.argoproj.io/image-list: ghcr.io/tailscale/tailscale:latest
-    argocd-image-updater.argoproj.io/auth-server.update-strategy: digest
 spec:
   serviceAccountName: tailscale
   containers:
