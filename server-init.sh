@@ -1,28 +1,28 @@
 #!/bin/bash
 
-echo " -------------- packages setup -------------- "
+echo " -------------- packages -------------- "
 apt-get update && apt-get upgrade -y
 apt-get install -y ufw sed sudo vim curl wget htop jq open-iscsi nfs-common
 apt-get autoremove -y && apt update && apt upgrade -y
 
-echo " -------------- user setup -------------- "
+echo " -------------- user -------------- "
 useradd -m -s /bin/bash mp281x
 echo mp281x:3002 | chpasswd
 usermod -aG sudo mp281x
 hostnamectl set-hostname dev.mp281x.xyz
 
-echo " ------- ssh key setup ------- "
+echo " ------- ssh key ------- "
 mkdir -p /home/mp281x/.ssh
 echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC/GDK6kPlz3/1O6E0v415HKnoWjYLcdCu/N1ya6DmNEX4e3kiz15SO20bILdtuPzvOXhYpkPogLfincQkGZqCsoIwKBnfPUcODL40M4aWiRpYJnRYDLAO6RNpcm2pnHVExL2Rnw0nGAS+rhmXEHKt3bW5EafhXPOYj7TfzRrU8rOPDHy3qtA2lGzIOeDlYngARvz1nWgo5fd8/8WfDCBTpAJDd9cvvYYokCx7C8M/wgQRx0+nYTLu4EkaFhiwMMRUZ/2I4c6bE8+qbim7W0V5u5NiwXFabU+i5hwoTWLg5mlt+F9xLV2BeGSqN9Su4sfzzkG2AIcEeMC7i0wrG9QGdFxsB3vUi24M7Cp/d2TjLW1eFQwoxB9HGNVydjQW9YrwsKfyLmXnM7aY51UJcHd9u83Zu8nCao2Xg+RURWMHGZsnL1F4F7kfu3JJTU6n3dkxxks5iVl95taIidl7cX1fEtQ9BesVlJD+tmXtxaAWasymaydtdiLU8IVM/b2jAwuk= administrator@mp281x" >> /home/mp281x/.ssh/authorized_keys
 
-echo " ------- firewall setup ------- "
+echo " ------- firewall ------- "
 sed -i 's/IPV6=yes/IPV6=no/g' /etc/default/ufw
 ufw default deny incoming
 ufw default allow outgoing
 ufw allow 6443
 ufw allow 22
 
-echo " ------- ssh configuration ------- "
+echo " ------- ssh ------- "
 sudo chmod -x /etc/update-motd.d/*
 SSH_CONFIG="
 PermitRootLogin no
@@ -40,7 +40,11 @@ echo -e $SSH_CONFIG > /etc/ssh/sshd_config
 echo "" > /etc/motd
 service sshd restart
 
-echo " ------- k3s configuration ------- "
+echo " ------- rclone ------- "
+curl https://rclone.org/install.sh | bash
+vi /home/mp281x/.config/rclone/rclone.conf
+
+echo " ------- k3s ------- "
 curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" INSTALL_K3S_VERSION="v1.24.7+k3s1" INSTALL_K3S_EXEC=" \
     --disable=traefik \
     --node-name k3s-dev" sh -
@@ -49,7 +53,7 @@ vi /etc/rancher/k3s/registries.yaml
 systemctl daemon-reload
 systemctl restart k3s.service
 
-echo " ------- argocd installation ------- "
+echo " ------- argocd ------- "
 kubectl create namespace argocd
 kubectl create ns sealed-secrets
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
