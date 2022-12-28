@@ -20,18 +20,23 @@ spec:
         - name: vaultwarden
           image: vaultwarden/server:latest
           ports: [containerPort: 80]
-          volumeMounts: [{ name: vaultwarden, mountPath: /data }]
-  volumeClaimTemplates:
-    - metadata:
-        name: vaultwarden
-        namespace: vaultwarden
-      spec:
-        dataSource:
-          name: vaultwarden-restore
-          kind: PersistentVolumeClaim
-        accessModes: ["ReadWriteOnce"]
-        storageClassName: local-path
-        resources: { requests: { storage: "1Gi" } }
+          volumeMounts: [{ name: vaultwarden-local, mountPath: /data }]
+      volumes:
+        - name: vaultwarden-local
+          hostPath:
+            path: /home/mp281x/storage
+            type: DirectoryOrCreate
+  # volumeClaimTemplates:
+  #   - metadata:
+  #       name: vaultwarden
+  #       namespace: vaultwarden
+  #     spec:
+  #       dataSource:
+  #         name: vaultwarden-restore
+  #         kind: PersistentVolumeClaim
+  #       accessModes: ["ReadWriteOnce"]
+  #       storageClassName: local-path
+  #       resources: { requests: { storage: "1Gi" } }
 
 ---
 apiVersion: v1
