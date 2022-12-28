@@ -1,0 +1,17 @@
+name: Tailscale Configuration
+
+on: { push: { paths: ["policy.hujson"] } }
+
+jobs:
+  acls:
+    runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Deploy ACL
+        uses: tailscale/gitops-acl-action@v1
+        with:
+          api-key: ${{ secrets.TS_API_KEY }}
+          tailnet: mp281x.github
+          action: apply
