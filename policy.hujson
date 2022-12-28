@@ -1,6 +1,5 @@
 // Test
 {
-	// Declare static groups of users beyond those in the identity service.
 	"groups": {
 		"group:example": ["user1@example.com", "user2@example.com"],
 	},
