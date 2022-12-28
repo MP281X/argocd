@@ -1,0 +1,85 @@
+#? Argocd
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: argocd
+  namespace: argocd
+  annotations: { kubernetes.io/ingress.class: traefik }
+spec:
+  entryPoints: [websecure]
+  tls: { secretName: argocd-cert }
+  routes:
+    - match: Host(`argocd.mp281x.xyz`)
+      kind: Rule
+      services: [{ name: argocd-server, port: 443 }]
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: argocd-cert
+  namespace: argocd
+spec:
+  secretName: argocd-cert
+  commonName: "*.mp281x.xyz"
+  dnsNames: ["*.mp281x.xyz", "mp281x.xyz"]
+  issuerRef:
+    name: tailscale-cert
+    kind: ClusterIssuer
+
+---
+#? Homarr
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: homarr
+  namespace: homarr
+  annotations: { kubernetes.io/ingress.class: traefik }
+spec:
+  entryPoints: [websecure]
+  tls: { secretName: homarr-cert }
+  routes:
+    - match: Host(`homarr.mp281x.xyz`)
+      kind: Rule
+      services: [{ name: homarr, port: 7575 }]
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: homarr-cert
+  namespace: homarr
+spec:
+  secretName: homarr-cert
+  commonName: "*.mp281x.xyz"
+  dnsNames: ["*.mp281x.xyz", "mp281x.xyz"]
+  issuerRef:
+    name: tailscale-cert
+    kind: ClusterIssuer
+
+---
+#? Vaultwarden
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: vaultwarden
+  namespace: vaultwarden
+  annotations: { kubernetes.io/ingress.class: traefik }
+spec:
+  entryPoints: [websecure]
+  tls: { secretName: vaultwarden-cert }
+  routes:
+    - match: Host(`vaultwarden.mp281x.xyz`)
+      kind: Rule
+      services: [{ name: vaultwarden, port: 80 }]
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: vaultwarden-cert
+  namespace: vaultwarden
+spec:
+  secretName: vaultwarden-cert
+  commonName: "*.mp281x.xyz"
+  dnsNames: ["*.mp281x.xyz", "mp281x.xyz"]
+  issuerRef:
+    name: tailscale-cert
+    kind: ClusterIssuer
