@@ -1,8 +1,6 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
-metadata:
-  name: tailscale-cert
-  annotations: { argocd.argoproj.io/sync-wave: "-10" }
+metadata: { name: tailscale-cert }
 spec:
   acme:
     email: paludgnachmatteo.dev@gmail.com
