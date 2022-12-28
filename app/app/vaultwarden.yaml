@@ -9,6 +9,9 @@ metadata:
   name: vaultwarden
   namespace: vaultwarden
   labels: { app: vaultwarden }
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: vaultwarden/server:latest
+    argocd-image-updater.argoproj.io/auth-server.update-strategy: digest
 spec:
   replicas: 1
   selector: { matchLabels: { app: vaultwarden } }
