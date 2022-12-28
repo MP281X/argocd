@@ -30,8 +30,9 @@ spec:
           name: vaultwarden-restore
           kind: PersistentVolumeClaim
         accessModes: ["ReadWriteOnce"]
-        storageClassName: local-path
-        resources: { requests: { storage: "1Gi" } }
+        hostPath: { path: "/home/mp281x/storage/vaultwarden" }
+        # storageClassName: local-path
+        # resources: { requests: { storage: "1Gi" } }
 
 ---
 apiVersion: v1
