@@ -8,7 +8,6 @@ apt-get autoremove -y && apt update && apt upgrade -y
 echo " -------------- user -------------- "
 useradd -m -s /bin/bash mp281x
 usermod -aG sudo mp281x
-passwd -d mp281x
 hostnamectl set-hostname dev.mp281x.xyz
 
 echo " ------- ssh key ------- "
@@ -36,13 +35,15 @@ PermitRootLogin no
 \nPrintLastLog no
 \nAcceptEnv LANG LC_*
 \nSubsystem sftp  /usr/lib/openssh/sftp-server"
-echo -e $SSH_CONFIG > /etc/ssh/sshd_config
+echo $SSH_CONFIG > /etc/ssh/sshd_config
 echo "" > /etc/motd
 service sshd restart
 
 echo " ------- rclone ------- "
 curl https://rclone.org/install.sh | bash
+mkdir -p /root/.config/rclone/
 vi /root/.config/rclone/rclone.conf
+mkdir -p /home/mp281x/storage
 
 echo " ------- k3s ------- "
 curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" INSTALL_K3S_VERSION="v1.24.7+k3s1" INSTALL_K3S_EXEC=" \
