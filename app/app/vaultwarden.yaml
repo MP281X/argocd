@@ -24,19 +24,8 @@ spec:
       volumes:
         - name: vaultwarden-local
           hostPath:
-            path: /home/mp281x/storage
+            path: /home/mp281x/storage/vaultwarden
             type: DirectoryOrCreate
-  # volumeClaimTemplates:
-  #   - metadata:
-  #       name: vaultwarden
-  #       namespace: vaultwarden
-  #     spec:
-  #       dataSource:
-  #         name: vaultwarden-restore
-  #         kind: PersistentVolumeClaim
-  #       accessModes: ["ReadWriteOnce"]
-  #       storageClassName: local-path
-  #       resources: { requests: { storage: "1Gi" } }
 
 ---
 apiVersion: v1
