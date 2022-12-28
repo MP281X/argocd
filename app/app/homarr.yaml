@@ -50,13 +50,6 @@ data:
           "url": "https://traefik.mp281x.xyz"
         },
         {
-          "id": "2c748195-c0bc-48cc-b987-80da923b7f3f",
-          "type": "Other",
-          "name": "Longhorn",
-          "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/longhorn.png",
-          "url": "https://longhorn.mp281x.xyz"
-        },
-        {
           "id": "fe16ccb9-7b9b-4ea1-8497-3ff30b859a2e",
           "type": "Other",
           "name": "ArgoCD",
