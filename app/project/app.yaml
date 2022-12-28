@@ -15,6 +15,10 @@ apiVersion: argoproj.io/v1alpha1
 metadata:
   name: app
   namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list:
+      ["ghcr.io/ajnart/homarr:latest", "vaultwarden/server:latest"]
+    argocd-image-updater.argoproj.io/auth-server.update-strategy: digest
 spec:
   project: app
   source:

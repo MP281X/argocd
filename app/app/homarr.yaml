@@ -9,9 +9,6 @@ metadata:
   name: homarr
   namespace: homarr
   labels: { app: homarr }
-  annotations:
-    argocd-image-updater.argoproj.io/image-list: ghcr.io/ajnart/homarr:latest
-    argocd-image-updater.argoproj.io/auth-server.update-strategy: digest
 spec:
   replicas: 1
   selector: { matchLabels: { app: homarr } }

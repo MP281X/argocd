@@ -8,7 +8,7 @@ spec:
   containers:
     - name: tailscale
       imagePullPolicy: Always
-      image: "ghcr.io/tailscale/tailscale:latest"
+      image: ghcr.io/tailscale/tailscale:latest
       securityContext: { runAsUser: 1000, runAsGroup: 1000 }
       env:
         - { name: TS_USERSPACE, value: "true" }

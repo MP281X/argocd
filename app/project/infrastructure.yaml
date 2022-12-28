@@ -15,10 +15,6 @@ apiVersion: argoproj.io/v1alpha1
 metadata:
   name: infrastructure
   namespace: argocd
-  annotations:
-    argocd-image-updater.argoproj.io/image-list:
-      ["tailscale=ghcr.io/tailscale/tailscale:latest"]
-    argocd-image-updater.argoproj.io/auth-server.update-strategy: digest
 spec:
   project: infrastructure
   source:
