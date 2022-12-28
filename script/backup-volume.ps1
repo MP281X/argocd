@@ -1,0 +1,1 @@
+ssh mp281x@dev.mp281x.xyz 'rclone sync -P ./test contabo:/backup'
