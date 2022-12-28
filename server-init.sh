@@ -7,6 +7,7 @@ apt-get autoremove -y && apt update && apt upgrade -y
 
 echo " -------------- user -------------- "
 useradd -m -s /bin/bash mp281x
+passwd -d mp281x
 usermod -aG sudo mp281x
 hostnamectl set-hostname dev.mp281x.xyz
 
