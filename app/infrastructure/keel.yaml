@@ -19,7 +19,7 @@ spec:
         basicauth: 
           enabled: true
           user: "admin"
-          password: "3002"
+          password: "password"
   destination:
     namespace: kube-system
     server: https://kubernetes.default.svc

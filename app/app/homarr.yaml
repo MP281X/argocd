@@ -67,6 +67,13 @@ data:
           "name": "Vaultwarden",
           "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/bitwarden.png",
           "url": "https://vaultwarden.mp281x.xyz"
+        },
+        {
+          "id": "0f42265a-861d-4236-9a82-a3966459af13",
+          "type": "Other",
+          "name": "Keel",
+          "icon": "https://keel.sh/img/logo_small.png",
+          "url": "https://keel.mp281x.xyz"
         }
       ],
       "settings": {
