@@ -1,16 +1,24 @@
-{
+{	
 	// User group
-	"groups": {
-		"group:dev": ["MP281X@github"],
-	},
+	// "groups": {
+	// 	"group:dev": ["MP281X@github"],
+	// },
 
 	// Access control lists
 	"acls": [
-		{"action": "accept", "src": ["group:dev"], "dst": ["*:*"]},
+		// allow the tailnet members to view all the apps
+		{"action": "accept", "src": ["autogroup:members"], "dst": ["10.43.0.100:*"]},
+		{"action": "accept", "src": ["autogroup:members"], "dst": ["10.43.0.110:*"]},
+		{"action": "accept", "src": ["autogroup:members"], "dst": ["10.43.0.120:*"]},
+		
+		// allow the external user to access the pubblic app
+		{
+			"action": "accept",
+			"src":    ["autogroup:shared"],
+			"dst":    ["10.43.0.110:*"],
+		},
 	],
 
 	// Auto approve k3s subnet router
-	"autoApprovers": {
-		"routes": {"10.43.0.0/16": ["group:dev"]},
-	},
+	"autoApprovers": {"routes": {"10.43.0.0/16": ["autogroup:members"]}},
 }

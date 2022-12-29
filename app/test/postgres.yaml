@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres
+  namespace: test
+  labels: { app: postgres }
+  annotations:
+    keel.sh/policy: force
+    keel.sh/trigger: poll
+    keel.sh/pollSchedule: "@every 1h"
+    keel.sh/match-tag: "true"
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: postgres } }
+  serviceName: postgres
+  template:
+    metadata: { labels: { app: postgres } }
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:latest
+          ports: [containerPort: 5432]
+          volumeMounts: [{ name: postgres, mountPath: /data }]
+      volumes:
+        - name: postgres
+          hostPath:
+            path: /home/mp281x/storage/postgres
+            type: DirectoryOrCreate
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+  namespace: test
+spec:
+  selector: { app: postgres }
+  ports: [{ port: 5432, name: postgres, targetPort: 5432 }]
+  clusterIP: 10.43.0.120
