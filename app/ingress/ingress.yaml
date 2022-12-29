@@ -1,3 +1,48 @@
+#? Homarr
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: homarr
+  namespace: app
+  annotations: { kubernetes.io/ingress.class: traefik }
+spec:
+  entryPoints: [websecure]
+  routes:
+    - match: Host(`homarr.mp281x.xyz`)
+      kind: Rule
+      services: [{ name: homarr, port: 7575 }]
+
+---
+#? Vaultwarden
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: vaultwarden
+  namespace: app
+  annotations: { kubernetes.io/ingress.class: traefik }
+spec:
+  entryPoints: [websecure]
+  routes:
+    - match: Host(`vaultwarden.mp281x.xyz`)
+      kind: Rule
+      services: [{ name: vaultwarden, port: 80 }]
+
+---
+#? Duplicati
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: duplicati
+  namespace: app
+  annotations: { kubernetes.io/ingress.class: traefik }
+spec:
+  entryPoints: [websecure]
+  routes:
+    - match: Host(`duplicati.mp281x.xyz`)
+      kind: Rule
+      services: [{ name: duplicati, port: 8200 }]
+
+---
 #? Argocd
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
@@ -7,82 +52,10 @@ metadata:
   annotations: { kubernetes.io/ingress.class: traefik }
 spec:
   entryPoints: [websecure]
-  # tls: { secretName: argocd-cert }
   routes:
     - match: Host(`argocd.mp281x.xyz`)
       kind: Rule
       services: [{ name: argocd-server, port: 443 }]
-# ---
-# apiVersion: cert-manager.io/v1
-# kind: Certificate
-# metadata:
-#   name: argocd-cert
-#   namespace: argocd
-# spec:
-#   secretName: argocd-cert
-#   commonName: "*.mp281x.xyz"
-#   dnsNames: ["*.mp281x.xyz", "mp281x.xyz"]
-#   issuerRef:
-#     name: tailscale-cert
-#     kind: ClusterIssuer
-
----
-#? Homarr
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: homarr
-  namespace: homarr
-  annotations: { kubernetes.io/ingress.class: traefik }
-spec:
-  entryPoints: [websecure]
-  # tls: { secretName: homarr-cert }
-  routes:
-    - match: Host(`homarr.mp281x.xyz`)
-      kind: Rule
-      services: [{ name: homarr, port: 7575 }]
-# ---
-# apiVersion: cert-manager.io/v1
-# kind: Certificate
-# metadata:
-#   name: homarr-cert
-#   namespace: homarr
-# spec:
-#   secretName: homarr-cert
-#   commonName: "*.mp281x.xyz"
-#   dnsNames: ["*.mp281x.xyz", "mp281x.xyz"]
-#   issuerRef:
-#     name: tailscale-cert
-#     kind: ClusterIssuer
-
----
-#? Vaultwarden
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: vaultwarden
-  namespace: vaultwarden
-  annotations: { kubernetes.io/ingress.class: traefik }
-spec:
-  entryPoints: [websecure]
-  # tls: { secretName: vaultwarden-cert }
-  routes:
-    - match: Host(`vaultwarden.mp281x.xyz`)
-      kind: Rule
-      services: [{ name: vaultwarden, port: 80 }]
-# ---
-# apiVersion: cert-manager.io/v1
-# kind: Certificate
-# metadata:
-#   name: vaultwarden-cert
-#   namespace: vaultwarden
-# spec:
-#   secretName: vaultwarden-cert
-#   commonName: "*.mp281x.xyz"
-#   dnsNames: ["*.mp281x.xyz", "mp281x.xyz"]
-#   issuerRef:
-#     name: tailscale-cert
-#     kind: ClusterIssuer
 
 ---
 #? Traefik
@@ -94,24 +67,10 @@ metadata:
   annotations: { kubernetes.io/ingress.class: traefik }
 spec:
   entryPoints: [websecure]
-  # tls: { secretName: traefik-cert }
   routes:
     - match: Host(`traefik.mp281x.xyz`)
       kind: Rule
       services: [{ name: api@internal, kind: TraefikService }]
-# ---
-# apiVersion: cert-manager.io/v1
-# kind: Certificate
-# metadata:
-#   name: traefik-cert
-#   namespace: traefik
-# spec:
-#   secretName: traefik-cert
-#   commonName: "*.mp281x.xyz"
-#   dnsNames: ["*.mp281x.xyz", "mp281x.xyz"]
-#   issuerRef:
-#     name: tailscale-cert
-#     kind: ClusterIssuer
 
 ---
 #? Keel
@@ -123,21 +82,7 @@ metadata:
   annotations: { kubernetes.io/ingress.class: traefik }
 spec:
   entryPoints: [websecure]
-  # tls: { secretName: keel-cert }
   routes:
     - match: Host(`keel.mp281x.xyz`)
       kind: Rule
       services: [{ name: keel, port: 9300 }]
-# ---
-# apiVersion: cert-manager.io/v1
-# kind: Certificate
-# metadata:
-#   name: keel-cert
-#   namespace: kube-system
-# spec:
-#   secretName: keel-cert
-#   commonName: "*.mp281x.xyz"
-#   dnsNames: ["*.mp281x.xyz", "mp281x.xyz"]
-#   issuerRef:
-#     name: tailscale-cert
-#     kind: ClusterIssuer
