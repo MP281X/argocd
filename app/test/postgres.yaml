@@ -20,7 +20,10 @@ spec:
         - name: postgres
           image: postgres:latest
           ports: [containerPort: 5432]
-          volumeMounts: [{ name: postgres, mountPath: /data }]
+          volumeMounts:
+            [{ name: postgres, mountPath: /var/lib/postgresql/data }]
+          env:
+            - { name: POSTGRES_PASSWORD, value: password }
       volumes:
         - name: postgres
           hostPath:
