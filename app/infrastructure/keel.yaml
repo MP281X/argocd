@@ -20,8 +20,6 @@ spec:
           enabled: true
           user: "admin"
           password: "password"
-        secret:
-          create: false
   destination:
     namespace: kube-system
     server: https://kubernetes.default.svc
