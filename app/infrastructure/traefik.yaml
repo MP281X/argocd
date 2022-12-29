@@ -45,6 +45,12 @@ spec:
           spec:
             externalTrafficPolicy: ''
             clusterIP: 10.43.0.100
+          internal:
+            type: ClusterIP
+            externalIPs: [10.43.0.110]
+            spec:
+              externalTrafficPolicy: ''
+              clusterIP: 10.43.0.110
         providers:
           kubernetesCRD:
             enabled: true

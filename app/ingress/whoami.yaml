@@ -40,6 +40,6 @@ metadata:
 spec:
   entryPoints: [websecure]
   routes:
-    - match: Host(`whoami.mp281x.xyz`)
+    - match: Host(`app.mp281x.xyz`)
       kind: Rule
       services: [{ name: whoami, port: 80 }]
