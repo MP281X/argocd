@@ -3,11 +3,6 @@ kind: Pod
 metadata:
   name: tailscale
   namespace: tailscale
-  annotations:
-    keel.sh/policy: force
-    keel.sh/trigger: poll
-    keel.sh/pollSchedule: "@every 1h"
-    keel.sh/match-tag: "true"
 spec:
   serviceAccountName: tailscale
   containers:

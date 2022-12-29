@@ -20,8 +20,19 @@ spec:
           enabled: true
           user: "admin"
           password: "password"
+        secret:
+          create: false
   destination:
     namespace: kube-system
     server: https://kubernetes.default.svc
   syncPolicy:
     automated: { prune: true, selfHeal: true }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: keel
+  namespace: kube-system
+spec:
+  selector: { app: keel }
+  ports: [{ port: 9300, name: keel, targetPort: 9300 }]
