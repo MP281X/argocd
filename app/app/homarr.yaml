@@ -9,6 +9,10 @@ metadata:
   name: homarr
   namespace: homarr
   labels: { app: homarr }
+  annotations:
+    keel.sh/policy: force
+    keel.sh/trigger: poll
+    keel.sh/pollSchedule: "@every 1h"
 spec:
   replicas: 1
   selector: { matchLabels: { app: homarr } }
