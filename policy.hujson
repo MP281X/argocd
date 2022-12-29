@@ -1,17 +1,20 @@
 {	
 	// User group
-	// "groups": {
-	// 	"group:dev": ["MP281X@github"],
-	// },
+	"groups": {
+		"group:devops": ["MP281X@github"],
+		"group:db": ["MP281X@github"],
+	},
 
 	// Access control lists
 	"acls": [
-		// allow the tailnet members to view all the apps
-		{"action": "accept", "src": ["autogroup:members"], "dst": ["10.43.0.100:*"]},
-		{"action": "accept", "src": ["autogroup:members"], "dst": ["10.43.0.110:*"]},
-		{"action": "accept", "src": ["autogroup:members"], "dst": ["10.43.0.120:*"]},
+		// devops app
+		{"action": "accept", "src": ["group:devops"], "dst": ["10.43.0.100:*"]},
+		{"action": "accept", "src": ["group:devops"], "dst": ["10.43.0.110:*"]},
+
+		// database
+		{"action": "accept", "src": ["group:db"], "dst": ["10.43.0.120:5432"]},
 		
-		// allow the external user to access the pubblic app
+		// public app
 		{
 			"action": "accept",
 			"src":    ["autogroup:shared"],
