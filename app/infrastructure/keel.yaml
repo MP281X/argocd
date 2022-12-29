@@ -16,6 +16,8 @@ spec:
           tag: latest
           pullPolicy: Always
         helmProvider: { enabled: "false" }
+        secret: { create: false }
+        basicauth: { enabled: true }
   destination:
     namespace: kube-system
     server: https://kubernetes.default.svc
