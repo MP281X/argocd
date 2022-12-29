@@ -22,7 +22,7 @@ spec:
           env:
             - { name: PUID, value: 1000 }
             - { name: PGID, value: 1000 }
-            - { TZ: Europe/Rome }
+            - { name: TZ, value: Europe/Rome }
           volumeMounts:
             - { name: config, mountPath: /config }
             - { name: vaultwarden, mountPath: /source/vaultwarden }
