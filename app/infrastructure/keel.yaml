@@ -1,31 +1,27 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: keel
-  namespace: argocd
-spec:
-  project: infrastructure
-  source:
-    chart: keel
-    repoURL: https://charts.keel.sh
-    targetRevision: 0.9.11
-    helm:
-      values: |-
-        image:
-          repository: keelhq/keel
-          tag: latest
-          pullPolicy: Always
-        helmProvider: { enabled: "false" }
-        basicauth: 
-          enabled: true
-          user: "admin"
-          password: "password"
-  destination:
-    namespace: kube-system
-    server: https://kubernetes.default.svc
-  syncPolicy:
-    automated: { prune: true, selfHeal: true }
----
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: keel
+#   namespace: argocd
+# spec:
+#   project: infrastructure
+#   source:
+#     chart: keel
+#     repoURL: https://charts.keel.sh
+#     targetRevision: 0.9.11
+#     helm:
+#       values: |-
+#         image:
+#           repository: keelhq/keel
+#           tag: latest
+#           pullPolicy: Always
+#         helmProvider: { enabled: "false" }
+#   destination:
+#     namespace: kube-system
+#     server: https://kubernetes.default.svc
+#   syncPolicy:
+#     automated: { prune: true, selfHeal: true }
+# ---
 apiVersion: v1
 kind: Service
 metadata:
