@@ -18,7 +18,7 @@ spec:
       containers:
         - name: whoami
           image: containous/whoami
-          ports: [containerPort: 32769]
+          ports: [containerPort: 80]
 
 ---
 apiVersion: v1
@@ -28,7 +28,7 @@ metadata:
   namespace: traefik
 spec:
   selector: { app: whoami }
-  ports: [{ port: 32769, name: whoami, targetPort: 32769 }]
+  ports: [{ port: 80, name: whoami, targetPort: 80 }]
 
 ---
 apiVersion: traefik.containo.us/v1alpha1
@@ -42,4 +42,4 @@ spec:
   routes:
     - match: Host(`whoami.mp281x.xyz`)
       kind: Rule
-      services: [{ name: whoami, port: 32769 }]
+      services: [{ name: whoami, port: 80 }]
