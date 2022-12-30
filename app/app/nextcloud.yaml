@@ -21,7 +21,7 @@ spec:
           image: nextcloud:latest
           ports: [containerPort: 80]
           envFrom: [{ secretRef: { name: nextcloud } }]
-          volumeMounts: [{ name: nextcloud, mountPath: /var/www/html }]
+          # volumeMounts: [{ name: nextcloud, mountPath: /var/www/html }]
       volumes:
         - name: nextcloud
           hostPath:
