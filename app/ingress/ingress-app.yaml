@@ -42,15 +42,15 @@ spec:
       kind: Rule
       services: [{ name: nextcloud, port: 80 }]
 ---
-# apiVersion: traefik.containo.us/v1alpha1
-# kind: IngressRoute
-# metadata:
-#   name: nextcloud
-#   namespace: app-ns
-#   annotations: { kubernetes.io/ingress.class: traefik }
-# spec:
-#   entryPoints: [websecure]
-#   routes:
-#     - match: "Host(`nextcloud_admin.mp281x.xyz`) && Headers(`nc_username`, `admin`)"
-#       kind: Rule
-#       services: [{ name: nextcloud, port: 80 }]
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: nextcloud
+  namespace: app-ns
+  annotations: { kubernetes.io/ingress.class: traefik }
+spec:
+  entryPoints: [websecure]
+  routes:
+    - match: "Host(`nextcloud_admin.mp281x.xyz`)"
+      kind: Rule
+      services: [{ name: nextcloud, port: 80 }]
