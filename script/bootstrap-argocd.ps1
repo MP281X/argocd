@@ -1,5 +1,6 @@
 # configure all the secrets
-kubectl apply -f secrets/secrets.yaml
+kubectl apply -f secrets/secrets-dev.yaml
+kubectl apply -f secrets/secrets-app.yaml
 
 # get the argocd password and login in the cli
 $base64Password = kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath='{.data.password}';

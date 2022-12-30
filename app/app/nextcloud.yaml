@@ -20,6 +20,7 @@ spec:
         - name: nextcloud
           image: nextcloud:latest
           ports: [containerPort: 80]
+          envFrom: [{ secretRef: { name: nextcloud } }]
           volumeMounts: [{ name: nextcloud, mountPath: /var/www/html }]
       volumes:
         - name: nextcloud
@@ -36,3 +37,4 @@ metadata:
 spec:
   selector: { app: nextcloud }
   ports: [{ port: 80, name: nextcloud, targetPort: 80 }]
+SQLITE_DATABASE 
