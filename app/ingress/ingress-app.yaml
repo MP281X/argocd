@@ -38,7 +38,7 @@ metadata:
 spec:
   entryPoints: [websecure]
   routes:
-    - match: "Host(`nextcloud.mp281x.xyz`) && !Headers(`nc_username`, `admin`)"
+    - match: "Host(`nextcloud.mp281x.xyz`) && ! Headers(`nc_username`, `admin`)"
       kind: Rule
       services: [{ name: nextcloud, port: 80 }]
 ---
