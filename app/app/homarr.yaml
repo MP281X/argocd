@@ -71,13 +71,6 @@ data:
           "url": "https://keel.mp281x.xyz"
         },
         {
-          "id": "32957593-a127-41de-a143-0cd749f3e3c1",
-          "type": "Other",
-          "name": "Nextcloud admin",
-          "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/nextcloud.png",
-          "url": "https://nextcloud_admin.mp281x.xyz"
-        },
-        {
           "id": "28d8c129-bc41-4463-889d-d7437ae98a2d",
           "type": "Other",
           "name": "Nextcloud",
