@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: nextcloud
+  namespace: app-ns
+  labels: { app: nextcloud }
+  annotations:
+    keel.sh/policy: force
+    keel.sh/trigger: poll
+    keel.sh/pollSchedule: "@every 1h"
+    keel.sh/match-tag: "true"
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: nextcloud } }
+  serviceName: nextcloud
+  template:
+    metadata: { labels: { app: nextcloud } }
+    spec:
+      containers:
+        - name: nextcloud
+          image: nextcloud/server:latest
+          ports: [containerPort: 80]
+          volumeMounts: [{ name: nextcloud, mountPath: /var/www/html }]
+      volumes:
+        - name: nextcloud
+          hostPath:
+            path: /home/mp281x/storage/nextcloud
+            type: DirectoryOrCreate
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nextcloud
+  namespace: app-ns
+spec:
+  selector: { app: nextcloud }
+  ports: [{ port: 80, name: nextcloud, targetPort: 80 }]

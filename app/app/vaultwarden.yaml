@@ -1,13 +1,8 @@
-apiVersion: v1
-kind: Namespace
-metadata: { name: vaultwarden }
-
----
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: vaultwarden
-  namespace: vaultwarden
+  namespace: app-ns
   labels: { app: vaultwarden }
   annotations:
     keel.sh/policy: force
@@ -25,9 +20,9 @@ spec:
         - name: vaultwarden
           image: vaultwarden/server:latest
           ports: [containerPort: 80]
-          volumeMounts: [{ name: vaultwarden-local, mountPath: /data }]
+          volumeMounts: [{ name: vaultwarden, mountPath: /data }]
       volumes:
-        - name: vaultwarden-local
+        - name: vaultwarden
           hostPath:
             path: /home/mp281x/storage/vaultwarden
             type: DirectoryOrCreate
@@ -37,7 +32,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: vaultwarden
-  namespace: vaultwarden
+  namespace: app-ns
 spec:
   selector: { app: vaultwarden }
   ports: [{ port: 80, name: vaultwarden, targetPort: 80 }]
