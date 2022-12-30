@@ -37,4 +37,3 @@ metadata:
 spec:
   selector: { app: nextcloud }
   ports: [{ port: 80, name: nextcloud, targetPort: 80 }]
-SQLITE_DATABASE 
