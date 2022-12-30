@@ -10,7 +10,7 @@ metadata:
     keel.sh/pollSchedule: "@every 1h"
     keel.sh/match-tag: "true"
 spec:
-  replicas: 1
+  replicas: 0
   selector: { matchLabels: { app: nextcloud } }
   serviceName: nextcloud
   template:
