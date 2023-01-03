@@ -18,7 +18,7 @@ spec:
         helmProvider: { enabled: "false" }
         basicauth: 
           enabled: true
-          user: "mp281x"
+          user: "admin"
           password: "password"
   destination:
     namespace: kube-system
