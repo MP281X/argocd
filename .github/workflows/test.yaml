@@ -1,0 +1,27 @@
+name: Create and publish a Docker image
+
+on: push
+
+jobs:
+  build-and-push-image:
+    runs-on: self-hosted
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        run: docker build . --file Dockerfile --tag ghcr.io/MP281X/test-container:latest
+
+      - name: Push docker image
+        run: docker push ghcr.io/MP281X/test-container:latest

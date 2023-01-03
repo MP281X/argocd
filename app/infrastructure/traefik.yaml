@@ -31,11 +31,6 @@ spec:
             protocol: TCP
             exposePort: 443
             tls: { enable: true }
-          postgresql:
-            expose: true
-            port: 5432
-            exposedPort: 5432
-            protocol: TCP
 
         rbac: { enabled: true }
         ingressRoute: { dashboard: { enabled: false } }
