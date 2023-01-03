@@ -13,6 +13,5 @@ $token = $args[0];
 argocd repo add https://github.com/MP281X/argocd --username mp281x --password $token;
 argocd repo add https://github.com/MP281X/dicantieri --username mp281x --password $token;
 
-# applay the cluster init yaml and display the argocd password
+# apply the cluster init yaml and display the argocd password
 kubectl apply -f k3s-dev.yaml;
-echo $password

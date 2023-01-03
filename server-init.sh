@@ -2,7 +2,7 @@
 
 echo " -------------- packages -------------- "
 apt-get update && apt-get upgrade -y
-apt-get install -y ufw sed sudo vim curl wget htop jq open-iscsi nfs-common
+apt-get install -y ufw sed sudo vim curl wget htop
 apt-get autoremove -y && apt update && apt upgrade -y
 
 echo " -------------- user -------------- "
@@ -57,7 +57,6 @@ systemctl restart k3s.service
 
 echo " ------- argocd ------- "
 kubectl create namespace argocd
-kubectl create ns sealed-secrets
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
 echo " ------- visualize the connection file ------- "
