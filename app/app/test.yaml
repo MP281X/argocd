@@ -7,8 +7,7 @@ metadata:
   annotations:
     keel.sh/policy: force
     keel.sh/trigger: poll
-    keel.sh/pollSchedule: "@every 30s"
-    keel.sh/match-tag: "true"
+    keel.sh/pollSchedule: "@every 1m"
 spec:
   replicas: 1
   selector: { matchLabels: { app: test } }
