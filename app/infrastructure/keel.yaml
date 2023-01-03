@@ -18,8 +18,8 @@ spec:
         helmProvider: { enabled: "false" }
         basicauth: 
           enabled: true
-          user: "admin"
-          password: "4LdWosAS%mSYYgeiA"
+          user: "mp281x"
+          password: "password"
   destination:
     namespace: kube-system
     server: https://kubernetes.default.svc
