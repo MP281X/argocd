@@ -4,5 +4,5 @@ metadata:
   name: gitops-runner
   namespace: github-actions
 spec:
-  replicas: 1
+  replicas: 2
   template: { spec: { repository: MP281X/argocd } }

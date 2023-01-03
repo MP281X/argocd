@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test
+  namespace: app-ns
+  labels: { app: test }
+  annotations:
+    keel.sh/policy: force
+    keel.sh/trigger: poll
+    keel.sh/pollSchedule: "@every 30s"
+    keel.sh/match-tag: "true"
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: test } }
+  template:
+    metadata: { labels: { app: test } }
+    spec:
+      containers:
+        - name: test
+          image: ghcr.io/mp281x/test-container:latest
