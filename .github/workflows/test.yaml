@@ -30,4 +30,4 @@ jobs:
         uses: muinmomin/webhook-action@v1.0.0
         with:
           url: "https://keel.mp281x.xyz/v1/webhooks/native"
-          json: '{ "tag": "latest", "name": "ghcr.io/mp281x/test-container" }'
+          data: '{ "tag": "latest", "name": "ghcr.io/mp281x/test-container" }'
