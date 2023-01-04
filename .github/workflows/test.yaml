@@ -25,3 +25,9 @@ jobs:
 
       - name: Push docker image
         run: docker push ghcr.io/mp281x/test-container:latest
+
+      - name: Keel Webhook
+        uses: distributhor/workflow-webhook@v2
+        env:
+          webhook_url: "https://keel.mp281x.xyz/v1/webhooks/native"
+          data: '{ "tag": "latest", "name": "ghcr.io/mp281x/test-container" }'
