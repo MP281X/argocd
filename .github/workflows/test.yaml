@@ -27,4 +27,7 @@ jobs:
         run: docker push ghcr.io/mp281x/test-container:latest
 
       - name: Keel Webhook
-        run: 'curl -H "Content-Type: application/json" -X POST -d "{"tag":"latest","name":"ghcr.io/mp281x/test-container"}" https://keel.mp281x.xyz/v1/webhooks/native'
+        uses: distributhor/workflow-webhook
+        with:
+          url: "https://keel.mp281x.xyz/v1/webhooks/native"
+          json: '{ "tag": "latest", "name": "ghcr.io/mp281x/test-container" }'
