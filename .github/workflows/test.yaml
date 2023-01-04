@@ -30,4 +30,5 @@ jobs:
         uses: distributhor/workflow-webhook@v2
         env:
           webhook_url: "https://keel.mp281x.xyz/v1/webhooks/native"
+          webhook_secret: "password"
           data: '{ "tag": "latest", "name": "ghcr.io/mp281x/test-container" }'

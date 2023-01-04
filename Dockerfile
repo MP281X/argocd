@@ -1,3 +1,3 @@
 FROM alpine:3.14
 
-CMD echo 'test 2' && sleep infinity
+CMD echo 'test 3' && sleep infinity
