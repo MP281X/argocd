@@ -2,7 +2,7 @@
 
 echo " -------------- packages -------------- "
 apt-get update && apt-get upgrade -y
-apt-get install -y ufw sed sudo vim curl wget htop
+apt-get install -y ufw sed sudo vim curl wget htop jq open-iscsi nfs-common
 apt-get autoremove -y && apt update && apt upgrade -y
 
 echo " -------------- user -------------- "

@@ -41,3 +41,18 @@ spec:
     - match: Host(`keel.mp281x.xyz`)
       kind: Rule
       services: [{ name: keel, port: 9300 }]
+
+---
+#? Longhorn
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: longhorn
+  namespace: longhorn-system
+  annotations: { kubernetes.io/ingress.class: traefik }
+spec:
+  entryPoints: [websecure]
+  routes:
+    - match: Host(`longhorn.mp281x.xyz`)
+      kind: Rule
+      services: [{ name: longhorn-frontend, port: 80 }]
