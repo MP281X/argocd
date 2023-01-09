@@ -23,9 +23,12 @@ spec:
           volumeMounts: [{ name: vaultwarden, mountPath: /data }]
       volumes:
         - name: vaultwarden
-          hostPath:
-            path: /home/mp281x/storage/vaultwarden
-            type: DirectoryOrCreate
+          nfs:
+            server: "10.43.0.140"
+            path: "/nfs-direct"
+          # hostPath:
+          #   path: /home/mp281x/storage/vaultwarden
+          #   type: DirectoryOrCreate
 
 ---
 apiVersion: v1
