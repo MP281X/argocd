@@ -19,10 +19,10 @@ spec:
         - name: vaultwarden
           image: vaultwarden/server:latest
           ports: [containerPort: 80]
-          volumeMounts: [{ name: vaultwarden, mountPath: /data }]
+          volumeMounts: [{ name: data, mountPath: /data }]
       volumes:
-        - name: vaultwarden
-          persistentVolumeClaim: { claimName: test }
+        - name: data
+          persistentVolumeClaim: { claimName: vaultwarden }
 
 ---
 apiVersion: v1

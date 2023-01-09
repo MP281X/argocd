@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: db-its
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-its
+  namespace: db-its
+  labels: { app: db-its }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: db-its } }
+  template:
+    metadata: { labels: { app: db-its } }
+    spec:
+      containers:
+        - name: db-its
+          image: postgres:latest
+          ports: [containerPort: 5432]
+          env:
+            - { name: POSTGRES_USER, value: db-its }
+            - { name: POSTGRES_DB, value: db-its }
+            - { name: POSTGRES_PASSWORD, value: db-its }
+          volumeMounts: [{ name: data, mountPath: /var/lib/postgresql/data }]
+      volumes:
+        - name: data
+          persistentVolumeClaim: { claimName: db-its }
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db-its
+  namespace: db-its
+spec:
+  selector: { app: postgres }
+  ports: [{ port: 5432, name: postgres, targetPort: 5432 }]
+  clusterIP: 10.43.0.130
