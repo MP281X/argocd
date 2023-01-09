@@ -25,7 +25,7 @@ spec:
         - name: vaultwarden
           nfs:
             server: "10.43.0.140"
-            path: "/nfs-direct"
+            path: "/"
           # hostPath:
           #   path: /home/mp281x/storage/vaultwarden
           #   type: DirectoryOrCreate
