@@ -11,7 +11,7 @@ metadata:
   namespace: db-its
   labels: { app: db-its }
 spec:
-  replicas: 1
+  replicas: 0
   selector: { matchLabels: { app: db-its } }
   template:
     metadata: { labels: { app: db-its } }
