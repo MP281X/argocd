@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: vaultwarden
   namespace: app-ns
@@ -12,7 +12,6 @@ metadata:
 spec:
   replicas: 1
   selector: { matchLabels: { app: vaultwarden } }
-  serviceName: vaultwarden
   template:
     metadata: { labels: { app: vaultwarden } }
     spec:
@@ -22,13 +21,8 @@ spec:
           ports: [containerPort: 80]
           volumeMounts: [{ name: vaultwarden, mountPath: /data }]
       volumes:
-        - name: vaultwarden
-          nfs:
-            server: "10.43.0.140"
-            path: "/"
-          # hostPath:
-          #   path: /home/mp281x/storage/vaultwarden
-          #   type: DirectoryOrCreate
+        - name: vaultwarden,
+          persistentVolumeClaim: { claimName: test }
 
 ---
 apiVersion: v1
