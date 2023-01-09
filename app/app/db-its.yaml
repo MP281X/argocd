@@ -10,8 +10,13 @@ metadata:
   name: db-its
   namespace: db-its
   labels: { app: db-its }
+  annotations:
+    keel.sh/policy: force
+    keel.sh/trigger: poll
+    keel.sh/pollSchedule: "@every 1h"
+    keel.sh/match-tag: "true"
 spec:
-  replicas: 0
+  replicas: 1
   selector: { matchLabels: { app: db-its } }
   template:
     metadata: { labels: { app: db-its } }
