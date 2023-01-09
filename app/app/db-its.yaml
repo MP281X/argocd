@@ -38,4 +38,4 @@ metadata:
 spec:
   selector: { app: postgres }
   ports: [{ port: 5432, name: postgres, targetPort: 5432 }]
-  clusterIP: 10.43.0.130
+  clusterIP: 10.43.0.131
