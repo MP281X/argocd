@@ -21,7 +21,7 @@ spec:
           ports: [containerPort: 80]
           volumeMounts: [{ name: vaultwarden, mountPath: /data }]
       volumes:
-        - name: vaultwarden,
+        - name: vaultwarden
           persistentVolumeClaim: { claimName: test }
 
 ---
