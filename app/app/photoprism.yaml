@@ -20,6 +20,9 @@ spec:
           image: photoprism/photoprism:latest
           env:
             - { name: PHOTOPRISM_ADMIN_PASSWORD, value: password }
+            - { name: PHOTOPRISM_HTTP_HOST, value: "0.0.0.0" }
+            - { name: PHOTOPRISM_HTTP_PORT, value: "2342" }
+
           ports: [containerPort: 2342]
       #     volumeMounts: [{ name: data, mountPath: /data }]
       # volumes:
