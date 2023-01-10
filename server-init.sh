@@ -40,12 +40,6 @@ echo $SSH_CONFIG > /etc/ssh/sshd_config
 echo "" > /etc/motd
 service sshd restart
 
-echo " ------- rclone ------- "
-curl https://rclone.org/install.sh | bash
-mkdir -p /root/.config/rclone/
-vi /root/.config/rclone/rclone.conf
-mkdir -p /home/mp281x/storage
-
 echo " ------- k3s ------- "
 curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" INSTALL_K3S_EXEC=" \
     --disable=traefik \
