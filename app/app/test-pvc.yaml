@@ -1,45 +1,30 @@
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: test
-spec:
-  accessModes:
-    - ReadWriteOnce
-  storageClassName: longhorn
-  resources:
-    requests:
-      storage: 2Gi
 # apiVersion: v1
 # kind: PersistentVolumeClaim
 # metadata:
-#   annotations:
-#     kubectl.kubernetes.io/last-applied-configuration: >
-#       {"apiVersion":"v1","kind":"PersistentVolumeClaim","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"app"},"name":"test","namespace":"argocd"},"spec":{"accessModes":["ReadWriteOnce"],"resources":{"requests":{"storage":"2Gi"}},"storageClassName":"longhorn"}}
-#     pv.kubernetes.io/bind-completed: 'yes'
-#     pv.kubernetes.io/bound-by-controller: 'yes'
-#     volume.beta.kubernetes.io/storage-provisioner: driver.longhorn.io
-#     volume.kubernetes.io/storage-provisioner: driver.longhorn.io
-#   creationTimestamp: '2023-01-10T10:43:36Z'
-#   finalizers:
-#     - kubernetes.io/pvc-protection
-#   labels:
-#     app.kubernetes.io/instance: app
 #   name: test
-#   namespace: argocd
-#   resourceVersion: '1025178'
-#   uid: 2324b5c3-6c81-4f28-9c7f-5c60019fd33b
 # spec:
 #   accessModes:
 #     - ReadWriteOnce
+#   storageClassName: longhorn
 #   resources:
 #     requests:
 #       storage: 2Gi
-#   storageClassName: longhorn
-#   volumeMode: Filesystem
-#   volumeName: pvc-2324b5c3-6c81-4f28-9c7f-5c60019fd33b
-# status:
-#   accessModes:
-#     - ReadWriteOnce
-#   capacity:
-#     storage: 2Gi
-#   phase: Bound
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: test-volume
+spec:
+  capacity:
+    storage: 2Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: longhorn
+  csi:
+    driver: driver.longhorn.io
+    fsType: ext4
+    volumeAttributes:
+      numberOfReplicas: "1"
+      staleReplicaTimeout: "2880"
