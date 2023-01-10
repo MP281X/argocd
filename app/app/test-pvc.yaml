@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: test
 spec:
-  volumeName: pvc-2324b5c3-6c81-4f28-9c7f-5c60019fd33b
+  volumeName: test-pvc
   accessModes:
     - ReadWriteOnce
   storageClassName: longhorn
