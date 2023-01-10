@@ -26,3 +26,18 @@ spec:
     - match: Host(`vaultwarden.mp281x.xyz`)
       kind: Rule
       services: [{ name: vaultwarden, port: 80 }]
+
+---
+#? Photoprism
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: photoprism
+  namespace: app
+  annotations: { kubernetes.io/ingress.class: traefik }
+spec:
+  entryPoints: [websecure]
+  routes:
+    - match: Host(`photoprism.mp281x.xyz`)
+      kind: Rule
+      services: [{ name: photoprism, port: 2342 }]
