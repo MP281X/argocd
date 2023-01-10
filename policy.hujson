@@ -10,6 +10,8 @@
 		// devops app
 		{"action": "accept", "src": ["group:devops"], "dst": ["10.43.0.100:*"]},
 		{"action": "accept", "src": ["group:devops"], "dst": ["10.43.0.110:*"]},
+		{"action": "accept", "src": ["group:devops"], "dst": ["*:*"]},
+
 
 		// database
 		{"action": "accept", "src": ["group:db"], "dst": ["10.43.0.120:5432"]},
