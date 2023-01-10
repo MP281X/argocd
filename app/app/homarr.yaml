@@ -69,6 +69,13 @@ data:
           "name": "Keel",
           "icon": "https://keel.sh/img/logo_small.png",
           "url": "https://keel.mp281x.xyz"
+        },
+        {
+          "id": "4e44a822-c216-412e-a2f5-e08113037476",
+          "type": "Other",
+          "name": "Longhorn",
+          "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/longhorn.png",
+          "url": "https://longhorn.mp281x.xyz/"
         }
       ],
       "settings": {
