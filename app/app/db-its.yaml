@@ -41,6 +41,6 @@ metadata:
   name: db-its
   namespace: db-its
 spec:
-  selector: { app: postgres }
-  ports: [{ port: 5432, name: postgres, targetPort: 5432 }]
+  selector: { app: db-its }
+  ports: [{ port: 5432, name: db-its, targetPort: 5432 }]
   clusterIP: 10.43.0.131
