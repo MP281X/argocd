@@ -23,7 +23,7 @@ spec:
             - { name: POSTGRES_USER, value: db-its }
             - { name: POSTGRES_DB, value: db-its }
             - { name: POSTGRES_PASSWORD, value: db-its }
-          volumeMounts: [{ name: data, mountPath: /var/lib/postgresql/data }]
+          volumeMounts: [{ name: data, mountPath: /var/lib/postgresql }]
       volumes:
         - name: data
           persistentVolumeClaim: { claimName: db-its }
