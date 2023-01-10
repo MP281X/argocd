@@ -6,7 +6,6 @@ spec:
   accessModes:
     - ReadWriteOnce
   storageClassName: longhorn
-  volumeName: test-pvc
   resources:
     requests:
       storage: 2Gi
