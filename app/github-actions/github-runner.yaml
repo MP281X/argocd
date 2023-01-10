@@ -7,12 +7,50 @@ spec:
   replicas: 2
   template: { spec: { repository: MP281X/argocd } }
 
+# ---
+# apiVersion: actions.summerwind.dev/v1alpha1
+# kind: RunnerDeployment
+# metadata:
+#   name: dicantieri-runner
+#   namespace: github-actions
+# spec:
+#   replicas: 2
+#   template: { spec: { repository: MP281X/dicantieri } }
+
 ---
 apiVersion: actions.summerwind.dev/v1alpha1
-kind: RunnerDeployment
+kind: RunnerSet
 metadata:
   name: dicantieri-runner
   namespace: github-actions
 spec:
-  replicas: 2
-  template: { spec: { repository: MP281X/dicantieri } }
+  replicas: 1
+  repository: MP281X/dicantieri
+  dockerdWithinRunnerContainer: true
+  template:
+    spec:
+      securityContext:
+        seLinuxOptions:
+          level: "s0"
+          role: "system_r"
+          type: "super_t"
+          user: "system_u"
+      containers:
+        - name: runner
+          env: []
+          resources:
+            limits:
+              cpu: "4.0"
+              memory: "8Gi"
+            requests:
+              cpu: "2.0"
+              memory: "4Gi"
+          securityContext:
+        - name: docker
+          resources:
+            limits:
+              cpu: "4.0"
+              memory: "8Gi"
+            requests:
+              cpu: "2.0"
+              memory: "4Gi"
