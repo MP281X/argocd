@@ -10,7 +10,7 @@ metadata:
     keel.sh/pollSchedule: "@every 1h"
     keel.sh/match-tag: "true"
 spec:
-  replicas: 1
+  replicas: 0
   selector: { matchLabels: { app: db-its } }
   template:
     metadata: { labels: { app: db-its } }
@@ -23,10 +23,10 @@ spec:
             - { name: POSTGRES_USER, value: db-its }
             - { name: POSTGRES_DB, value: db-its }
             - { name: POSTGRES_PASSWORD, value: db-its }
-          # volumeMounts: [{ name: data, mountPath: /var/lib/postgresql/data }]
-      # volumes:
-      #   - name: data
-      #     persistentVolumeClaim: { claimName: db-its }
+          volumeMounts: [{ name: data, mountPath: /var/lib/postgresql/data }]
+      volumes:
+        - name: data
+          persistentVolumeClaim: { claimName: db-its }
 
 ---
 apiVersion: v1
