@@ -26,31 +26,7 @@ metadata:
 spec:
   replicas: 1
   repository: MP281X/dicantieri
-  dockerdWithinRunnerContainer: true
+  selector: { matchLabels: { app: dicantieri-runner } }
+  serviceName: dicantieri-runner
   template:
-    spec:
-      securityContext:
-        seLinuxOptions:
-          level: "s0"
-          role: "system_r"
-          type: "super_t"
-          user: "system_u"
-      containers:
-        - name: runner
-          env: []
-          resources:
-            limits:
-              cpu: "4.0"
-              memory: "8Gi"
-            requests:
-              cpu: "2.0"
-              memory: "4Gi"
-          securityContext:
-        - name: docker
-          resources:
-            limits:
-              cpu: "4.0"
-              memory: "8Gi"
-            requests:
-              cpu: "2.0"
-              memory: "4Gi"
+    metadata: { labels: { app: dicantieri-runner } }
