@@ -7,26 +7,12 @@ spec:
   replicas: 2
   template: { spec: { repository: MP281X/argocd } }
 
-# ---
-# apiVersion: actions.summerwind.dev/v1alpha1
-# kind: RunnerDeployment
-# metadata:
-#   name: dicantieri-runner
-#   namespace: github-actions
-# spec:
-#   replicas: 2
-#   template: { spec: { repository: MP281X/dicantieri } }
-
 ---
 apiVersion: actions.summerwind.dev/v1alpha1
-kind: RunnerSet
+kind: RunnerDeployment
 metadata:
   name: dicantieri-runner
   namespace: github-actions
 spec:
-  replicas: 1
-  repository: MP281X/dicantieri
-  selector: { matchLabels: { app: dicantieri-runner } }
-  serviceName: dicantieri-runner
-  template:
-    metadata: { labels: { app: dicantieri-runner } }
+  replicas: 2
+  template: { spec: { repository: MP281X/dicantieri } }
