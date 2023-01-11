@@ -33,7 +33,7 @@ spec:
   groups: [default]
   retain: 5
   concurrency: 2
-  labels: { label/backup: app }
+  labels: { backup: app }
 
 ---
 apiVersion: longhorn.io/v1beta1
@@ -47,4 +47,4 @@ spec:
   groups: [default]
   retain: 5
   concurrency: 2
-  labels: { label/backup: test }
+  labels: { backup: test }
