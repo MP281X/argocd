@@ -8,9 +8,9 @@
 	// Access control lists
 	"acls": [
 		// devops app
-		{"action": "accept", "src": ["group:devops"], "dst": ["10.43.0.100:*"]},
+		{"action": "accept", "src": ["group:devops"], "dst": ["10.43.0.100:80"]},
 		{"action": "accept", "src": ["group:devops"], "dst": ["10.43.0.100:443"]},
-		{"action": "accept", "src": ["group:devops"], "dst": ["10.43.0.110:*"]},
+		{"action": "accept", "src": ["group:devops"], "dst": ["10.43.0.110:80"]},
 		{"action": "accept", "src": ["group:devops"], "dst": ["10.43.0.110:443"]},
 
 
