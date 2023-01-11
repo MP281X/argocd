@@ -70,4 +70,4 @@ spec:
   routes:
     - match: Host(`grafana.mp281x.xyz`)
       kind: Rule
-      services: [{ name: grafana, port: 3000 }]
+      services: [{ name: grafana, port: 80 }]

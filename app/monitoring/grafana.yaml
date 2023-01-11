@@ -1,36 +1,25 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 metadata:
   name: grafana
-  namespace: monitoring
-  labels: { app: grafana }
-  annotations:
-    keel.sh/policy: force
-    keel.sh/trigger: poll
-    keel.sh/pollSchedule: "@every 1h"
-    keel.sh/match-tag: "true"
+  namespace: argocd
 spec:
-  replicas: 1
-  selector: { matchLabels: { app: grafana } }
-  template:
-    metadata: { labels: { app: grafana } }
-    spec:
-      securityContext: { fsGroup: 472, supplementalGroups: [0] }
-      containers:
-        - name: grafana
-          image: grafana/grafana:latest
-          ports: [containerPort: 3000]
-          volumeMounts: [{ name: data, mountPath: /var/lib/grafana }]
-      volumes:
-        - name: data
-          persistentVolumeClaim: { claimName: grafana }
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: grafana
-  namespace: monitoring
-spec:
-  selector: { app: grafana }
-  ports: [{ port: 3000, name: grafana, targetPort: 3000 }]
+  project: monitoring
+  source:
+    chart: grafana
+    repoURL: https://grafana.github.io/helm-charts
+    targetRevision: 6.50.0
+    helm:
+      values: |-
+        datasources: 
+          datasources.yaml:
+            apiVersion: 1
+            datasources:
+              - name: Prometheus
+                type: prometheus
+                url: http://prometheus-server
+                access: proxy
+                isDefault: true
+  destination: { server: https://kubernetes.default.svc, namespace: monitoring }
+  syncPolicy:
+    automated: { prune: true, selfHeal: true }
