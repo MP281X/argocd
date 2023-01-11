@@ -28,7 +28,7 @@ metadata:
   name: app-backup
   namespace: longhorn-system
 spec:
-  cron: "* 3 * * *"
+  cron: "0 0 * * ?"
   task: "backup"
   groups: [default]
   retain: 5
