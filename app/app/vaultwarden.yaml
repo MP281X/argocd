@@ -19,6 +19,7 @@ spec:
         - name: vaultwarden
           image: vaultwarden/server:latest
           ports: [containerPort: 80]
+          env: [{ name: DOMAIN, value: "https://vaultwarden.mp281x.xyz" }]
           volumeMounts: [{ name: data, mountPath: /data }]
       volumes:
         - name: data
