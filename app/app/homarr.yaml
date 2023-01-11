@@ -45,6 +45,7 @@ data:
         {
           "id": "9aa259f3-eac1-4081-9cda-6db6ec6ab12a",
           "type": "Other",
+          "category": "dev",
           "name": "Traefik",
           "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/traefik.png",
           "url": "https://traefik.mp281x.xyz"
@@ -52,6 +53,7 @@ data:
         {
           "id": "fe16ccb9-7b9b-4ea1-8497-3ff30b859a2e",
           "type": "Other",
+          "category": "dev",
           "name": "ArgoCD",
           "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/argocd.png",
           "url": "https://argocd.mp281x.xyz"
@@ -59,6 +61,7 @@ data:
         {
           "id": "2153c5d0-7e02-429c-9a71-26055bf32e95",
           "type": "Other",
+          "category": "app",
           "name": "Vaultwarden",
           "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/bitwarden.png",
           "url": "https://vaultwarden.mp281x.xyz"
@@ -66,6 +69,7 @@ data:
         {
           "id": "0f42265a-861d-4236-9a82-a3966459af13",
           "type": "Other",
+          "category": "dev",
           "name": "Keel",
           "icon": "https://keel.sh/img/logo_small.png",
           "url": "https://keel.mp281x.xyz"
@@ -73,9 +77,90 @@ data:
         {
           "id": "4e44a822-c216-412e-a2f5-e08113037476",
           "type": "Other",
+          "category": "dev",
           "name": "Longhorn",
           "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/longhorn.png",
           "url": "https://longhorn.mp281x.xyz/"
+        },
+        {
+          "id": "4c30c5eb-47ee-44bc-b3b6-f479e1ad174c",
+          "type": "Other",
+          "category": "infrastructure",
+          "name": "Contabo",
+          "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/contabo.png",
+          "url": "https://my.contabo.com/vps#"
+        },
+        {
+          "id": "fc00b1b2-43d4-4553-ad5e-001f289ac465",
+          "type": "Other",
+          "category": "infrastructure",
+          "name": "Github",
+          "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/github.png",
+          "url": "https://github.com/MP281X?tab=repositories"
+        },
+        {
+          "id": "28ea5d44-fddc-4b36-994e-12f7ce1d4845",
+          "type": "Other",
+          "category": "infrastructure",
+          "name": "Railway",
+          "icon": "https://railway.app/brand/logo-light.png",
+          "url": "https://railway.app/dashboard"
+        },
+        {
+          "id": "085b6f50-7b73-4f1c-89aa-aba663747b27",
+          "type": "Other",
+          "category": "infrastructure",
+          "name": "Cloudflare",
+          "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/cloudflare.png",
+          "url": "https://dash.cloudflare.com/a35fef8579890d0e05f02249ef672695/mp281x.xyz/dns/records"
+        },
+        {
+          "id": "ae890ac6-4eb5-44e5-bdd9-a167ca531ed9",
+          "type": "Other",
+          "category": "infrastructure",
+          "name": "Tailscale",
+          "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/tailscale.png",
+          "url": "https://login.tailscale.com/admin/machines"
+        },
+        {
+          "id": "38eb8d46-493e-4478-b3b7-cedf42b4d81a",
+          "type": "Other",
+          "category": "app",
+          "name": "Telegram",
+          "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/telegram.png",
+          "url": "https://web.telegram.org/k/"
+        },
+        {
+          "id": "999cc4ea-606a-4cd9-8c8c-b6aa3239a1aa",
+          "type": "Other",
+          "category": "app",
+          "name": "Gmail",
+          "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/gmail.png",
+          "url": "https://mail.google.com/mail/u/0/#inbox"
+        },
+        {
+          "id": "796db500-2219-4a85-8b4b-cce3a28ea293",
+          "type": "Other",
+          "category": "dev",
+          "name": "Prisma Studio",
+          "icon": "https://avatars.githubusercontent.com/u/17219288?s=200&v=4",
+          "url": "http://localhost:5555/"
+        },
+        {
+          "id": "c53cce41-157c-4039-ad20-b6e5cca075a0",
+          "type": "Other",
+          "category": "infrastructure",
+          "name": "S3 Bucket",
+          "icon": "https://sonraisecurity.com/wp-content/uploads/aws-s3-icon.png",
+          "url": "https://new.contabo.com/storage/object-storage/buckets/"
+        },
+        {
+          "id": "21d879bc-2180-409d-8143-f0970f5e0ec8",
+          "type": "Other",
+          "category": "dev",
+          "name": "Helm Chart",
+          "icon": "https://helm.sh/img/helm.svg",
+          "url": "https://artifacthub.io/"
         }
       ],
       "settings": {
@@ -83,7 +168,8 @@ data:
         "widgetPosition": "right",
         "appCardWidth": 1.2,
         "title": "Dev Server",
-        "logo": "https://avatars.githubusercontent.com/u/42154987?v=4"
+        "logo": "https://avatars.githubusercontent.com/u/42154987?v=4",
+        "grow": false
       },
       "modules": {
         "Search Bar": {
@@ -114,6 +200,12 @@ data:
               "value": "Udine"
             }
           }
+        },
+        "search": {
+          "enabled": true
+        },
+        "overseerr": {
+          "enabled": false
         }
       }
     }
