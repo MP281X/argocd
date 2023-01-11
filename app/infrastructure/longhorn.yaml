@@ -20,3 +20,17 @@ spec:
     namespace: longhorn-system
     server: https://kubernetes.default.svc
   syncPolicy: { automated: { prune: true, selfHeal: true } }
+
+---
+apiVersion: longhorn.io/v1beta1
+kind: RecurringJob
+metadata:
+  name: app-backup
+  namespace: longhorn-system
+spec:
+  cron: "* 3 * * *"
+  task: "backup"
+  groups: [default]
+  retain: 5
+  concurrency: 2
+  labels: { label/backup: app }
