@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: homarr
-  namespace: app
+  namespace: default
   labels: { app: homarr }
   annotations:
     keel.sh/policy: force
