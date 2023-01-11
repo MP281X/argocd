@@ -167,8 +167,8 @@ data:
         "searchUrl": "https://google.com/search?q=",
         "widgetPosition": "right",
         "appCardWidth": 1.2,
-        "title": "Dev Server",
-        "logo": "https://avatars.githubusercontent.com/u/42154987?v=4",
+        "title": "K3S dev",
+        "logo": "https://avatars.githubusercontent.com/u/49319725?s=200&v=4",
         "grow": false
       },
       "modules": {
