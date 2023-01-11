@@ -36,6 +36,12 @@ kind: TLSStore
 metadata:
   name: default
   namespace: traefik
-spec:
-  defaultCertificate:
-    secretName: wildcard-cert
+spec: { defaultCertificate: { secretName: wildcard-cert } }
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: TLSOption
+metadata:
+  name: default
+  namespace: traefik
+spec: { sniStrict: true }
