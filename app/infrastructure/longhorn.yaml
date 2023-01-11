@@ -33,4 +33,3 @@ spec:
   groups: [default]
   retain: 5
   concurrency: 2
-  labels: { backup: app }
