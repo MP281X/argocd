@@ -15,6 +15,7 @@ spec:
           defaultReplicaCount: 1
           backupTarget: s3://longhorn-backup@us-east-1/
           backupTargetCredentialSecret: s3-secrets
+        persistence: { defaultClass: false }
   destination:
     namespace: longhorn-system
     server: https://kubernetes.default.svc
