@@ -112,7 +112,8 @@ data:
           "category": "infrastructure",
           "name": "Cloudflare",
           "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/cloudflare.png",
-          "url": "https://dash.cloudflare.com/a35fef8579890d0e05f02249ef672695/mp281x.xyz/dns/records"
+          "url": "https://dash.cloudflare.com/a35fef8579890d0e05f02249ef672695/mp281x.xyz/dns/records",
+          "ping": false
         },
         {
           "id": "ae890ac6-4eb5-44e5-bdd9-a167ca531ed9",
@@ -144,7 +145,8 @@ data:
           "category": "dev",
           "name": "Prisma Studio",
           "icon": "https://avatars.githubusercontent.com/u/17219288?s=200&v=4",
-          "url": "http://localhost:5555/"
+          "url": "http://localhost:5555/",
+          "ping": false
         },
         {
           "id": "c53cce41-157c-4039-ad20-b6e5cca075a0",
@@ -169,7 +171,8 @@ data:
         "appCardWidth": 1.2,
         "title": "K3S dev",
         "logo": "https://avatars.githubusercontent.com/u/49319725?s=200&v=4",
-        "grow": false
+        "grow": false,
+        "searchNewTab": false
       },
       "modules": {
         "Search Bar": {
