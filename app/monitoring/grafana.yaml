@@ -11,9 +11,9 @@ spec:
     targetRevision: 6.50.0
     helm:
       values: |-
-        admin:
-          userKey: admin
-          passwordKey: password
+        # admin:
+        #   userKey: admin
+        #   passwordKey: password
 
         datasources:
           datasources.yaml:
