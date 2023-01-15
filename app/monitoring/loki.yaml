@@ -4,7 +4,7 @@ metadata:
   name: loki
   namespace: argocd
 spec:
-  project: infrastructure
+  project: monitoring
   source:
     chart: loki
     repoURL: https://grafana.github.io/helm-charts
@@ -20,5 +20,4 @@ spec:
     namespace: monitoring
     server: https://kubernetes.default.svc
   syncPolicy:
-    syncOptions: [CreateNamespace=true]
     automated: { prune: true, selfHeal: true }
