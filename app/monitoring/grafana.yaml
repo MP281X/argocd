@@ -23,6 +23,11 @@ spec:
                 type: loki
                 url: http://loki:3100
                 access: proxy
+              - name: Prometheus
+                type: prometheus
+                url: http://prometheus-server
+                access: proxy
+                isDefault: true
   destination:
     namespace: monitoring
     server: https://kubernetes.default.svc
