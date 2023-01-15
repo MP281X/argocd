@@ -191,7 +191,7 @@ data:
       },
       "modules": {
         "Search Bar": {
-          "enabled": true
+          "enabled": false
         },
         "calendar": {
           "enabled": true
