@@ -6,16 +6,9 @@ metadata:
 spec:
   project: monitoring
   source:
-    chart: loki
+    chart: loki-stack
     repoURL: https://grafana.github.io/helm-charts
-    targetRevision: 3.10.0
-    helm:
-      values: |-
-        loki:
-          commonConfig:
-            replication_factor: 1
-          storage:
-            type: 'filesystem'
+    targetRevision: 2.8.9
   destination:
     namespace: monitoring
     server: https://kubernetes.default.svc
