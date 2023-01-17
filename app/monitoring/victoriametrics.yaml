@@ -7,7 +7,7 @@ spec:
   project: monitoring
   source:
     chart: victoria-metrics-single
-    repoURL: https://prometheus-community.github.io/helm-charts
+    repoURL: https://victoriametrics.github.io/helm-charts
     targetRevision: 0.8.50
     helm:
       values: |-
