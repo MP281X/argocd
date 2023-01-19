@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextcloud
+  namespace: default
+  labels: { app: nextcloud }
+  annotations:
+    keel.sh/policy: force
+    keel.sh/trigger: poll
+    keel.sh/pollSchedule: "@every 1h"
+    keel.sh/match-tag: "true"
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: nextcloud } }
+  template:
+    metadata: { labels: { app: nextcloud } }
+    spec:
+      containers:
+        - name: nextcloud
+          image: nextcloud:latest
+          ports: [containerPort: 80]
+          envFrom: [{ secretRef: { name: nextcloud } }]
+          env:
+            - { name: SQLITE_DATABASE, value: "nextcloud" }
+            - { name: NEXTCLOUD_ADMIN_USER, value: "admin" }
+            - { name: NEXTCLOUD_ADMIN_PASSWORD, value: "password" }
+            - { name: NEXTCLOUD_TRUSTED_DOMAINS, value: "nextcloud.mp281x.xyz" }
+            - { name: PHP_MEMORY_LIMIT, value: "4G" }
+            - { name: PHP_UPLOAD_LIMIT, value: "10G" }
+
+          volumeMounts: [{ name: data, mountPath: /var/www/html }]
+      volumes:
+        - name: data
+          persistentVolumeClaim: { claimName: nextcloud }
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nextcloud
+  namespace: default
+spec:
+  selector: { app: nextcloud }
+  ports: [{ port: 80, name: nextcloud, targetPort: 80 }]
