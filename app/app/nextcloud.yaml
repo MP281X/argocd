@@ -22,7 +22,8 @@ spec:
           envFrom: [{ secretRef: { name: nextcloud } }]
           env:
             - { name: SQLITE_DATABASE, value: "nextcloud" }
-            - { name: NEXTCLOUD_ADMIN_USER, value: "admin" }
+            - { name: NEXTCLOUD_ADMIN_USER, value: "mp281x" }
+            - { name: NEXTCLOUD_ADMIN_PASSWORD, value: "password" }
             - { name: NEXTCLOUD_TRUSTED_DOMAINS, value: "nextcloud.mp281x.xyz" }
             - { name: PHP_MEMORY_LIMIT, value: "4G" }
             - { name: PHP_UPLOAD_LIMIT, value: "10G" }
