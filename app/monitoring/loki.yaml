@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: loki
+  namespace: argocd
+spec:
+  project: monitoring
+  source:
+    chart: loki-simple-scalable
+    repoURL: https://grafana.github.io/helm-charts
+    targetRevision: 1.8.11
+    helm:
+      values: |-
+        loki:
+          commonConfig: {replication_factor: 1}
+          storage: {type: 'filesystem'}
+  destination:
+    namespace: monitoring
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated: { prune: true, selfHeal: true }
