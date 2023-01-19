@@ -19,7 +19,6 @@ spec:
         - name: nextcloud
           image: nextcloud:latest
           ports: [containerPort: 80]
-          envFrom: [{ secretRef: { name: nextcloud } }]
           env:
             - { name: SQLITE_DATABASE, value: "nextcloud" }
             - { name: NEXTCLOUD_ADMIN_USER, value: "mp281x" }
