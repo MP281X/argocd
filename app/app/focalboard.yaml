@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: focalboard
+  namespace: default
+  labels: { app: focalboard }
+  annotations:
+    keel.sh/policy: force
+    keel.sh/trigger: poll
+    keel.sh/pollSchedule: "@every 1h"
+    keel.sh/match-tag: "true"
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: focalboard } }
+  template:
+    metadata: { labels: { app: focalboard } }
+    spec:
+      containers:
+        - name: focalboard
+          image: mattermost/focalboard:latest
+          ports: [containerPort: 8000]
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: focalboard
+  namespace: default
+spec:
+  selector: { app: focalboard }
+  ports: [{ port: 8000, name: focalboard, targetPort: 8000 }]
