@@ -28,31 +28,16 @@ spec:
       services: [{ name: homarr, port: 7575 }]
 
 ---
-#? vikunja api
+#? Focalboard
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: vikunja-api
+  name: focalboard
   namespace: default
   annotations: { kubernetes.io/ingress.class: traefik }
 spec:
   entryPoints: [websecure]
   routes:
-    - match: Host(`vikunja.mp281x.xyz`) && PathPrefix(`/api/v1`, `/dav/`, `/.well-known/`)
+    - match: Host(`focalboard.mp281x.xyz`)
       kind: Rule
-      services: [{ name: vikunja-api, port: 3456 }]
-
----
-#? vikunja
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: vikunja
-  namespace: default
-  annotations: { kubernetes.io/ingress.class: traefik }
-spec:
-  entryPoints: [websecure]
-  routes:
-    - match: Host(`vikunja.mp281x.xyz`)
-      kind: Rule
-      services: [{ name: vikunja, port: 80 }]
+      services: [{ name: focalboard, port: 8000 }]
