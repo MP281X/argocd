@@ -27,7 +27,7 @@ spec:
             - { name: NEXTCLOUD_TRUSTED_DOMAINS, value: "nextcloud.mp281x.xyz" }
             - { name: PHP_MEMORY_LIMIT, value: "4G" }
             - { name: PHP_UPLOAD_LIMIT, value: "10G" }
-
+            - { name: OVERWRITEPROTOCOL, value: "https" }
           volumeMounts: [{ name: data, mountPath: /var/www/html }]
       volumes:
         - name: data
