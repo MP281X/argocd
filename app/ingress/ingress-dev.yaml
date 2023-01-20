@@ -78,7 +78,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: vault
-  namespace: default
+  namespace: vault
   annotations: { kubernetes.io/ingress.class: traefik }
 spec:
   entryPoints: [websecure]
