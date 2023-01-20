@@ -22,10 +22,11 @@ spec:
           command: ["server"]
           securityContext: { capabilities: { add: ["IPC_LOCK"] } }
           env:
-            - {
-                name: VAULT_LOCAL_CONFIG,
-                value: '{"storage": {"file": {"path": "/vault/file"}}, "listener": [{"tcp": { "address": "0.0.0.0:8200", "tls_disable": true}}], "default_lease_ttl": "168h", "max_lease_ttl": "720h", "ui": true}',
-              }
+            - { name: VAULT_DEV_ROOT_TOKEN_ID, value: "myroot" }
+            # - {
+            #     name: VAULT_LOCAL_CONFIG,
+            #     value: '{"storage": {"file": {"path": "/vault/file"}}, "listener": [{"tcp": { "address": "0.0.0.0:8200", "tls_disable": true}}], "default_lease_ttl": "168h", "max_lease_ttl": "720h", "ui": true}',
+            #   }
       #     volumeMounts: [{ name: data, mountPath: /var/www/html }]
       # volumes:
       #   - name: data
