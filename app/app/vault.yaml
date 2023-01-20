@@ -19,7 +19,6 @@ spec:
         - name: vault
           image: vault:latest
           ports: [containerPort: 8200]
-          command: ["server"]
           securityContext: { capabilities: { add: ["IPC_LOCK"] } }
           env:
             - { name: VAULT_DEV_ROOT_TOKEN_ID, value: "myroot" }
