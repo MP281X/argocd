@@ -171,11 +171,11 @@ data:
           }
         },
         {
-          "id": "25db7805-813b-47c5-a539-a3ddcab43ffc",
-          "name": "Railway",
-          "url": "https://railway.app/dashboard",
+          "id": "74faf543-ad4f-4dd8-9c56-a40ca44e2a64",
+          "name": "Tailscale",
+          "url": "https://login.tailscale.com/admin/machines",
           "appearance": {
-            "iconUrl": "https://railway.app/brand/logo-light.png"
+            "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/tailscale.png"
           },
           "network": {
             "enabledStatusChecker": true,
@@ -184,8 +184,8 @@ data:
             ]
           },
           "behaviour": {
-            "isOpeningNewTab": false,
-            "externalUrl": "https://railway.app/dashboard"
+            "isOpeningNewTab": true,
+            "externalUrl": "https://login.tailscale.com/admin/machines"
           },
           "area": {
             "type": "category",
@@ -196,7 +196,7 @@ data:
           "shape": {
             "md": {
               "location": {
-                "x": 3,
+                "x": 5,
                 "y": 0
               },
               "size": {
@@ -206,7 +206,7 @@ data:
             },
             "lg": {
               "location": {
-                "x": 2,
+                "x": 4,
                 "y": 0
               },
               "size": {
@@ -216,68 +216,8 @@ data:
             },
             "sm": {
               "location": {
-                "x": 2,
+                "x": 0,
                 "y": 0
-              },
-              "size": {
-                "width": 1,
-                "height": 1
-              }
-            }
-          },
-          "integration": {
-            "type": null,
-            "properties": []
-          }
-        },
-        {
-          "id": "cfcd1af5-c887-4cbc-8c05-0d2ab3f74eb8",
-          "name": "Github",
-          "url": "https://github.com/MP281X?tab=repositories",
-          "appearance": {
-            "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/github.png"
-          },
-          "network": {
-            "enabledStatusChecker": true,
-            "okStatus": [
-              200
-            ]
-          },
-          "behaviour": {
-            "isOpeningNewTab": false,
-            "externalUrl": "https://github.com/MP281X?tab=repositories"
-          },
-          "area": {
-            "type": "category",
-            "properties": {
-              "id": "0b465fac-b991-4d3e-a0b6-85ad7dd96f63"
-            }
-          },
-          "shape": {
-            "md": {
-              "location": {
-                "x": 2,
-                "y": 0
-              },
-              "size": {
-                "width": 1,
-                "height": 1
-              }
-            },
-            "lg": {
-              "location": {
-                "x": 8,
-                "y": 0
-              },
-              "size": {
-                "width": 2,
-                "height": 2
-              }
-            },
-            "sm": {
-              "location": {
-                "x": 2,
-                "y": 1
               },
               "size": {
                 "width": 1,
@@ -304,7 +244,7 @@ data:
             ]
           },
           "behaviour": {
-            "isOpeningNewTab": false,
+            "isOpeningNewTab": true,
             "externalUrl": "https://longhorn.mp281x.xyz/"
           },
           "area": {
@@ -364,7 +304,7 @@ data:
             ]
           },
           "behaviour": {
-            "isOpeningNewTab": false,
+            "isOpeningNewTab": true,
             "externalUrl": "https://my.contabo.com/vps#"
           },
           "area": {
@@ -411,186 +351,6 @@ data:
           }
         },
         {
-          "id": "f9fcd4d1-1bda-4b46-bcb4-fdbc4b825b8c",
-          "name": "S3",
-          "url": "https://new.contabo.com/storage/object-storage/buckets/",
-          "appearance": {
-            "iconUrl": "https://sonraisecurity.com/wp-content/uploads/aws-s3-icon.png"
-          },
-          "network": {
-            "enabledStatusChecker": true,
-            "okStatus": [
-              200
-            ]
-          },
-          "behaviour": {
-            "isOpeningNewTab": false,
-            "externalUrl": "https://new.contabo.com/storage/object-storage/buckets/"
-          },
-          "area": {
-            "type": "category",
-            "properties": {
-              "id": "0b465fac-b991-4d3e-a0b6-85ad7dd96f63"
-            }
-          },
-          "shape": {
-            "md": {
-              "location": {
-                "x": 0,
-                "y": 0
-              },
-              "size": {
-                "width": 1,
-                "height": 1
-              }
-            },
-            "lg": {
-              "location": {
-                "x": 10,
-                "y": 0
-              },
-              "size": {
-                "width": 2,
-                "height": 2
-              }
-            },
-            "sm": {
-              "location": {
-                "x": 0,
-                "y": 1
-              },
-              "size": {
-                "width": 1,
-                "height": 1
-              }
-            }
-          },
-          "integration": {
-            "type": null,
-            "properties": []
-          }
-        },
-        {
-          "id": "74faf543-ad4f-4dd8-9c56-a40ca44e2a64",
-          "name": "Tailscale",
-          "url": "https://login.tailscale.com/admin/machines",
-          "appearance": {
-            "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/tailscale.png"
-          },
-          "network": {
-            "enabledStatusChecker": true,
-            "okStatus": [
-              200
-            ]
-          },
-          "behaviour": {
-            "isOpeningNewTab": false,
-            "externalUrl": "https://login.tailscale.com/admin/machines"
-          },
-          "area": {
-            "type": "category",
-            "properties": {
-              "id": "0b465fac-b991-4d3e-a0b6-85ad7dd96f63"
-            }
-          },
-          "shape": {
-            "md": {
-              "location": {
-                "x": 5,
-                "y": 0
-              },
-              "size": {
-                "width": 1,
-                "height": 1
-              }
-            },
-            "lg": {
-              "location": {
-                "x": 4,
-                "y": 0
-              },
-              "size": {
-                "width": 2,
-                "height": 2
-              }
-            },
-            "sm": {
-              "location": {
-                "x": 0,
-                "y": 0
-              },
-              "size": {
-                "width": 1,
-                "height": 1
-              }
-            }
-          },
-          "integration": {
-            "type": null,
-            "properties": []
-          }
-        },
-        {
-          "id": "2a54b5e1-c29a-4d6f-8b83-b53c770af747",
-          "name": "Keel",
-          "url": "https://keel.mp281x.xyz",
-          "appearance": {
-            "iconUrl": "https://keel.sh/img/logo_small.png"
-          },
-          "network": {
-            "enabledStatusChecker": true,
-            "okStatus": [
-              200
-            ]
-          },
-          "behaviour": {
-            "isOpeningNewTab": false,
-            "externalUrl": "https://keel.mp281x.xyz"
-          },
-          "area": {
-            "type": "category",
-            "properties": {
-              "id": "cfd26cdc-055c-4051-b0c9-36e3bb782051"
-            }
-          },
-          "shape": {
-            "md": {
-              "location": {
-                "x": 3,
-                "y": 1
-              },
-              "size": {
-                "width": 3,
-                "height": 1
-              }
-            },
-            "lg": {
-              "location": {
-                "x": 6,
-                "y": 2
-              },
-              "size": {
-                "width": 6,
-                "height": 2
-              }
-            },
-            "sm": {
-              "location": {
-                "x": 0,
-                "y": 1
-              },
-              "size": {
-                "width": 1,
-                "height": 1
-              }
-            }
-          },
-          "integration": {
-            "type": null,
-            "properties": []
-          }
-        },
-        {
           "id": "24d85818-96c9-4070-89e3-d443b3257441",
           "name": "ArgoCD",
           "url": "https://argocd.mp281x.xyz",
@@ -604,7 +364,7 @@ data:
             ]
           },
           "behaviour": {
-            "isOpeningNewTab": false,
+            "isOpeningNewTab": true,
             "externalUrl": "https://argocd.mp281x.xyz"
           },
           "area": {
@@ -651,11 +411,11 @@ data:
           }
         },
         {
-          "id": "d43eb6fa-36e4-47e7-9ab9-3e2f1c6104da",
-          "name": "Traefik",
-          "url": "https://traefik.mp281x.xyz",
+          "id": "cfcd1af5-c887-4cbc-8c05-0d2ab3f74eb8",
+          "name": "Github",
+          "url": "https://github.com/MP281X?tab=repositories",
           "appearance": {
-            "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/traefik.png"
+            "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/github.png"
           },
           "network": {
             "enabledStatusChecker": true,
@@ -664,8 +424,68 @@ data:
             ]
           },
           "behaviour": {
-            "isOpeningNewTab": false,
-            "externalUrl": "https://traefik.mp281x.xyz"
+            "isOpeningNewTab": true,
+            "externalUrl": "https://github.com/MP281X?tab=repositories"
+          },
+          "area": {
+            "type": "category",
+            "properties": {
+              "id": "0b465fac-b991-4d3e-a0b6-85ad7dd96f63"
+            }
+          },
+          "shape": {
+            "md": {
+              "location": {
+                "x": 2,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              }
+            },
+            "lg": {
+              "location": {
+                "x": 8,
+                "y": 0
+              },
+              "size": {
+                "width": 2,
+                "height": 2
+              }
+            },
+            "sm": {
+              "location": {
+                "x": 2,
+                "y": 1
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              }
+            }
+          },
+          "integration": {
+            "type": null,
+            "properties": []
+          }
+        },
+        {
+          "id": "2a54b5e1-c29a-4d6f-8b83-b53c770af747",
+          "name": "Keel",
+          "url": "https://keel.mp281x.xyz",
+          "appearance": {
+            "iconUrl": "https://keel.sh/img/logo_small.png"
+          },
+          "network": {
+            "enabledStatusChecker": true,
+            "okStatus": [
+              200
+            ]
+          },
+          "behaviour": {
+            "isOpeningNewTab": true,
+            "externalUrl": "https://keel.mp281x.xyz"
           },
           "area": {
             "type": "category",
@@ -677,7 +497,7 @@ data:
             "md": {
               "location": {
                 "x": 3,
-                "y": 0
+                "y": 1
               },
               "size": {
                 "width": 3,
@@ -687,7 +507,7 @@ data:
             "lg": {
               "location": {
                 "x": 6,
-                "y": 0
+                "y": 2
               },
               "size": {
                 "width": 6,
@@ -696,8 +516,8 @@ data:
             },
             "sm": {
               "location": {
-                "x": 2,
-                "y": 0
+                "x": 0,
+                "y": 1
               },
               "size": {
                 "width": 1,
@@ -724,7 +544,7 @@ data:
             ]
           },
           "behaviour": {
-            "isOpeningNewTab": false,
+            "isOpeningNewTab": true,
             "externalUrl": "https://dash.cloudflare.com/a35fef8579890d0e05f02249ef672695/mp281x.xyz/dns/records"
           },
           "area": {
@@ -784,7 +604,7 @@ data:
             ]
           },
           "behaviour": {
-            "isOpeningNewTab": false,
+            "isOpeningNewTab": true,
             "externalUrl": "https://vaultwarden.mp281x.xyz"
           },
           "area": {
@@ -818,6 +638,226 @@ data:
               "location": {
                 "x": 0,
                 "y": 0
+              },
+              "size": {
+                "width": 2,
+                "height": 2
+              }
+            }
+          },
+          "integration": {
+            "type": null,
+            "properties": []
+          }
+        },
+        {
+          "id": "f9fcd4d1-1bda-4b46-bcb4-fdbc4b825b8c",
+          "name": "S3",
+          "url": "https://new.contabo.com/storage/object-storage/buckets/",
+          "appearance": {
+            "iconUrl": "https://sonraisecurity.com/wp-content/uploads/aws-s3-icon.png"
+          },
+          "network": {
+            "enabledStatusChecker": true,
+            "okStatus": [
+              200
+            ]
+          },
+          "behaviour": {
+            "isOpeningNewTab": true,
+            "externalUrl": "https://new.contabo.com/storage/object-storage/buckets/"
+          },
+          "area": {
+            "type": "category",
+            "properties": {
+              "id": "0b465fac-b991-4d3e-a0b6-85ad7dd96f63"
+            }
+          },
+          "shape": {
+            "md": {
+              "location": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              }
+            },
+            "lg": {
+              "location": {
+                "x": 10,
+                "y": 0
+              },
+              "size": {
+                "width": 2,
+                "height": 2
+              }
+            },
+            "sm": {
+              "location": {
+                "x": 0,
+                "y": 1
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              }
+            }
+          },
+          "integration": {
+            "type": null,
+            "properties": []
+          }
+        },
+        {
+          "id": "d43eb6fa-36e4-47e7-9ab9-3e2f1c6104da",
+          "name": "Traefik",
+          "url": "https://traefik.mp281x.xyz",
+          "appearance": {
+            "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/traefik.png"
+          },
+          "network": {
+            "enabledStatusChecker": true,
+            "okStatus": [
+              200
+            ]
+          },
+          "behaviour": {
+            "isOpeningNewTab": true,
+            "externalUrl": "https://traefik.mp281x.xyz"
+          },
+          "area": {
+            "type": "category",
+            "properties": {
+              "id": "cfd26cdc-055c-4051-b0c9-36e3bb782051"
+            }
+          },
+          "shape": {
+            "md": {
+              "location": {
+                "x": 3,
+                "y": 0
+              },
+              "size": {
+                "width": 3,
+                "height": 1
+              }
+            },
+            "lg": {
+              "location": {
+                "x": 6,
+                "y": 0
+              },
+              "size": {
+                "width": 6,
+                "height": 2
+              }
+            },
+            "sm": {
+              "location": {
+                "x": 2,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              }
+            }
+          },
+          "integration": {
+            "type": null,
+            "properties": []
+          }
+        },
+        {
+          "id": "25db7805-813b-47c5-a539-a3ddcab43ffc",
+          "name": "Railway",
+          "url": "https://railway.app/dashboard",
+          "appearance": {
+            "iconUrl": "https://railway.app/brand/logo-light.png"
+          },
+          "network": {
+            "enabledStatusChecker": true,
+            "okStatus": [
+              200
+            ]
+          },
+          "behaviour": {
+            "isOpeningNewTab": true,
+            "externalUrl": "https://railway.app/dashboard"
+          },
+          "area": {
+            "type": "category",
+            "properties": {
+              "id": "0b465fac-b991-4d3e-a0b6-85ad7dd96f63"
+            }
+          },
+          "shape": {
+            "md": {
+              "location": {
+                "x": 3,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              }
+            },
+            "lg": {
+              "location": {
+                "x": 2,
+                "y": 0
+              },
+              "size": {
+                "width": 2,
+                "height": 2
+              }
+            },
+            "sm": {
+              "location": {
+                "x": 2,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              }
+            }
+          },
+          "integration": {
+            "type": null,
+            "properties": []
+          }
+        },
+        {
+          "id": "f2db2c46-bdfa-4a04-8e81-2671c490eb1d",
+          "name": "Nextcloud",
+          "url": "https://nextcloud.mp281x.xyz",
+          "appearance": {
+            "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/nextcloud.png"
+          },
+          "network": {
+            "enabledStatusChecker": true,
+            "okStatus": [
+              200
+            ]
+          },
+          "behaviour": {
+            "isOpeningNewTab": true,
+            "externalUrl": "https://nextcloud.mp281x.xyz"
+          },
+          "area": {
+            "type": "sidebar",
+            "properties": {
+              "location": "right"
+            }
+          },
+          "shape": {
+            "lg": {
+              "location": {
+                "x": 0,
+                "y": 2
               },
               "size": {
                 "width": 2,
