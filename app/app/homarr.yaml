@@ -171,126 +171,6 @@ data:
           }
         },
         {
-          "id": "74faf543-ad4f-4dd8-9c56-a40ca44e2a64",
-          "name": "Tailscale",
-          "url": "https://login.tailscale.com/admin/machines",
-          "appearance": {
-            "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/tailscale.png"
-          },
-          "network": {
-            "enabledStatusChecker": true,
-            "okStatus": [
-              200
-            ]
-          },
-          "behaviour": {
-            "isOpeningNewTab": true,
-            "externalUrl": "https://login.tailscale.com/admin/machines"
-          },
-          "area": {
-            "type": "category",
-            "properties": {
-              "id": "0b465fac-b991-4d3e-a0b6-85ad7dd96f63"
-            }
-          },
-          "shape": {
-            "md": {
-              "location": {
-                "x": 5,
-                "y": 0
-              },
-              "size": {
-                "width": 1,
-                "height": 1
-              }
-            },
-            "lg": {
-              "location": {
-                "x": 4,
-                "y": 0
-              },
-              "size": {
-                "width": 2,
-                "height": 2
-              }
-            },
-            "sm": {
-              "location": {
-                "x": 0,
-                "y": 0
-              },
-              "size": {
-                "width": 1,
-                "height": 1
-              }
-            }
-          },
-          "integration": {
-            "type": null,
-            "properties": []
-          }
-        },
-        {
-          "id": "32f8bdbe-c8ec-4b8f-97df-17dc625582bb",
-          "name": "Longhorn",
-          "url": "https://longhorn.mp281x.xyz/",
-          "appearance": {
-            "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/longhorn.png"
-          },
-          "network": {
-            "enabledStatusChecker": true,
-            "okStatus": [
-              200
-            ]
-          },
-          "behaviour": {
-            "isOpeningNewTab": true,
-            "externalUrl": "https://longhorn.mp281x.xyz/"
-          },
-          "area": {
-            "type": "category",
-            "properties": {
-              "id": "cfd26cdc-055c-4051-b0c9-36e3bb782051"
-            }
-          },
-          "shape": {
-            "md": {
-              "location": {
-                "x": 0,
-                "y": 1
-              },
-              "size": {
-                "width": 3,
-                "height": 1
-              }
-            },
-            "lg": {
-              "location": {
-                "x": 0,
-                "y": 2
-              },
-              "size": {
-                "width": 6,
-                "height": 2
-              }
-            },
-            "sm": {
-              "location": {
-                "x": 1,
-                "y": 1
-              },
-              "size": {
-                "width": 2,
-                "height": 1
-              }
-            }
-          },
-          "integration": {
-            "type": null,
-            "properties": []
-          }
-        },
-        {
           "id": "cdad02a0-31c9-4ee7-a3f0-39eae9fd134e",
           "name": "Contabo",
           "url": "https://my.contabo.com/vps#",
@@ -591,66 +471,6 @@ data:
           }
         },
         {
-          "id": "a9537ff4-9aef-46e0-bf90-142739da7810",
-          "name": "Bitwarden",
-          "url": "https://vaultwarden.mp281x.xyz",
-          "appearance": {
-            "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/bitwarden.png"
-          },
-          "network": {
-            "enabledStatusChecker": true,
-            "okStatus": [
-              200
-            ]
-          },
-          "behaviour": {
-            "isOpeningNewTab": true,
-            "externalUrl": "https://vaultwarden.mp281x.xyz"
-          },
-          "area": {
-            "type": "sidebar",
-            "properties": {
-              "location": "right"
-            }
-          },
-          "shape": {
-            "md": {
-              "location": {
-                "x": 0,
-                "y": 0
-              },
-              "size": {
-                "width": 2,
-                "height": 2
-              }
-            },
-            "lg": {
-              "location": {
-                "x": 0,
-                "y": 0
-              },
-              "size": {
-                "width": 2,
-                "height": 2
-              }
-            },
-            "sm": {
-              "location": {
-                "x": 0,
-                "y": 0
-              },
-              "size": {
-                "width": 2,
-                "height": 2
-              }
-            }
-          },
-          "integration": {
-            "type": null,
-            "properties": []
-          }
-        },
-        {
           "id": "f9fcd4d1-1bda-4b46-bcb4-fdbc4b825b8c",
           "name": "S3",
           "url": "https://new.contabo.com/storage/object-storage/buckets/",
@@ -863,6 +683,206 @@ data:
                 "width": 2,
                 "height": 2
               }
+            },
+            "md": {
+              "location": {
+                "x": 0,
+                "y": 2
+              },
+              "size": {
+                "width": 2,
+                "height": 2
+              }
+            },
+            "sm": {
+              "location": {
+                "x": 0,
+                "y": 2
+              },
+              "size": {
+                "width": 2,
+                "height": 2
+              }
+            }
+          },
+          "integration": {
+            "type": null,
+            "properties": []
+          }
+        },
+        {
+          "id": "a9537ff4-9aef-46e0-bf90-142739da7810",
+          "name": "Bitwarden",
+          "url": "https://vaultwarden.mp281x.xyz",
+          "appearance": {
+            "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/bitwarden.png"
+          },
+          "network": {
+            "enabledStatusChecker": true,
+            "okStatus": [
+              200
+            ]
+          },
+          "behaviour": {
+            "isOpeningNewTab": true,
+            "externalUrl": "https://vaultwarden.mp281x.xyz"
+          },
+          "area": {
+            "type": "sidebar",
+            "properties": {
+              "location": "right"
+            }
+          },
+          "shape": {
+            "md": {
+              "location": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 2,
+                "height": 2
+              }
+            },
+            "lg": {
+              "location": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 2,
+                "height": 2
+              }
+            },
+            "sm": {
+              "location": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 2,
+                "height": 2
+              }
+            }
+          },
+          "integration": {
+            "type": null,
+            "properties": []
+          }
+        },
+        {
+          "id": "32f8bdbe-c8ec-4b8f-97df-17dc625582bb",
+          "name": "Longhorn",
+          "url": "https://longhorn.mp281x.xyz/",
+          "appearance": {
+            "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/longhorn.png"
+          },
+          "network": {
+            "enabledStatusChecker": true,
+            "okStatus": [
+              200
+            ]
+          },
+          "behaviour": {
+            "isOpeningNewTab": true,
+            "externalUrl": "https://longhorn.mp281x.xyz/"
+          },
+          "area": {
+            "type": "category",
+            "properties": {
+              "id": "cfd26cdc-055c-4051-b0c9-36e3bb782051"
+            }
+          },
+          "shape": {
+            "md": {
+              "location": {
+                "x": 0,
+                "y": 1
+              },
+              "size": {
+                "width": 3,
+                "height": 1
+              }
+            },
+            "lg": {
+              "location": {
+                "x": 0,
+                "y": 2
+              },
+              "size": {
+                "width": 6,
+                "height": 2
+              }
+            },
+            "sm": {
+              "location": {
+                "x": 1,
+                "y": 1
+              },
+              "size": {
+                "width": 2,
+                "height": 1
+              }
+            }
+          },
+          "integration": {
+            "type": null,
+            "properties": []
+          }
+        },
+        {
+          "id": "74faf543-ad4f-4dd8-9c56-a40ca44e2a64",
+          "name": "Tailscale",
+          "url": "https://login.tailscale.com/admin/machines",
+          "appearance": {
+            "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/tailscale.png"
+          },
+          "network": {
+            "enabledStatusChecker": true,
+            "okStatus": [
+              200
+            ]
+          },
+          "behaviour": {
+            "isOpeningNewTab": true,
+            "externalUrl": "https://login.tailscale.com/admin/machines"
+          },
+          "area": {
+            "type": "category",
+            "properties": {
+              "id": "0b465fac-b991-4d3e-a0b6-85ad7dd96f63"
+            }
+          },
+          "shape": {
+            "md": {
+              "location": {
+                "x": 5,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              }
+            },
+            "lg": {
+              "location": {
+                "x": 4,
+                "y": 0
+              },
+              "size": {
+                "width": 2,
+                "height": 2
+              }
+            },
+            "sm": {
+              "location": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              }
             }
           },
           "integration": {
@@ -977,7 +997,7 @@ data:
             "enabledRightSidebar": true,
             "enabledDocker": false,
             "enabledPing": true,
-            "enabledSearchbar": true
+            "enabledSearchbar": false
           },
           "pageTitle": "K3S Dev",
           "logoImageUrl": "/imgs/logo/logo.png",
