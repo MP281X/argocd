@@ -9,9 +9,8 @@ metadata:
     keel.sh/trigger: poll
     keel.sh/pollSchedule: "@every 1h"
     keel.sh/match-tag: "true"
-    # argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
-  replicas: 1
+  replicas: 0
   selector: { matchLabels: { app: db-its } }
   template:
     metadata: { labels: { app: db-its } }
