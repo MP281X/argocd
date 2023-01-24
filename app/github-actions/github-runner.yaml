@@ -3,6 +3,8 @@ kind: RunnerDeployment
 metadata:
   name: gitops-runner
   namespace: github-actions
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   replicas: 2
   template: { spec: { repository: MP281X/argocd } }
@@ -13,6 +15,8 @@ kind: RunnerDeployment
 metadata:
   name: dicantieri-runner
   namespace: github-actions
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   replicas: 2
   template: { spec: { repository: MP281X/dicantieri } }
