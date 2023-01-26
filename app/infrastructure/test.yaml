@@ -12,7 +12,7 @@ spec:
           - name: argo-source
             path: /src
             git:
-              repo: https://github.com/MP281X/dicantieri
+              repo: https://github.com/MP281X/dicantieri.git
               usernameSecret:
                 name: github-secret
                 key: username
@@ -21,7 +21,11 @@ spec:
                 token: token
               branch: main
       container:
-        image: r.j3ss.co/img:latest
+        image: golang:1.10
         command: [sh, -c]
-        args: ["img build -t dicantieri:latest"]
+        args: ["git status && ls && cat VERSION"]
         workingDir: /src
+        # image: r.j3ss.co/img:latest
+        # command: [sh, -c]
+        # args: ["img build -t dicantieri:latest"]
+        # workingDir: /src
