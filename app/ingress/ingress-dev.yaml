@@ -86,3 +86,18 @@ spec:
     - match: Host(`vault.mp281x.xyz`)
       kind: Rule
       services: [{ name: vault, port: 8200 }]
+
+---
+#? Argo Workflows
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: argo-workflows
+  namespace: argocd
+  annotations: { kubernetes.io/ingress.class: traefik }
+spec:
+  entryPoints: [websecure]
+  routes:
+    - match: Host(`argo-workflows.mp281x.xyz`)
+      kind: Rule
+      services: [{ name: argo-server, port: 2746 }]
