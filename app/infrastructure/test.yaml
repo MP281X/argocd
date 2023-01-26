@@ -18,7 +18,7 @@ spec:
                 key: username
               passwordSecret:
                 name: github-secret
-                token: password
+                token: token
               branch: main
       container:
         image: r.j3ss.co/img:latest
