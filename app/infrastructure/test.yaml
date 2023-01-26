@@ -1,7 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
-  generateName: test # Name of this Workflow
+  name: test-workflow
+  namespace: default # Name of this Workflow
 spec:
   entrypoint: whalesay # Defines "whalesay" as the "main" template
   templates:
