@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: input-artifact-git-
+spec:
+  entrypoint: git-clone
+  templates:
+    - name: git-clone
+      inputs:
+        artifacts:
+          - name: argo-source
+            path: /src
+            git:
+              repo: https://github.com/MP281X/dicantieri
+              usernameSecret:
+                name: github-secret
+                key: username
+              passwordSecret:
+                name: github-secret
+                token: password
+              branch: main
+      container:
+        image: r.j3ss.co/img:latest
+        command: [sh, -c]
+        args: ["img build -t dicantieri:latest"]
+        workingDir: /src
