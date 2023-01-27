@@ -38,3 +38,14 @@ spec:
     metadata:
       labels:
         app: example
+    spec:
+      containers:
+        - name: runner
+          env: []
+          resources:
+            limits:
+              cpu: "4.0"
+              memory: "8Gi"
+            requests:
+              cpu: "2.0"
+              memory: "4Gi"
