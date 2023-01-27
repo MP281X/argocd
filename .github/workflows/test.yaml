@@ -18,7 +18,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build docker image
-        run: docker build -f Dockerfile -t ghcr.io/mp281x/test:latest ./test-sveltekit
+        run: docker build -f ./test-sveltekit/Dockerfile -t ghcr.io/mp281x/test:latest ./test-sveltekit
 
       - name: Push docker image
         run: docker push ghcr.io/mp281x/test:latest
