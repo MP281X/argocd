@@ -50,3 +50,7 @@ spec:
             requests:
               cpu: "2.0"
               memory: "4Gi"
+        - name: test
+          image: docker/whalesay:latest
+          command: ["cowsay"]
+          args: ["hello world"]
