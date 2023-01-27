@@ -5,14 +5,16 @@ metadata:
   namespace: default
   annotations:
     argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
 spec:
   template:
     spec:
       containers:
         - name: whalesay
           image: docker/whalesay:latest
-          command: ["cowsay"]
-          args: ["hello world"]
+          command: ["sh -c"]
+          args:
+            - "cowsay hello world"
+            - "ls"
       restartPolicy: Never
   backoffLimit: 4
