@@ -51,7 +51,7 @@ systemctl restart k3s.service
 
 echo " ------- argocd ------- "
 kubectl create namespace argocd
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+vi /var/lib/rancher/k3s/server/manifests/argocd.yaml
 
 echo " ------- visualize the connection file ------- "
 cp /etc/rancher/k3s/k3s.yaml /home/mp281x/k3s.yaml

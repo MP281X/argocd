@@ -7,10 +7,5 @@ $password = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64S
 argocd login localhost:8080 --username admin --password $password;
 argocd account update-password --current-password $password --new-password "password"
 
-# add the github repo credentials
-$token = $args[0];
-argocd repo add https://github.com/MP281X/argocd --username mp281x --password $token;
-argocd repo add https://github.com/MP281X/dicantieri --username mp281x --password $token;
-
 # apply the cluster init yaml and display the argocd password
 kubectl apply -f k3s-dev.yaml;
