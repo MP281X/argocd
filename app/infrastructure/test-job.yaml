@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: test-job
+  name: test-job-1
   namespace: default
   # annotations:
   # argocd.argoproj.io/hook: PreSync
