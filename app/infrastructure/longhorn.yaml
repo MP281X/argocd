@@ -20,3 +20,33 @@ spec:
     namespace: longhorn-system
     server: https://kubernetes.default.svc
   syncPolicy: { automated: { prune: true, selfHeal: true } }
+
+---
+apiVersion: longhorn.io/v1beta1
+kind: RecurringJob
+metadata:
+  name: backup
+  namespace: longhorn-system
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  cron: "0 0 * * ?"
+  task: "backup"
+  groups: [default]
+  retain: 5
+  concurrency: 2
+
+---
+#? Longhorn
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: longhorn
+  namespace: longhorn-system
+  annotations: { kubernetes.io/ingress.class: traefik }
+spec:
+  entryPoints: [websecure]
+  routes:
+    - match: Host(`longhorn.mp281x.xyz`)
+      kind: Rule
+      services: [{ name: longhorn-frontend, port: 80 }]

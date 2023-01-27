@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd-image-updater
+  namespace: argocd
+spec:
+  project: infrastructure
+  source:
+    chart: argocd-image-updater
+    repoURL: https://argoproj.github.io/argo-helm
+    targetRevision: 0.8.2
+    # helm:
+    #   values: |-
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  syncPolicy: { automated: { prune: true, selfHeal: true } }
+
+---
+#? Argocd
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: argocd
+  namespace: argocd
+  annotations: { kubernetes.io/ingress.class: traefik }
+spec:
+  entryPoints: [websecure]
+  routes:
+    - match: Host(`argocd.mp281x.xyz`)
+      kind: Rule
+      services: [{ name: argocd-server, port: 443 }]

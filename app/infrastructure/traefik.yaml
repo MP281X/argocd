@@ -46,6 +46,7 @@ spec:
             spec:
               externalTrafficPolicy: ''
               clusterIP: 10.43.0.110
+              
         providers:
           kubernetesCRD:
             enabled: true
@@ -61,3 +62,18 @@ spec:
   syncPolicy:
     syncOptions: [CreateNamespace=true]
     automated: { prune: true, selfHeal: true }
+
+---
+#? Traefik
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik-dashboard
+  namespace: traefik
+  annotations: { kubernetes.io/ingress.class: traefik }
+spec:
+  entryPoints: [websecure]
+  routes:
+    - match: Host(`traefik.mp281x.xyz`)
+      kind: Rule
+      services: [{ name: api@internal, kind: TraefikService }]

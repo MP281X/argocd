@@ -31,6 +31,22 @@ metadata:
 spec:
   selector: { app: homarr }
   ports: [{ port: 7575, name: homarr, targetPort: 7575 }]
+
+---
+#? Homarr
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: homarr
+  namespace: default
+  annotations: { kubernetes.io/ingress.class: traefik }
+spec:
+  entryPoints: [websecure]
+  routes:
+    - match: Host(`homarr.mp281x.xyz`)
+      kind: Rule
+      services: [{ name: homarr, port: 7575 }]
+
 ---
 apiVersion: v1
 kind: ConfigMap

@@ -1,0 +1,4 @@
+resources:
+  - app.yaml
+  - github-actions.yaml
+  - infrastructure.yaml
