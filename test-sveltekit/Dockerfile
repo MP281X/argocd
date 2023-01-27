@@ -3,7 +3,7 @@ WORKDIR /app
 COPY . .
 
 RUN npm install && npx vite build && rm -r ./node_modules \
-    && npm install --production
+    && npm install --production && npx prisma generate
 
 FROM node:18-alpine
 WORKDIR /app
