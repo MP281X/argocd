@@ -2,8 +2,8 @@ FROM node:18-alpine AS build
 WORKDIR /app
 COPY . .
 
-RUN npx vite build && rm -r ./node_modules \
-    && yarn install --production
+RUN npm installnpx vite build && rm -r ./node_modules \
+    && npm install --production
 
 FROM node:18-alpine
 WORKDIR /app
