@@ -1,6 +1,6 @@
 resources:
+  - argocd.yaml
   - cert-manager.yaml
-  - keel.yaml
   - longhorn.yaml
   - tailscale.yaml
   - traefik.yaml
