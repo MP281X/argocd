@@ -20,37 +20,3 @@ metadata:
 spec:
   replicas: 2
   template: { spec: { repository: MP281X/dicantieri } }
-
----
-apiVersion: actions.summerwind.dev/v1alpha1
-kind: RunnerSet
-metadata:
-  name: example
-spec:
-  replicas: 1
-  repository: MP281X/dicantieri
-  dockerdWithinRunnerContainer: false
-  # Other mandatory fields from StatefulSet
-  selector:
-    matchLabels:
-      app: example
-  serviceName: example
-  template:
-    metadata:
-      labels:
-        app: example
-    spec:
-      containers:
-        - name: runner
-          env: []
-          resources:
-            limits:
-              cpu: "4.0"
-              memory: "8Gi"
-            requests:
-              cpu: "2.0"
-              memory: "4Gi"
-        - name: test
-          image: docker/whalesay:latest
-          command: ["cowsay"]
-          args: ["hello world"]
