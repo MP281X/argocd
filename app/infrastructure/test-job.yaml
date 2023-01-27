@@ -12,9 +12,7 @@ spec:
       containers:
         - name: whalesay
           image: docker/whalesay:latest
-          command: ["sh -c"]
-          args:
-            - "cowsay hello world"
-            - "ls"
+          command: ["cowsay"]
+          args: ["hello world"]
       restartPolicy: Never
   backoffLimit: 4
