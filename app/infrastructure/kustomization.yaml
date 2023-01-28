@@ -1,6 +1,5 @@
 resources:
   - argocd.yaml
-  - canal.yaml
   - cert-manager.yaml
   - longhorn.yaml
   - secrets.yaml
