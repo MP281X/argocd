@@ -1,5 +1,5 @@
 $test = "ciao-1"
-$scret1 =  cmd.exe /c "echo|set /p=${test} | kubeseal --raw --scope cluster-wide"
+$scret1 =  cmd.exe /c "echo|set /p=${test}| kubeseal --raw --scope cluster-wide"
 
 #* Test
 @”
