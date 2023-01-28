@@ -4,11 +4,6 @@ metadata:
   name: vaultwarden
   namespace: default
   labels: { app: vaultwarden }
-  annotations:
-    keel.sh/policy: force
-    keel.sh/trigger: poll
-    keel.sh/pollSchedule: "@every 1h"
-    keel.sh/match-tag: "true"
 spec:
   replicas: 1
   selector: { matchLabels: { app: vaultwarden } }
@@ -36,7 +31,6 @@ spec:
   ports: [{ port: 80, name: vaultwarden, targetPort: 80 }]
 
 ---
-#? Vaultwarden
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:

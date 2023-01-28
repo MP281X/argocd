@@ -6,7 +6,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
-  replicas: 2
+  replicas: 1
   template: { spec: { repository: MP281X/argocd } }
 
 ---
@@ -18,5 +18,5 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
-  replicas: 2
+  replicas: 1
   template: { spec: { repository: MP281X/dicantieri } }

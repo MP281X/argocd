@@ -64,7 +64,6 @@ spec:
     automated: { prune: true, selfHeal: true }
 
 ---
-#? Traefik
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
