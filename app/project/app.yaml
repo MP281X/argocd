@@ -16,8 +16,8 @@ metadata:
   name: app
   namespace: argocd
   annotations:
-    argocd-image-updater.argoproj.io/image-list: postgres:latest ghcr.io/ajnart/homarr:latest nextcloud:latest vaultwarden/server:latest
-    argocd-image-updater.argoproj.io/auth-server.update-strategy: digest
+    argocd-image-updater.argoproj.io/image-list: postgres:latest, ghcr.io/ajnart/homarr:latest, nextcloud:latest, vaultwarden/server:latest
+    argocd-image-updater.argoproj.io/update-strategy: digest
 spec:
   project: app
   source:
