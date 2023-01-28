@@ -1,16 +1,9 @@
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
-  creationTimestamp: null
   name: test
   namespace: default
-  annotations:
-    sealedsecrets.bitnami.com/cluster-wide: "true"
+  annotations: { sealedsecrets.bitnami.com/cluster-wide: "true" }
 spec:
   encryptedData:
-    scret1: AgAGYL3b08cW5sNkK86rOYDOZ+OCZzCkehF08TWpRpW12ACXJJ9K5psADyXbSQ6xZKuDBTAtIuI7YGW6ssQt85qNSPgYDfimtf71RvThPHffPuPQln2l3f4ddNQ3Pa5gAyFZSQShSccnk2OM0emz74hlaA5nc4DxiYCbRYdIZPUIynTCt86GeCSxLh8EWMkh5V++9U6XFvBxc+lkq0PA+JR/rfaLZdgIT69hsTBKn+TZXY6FR1UNIc9A56mZ8W3bKt0T3VUGSmQzaK8HoRQ50yvxlPS4HszH6TB386DdzT1eTVQpbRrUa5HfDNNTIRR/zw7QahEBH1yxjzctK8dMgx0MGCT1mCPdJIUvBC7wPDr0Tbdy1zhHbRLeRe09zjC52m1VOn1txLEZZTmerW3KnHyP/YCxAr6Jlss/sFWt+t4MGvESRnYPHtnowECiGWSFYX208xPbMtyhhpijAbxUyKXLuzl//miWPjc1/mTmjXtDfOmiBtkVIhsULvyeNYzVTTE8wJofl9sRwxrk/yEM3aJ2mev84G2qzVV6SO7XI88gibVM1JKVnGSFBjxdu2LYf6a1p18c9KJJjApSsQ36x3YeVV68h7EKbFswTz7OJ6F24Cf0rd3QDzGFgNOn72KZQaPHBmWU9HuQvZxBoxb6FZrAtCHuMfdafQSBb9BReVHz68G+7omlQvv/+ZwbfmpKXo+eAvTpBxE=
-  template:
-    metadata:
-      creationTimestamp: null
-      name: test
-      namespace: default
+    scret1: AgAmxLhf/dthlhnqJC/WQ6RBfpcLKmgxGujWNQcX0GD1ff8Wdd6ObARlH6h7RJzYgcImaBM7l9Cjfooc8GCM0xwI09E0lriDC9GIHy6audanfhJ+yx+KP3dbtceY+TrZ+fC6rBTmkQvclLhZKrCoTc3OpvQUIiL656IYkKdiueKT4bzoWzyx6u8/PW9qVEbZtqAN6x1ARTgnB50esVJfh5wUpuncS4CQeeWtBRYoJJ9xeynfVCPlxoj8iow1XGofFG/cGtXXl77mQ99fsUK4UEIf1sNt116Lb5u1hxsl5rHDVLF2ZaVUwgWEZte0epS3yUnj15H6xwrj2DY5BQQWN3RKXMkkLH9s5a9m6oFbXpAMfBDYQNsF4iwglXlJ6KOqhNu5/2BzljIwx6752A6FZWBzz5bIilBuBcBR9OdvgjXdFgRu6Enev36t31oqldH+T57jRH+bjJkP3KU4gB+U4lSbuUIo7wscYzlVSiRrCu9MjjIJRJ51gzzetMg+iOVS84q0q5l9ICzkPARfNqm+DQD/xO/XtFpmD/k55/22rBj4tXDBhY2mk2zxk9Agcg3VO/NnH1q3VFlKPfc5r3YfMPrpXwcrbTlS2WCZOjWbGOWonFjsMu9S2GI+dz/fegtfebUeZzqEngZWw1WceUkWKh99Gt0BkpglvGGXVON8QjWdWBPc38Ehb6mHkuTKcWU30sxknNWHVhQ=
