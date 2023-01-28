@@ -1,4 +1,4 @@
-$scret1 = echo -n "test-secret-1" | kubeseal --raw --scope cluster-wide
+$scret1 = "test-secret-1" | kubeseal --raw --scope cluster-wide
 
 #* Test
 @”
