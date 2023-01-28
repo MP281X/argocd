@@ -18,11 +18,10 @@ spec:
     helm:
       values: |-
         tailscale:
-          auth:
-            secretName: tailscale
-            secretKey: AUTH_KEY
+          auth: { secretName: tailscale, secretKey: AUTH_KEY }
+          state: { secretName: tailscale-config }
           routes: ["10.43.0.0/16"]
-          extraEnv: [{ name: TS_EXTRA_ARGS, value: --hostname=k3s-dev }]
+          extraEnv: [{ name: TS_EXTRA_ARGS, value: "--hostname=k3s-dev --advertise-exit-node" }]
   destination:
     namespace: tailscale
     server: https://kubernetes.default.svc
