@@ -1,3 +1,16 @@
+#? Tailscale 
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: 
+  namespace: 
+  annotations: { sealedsecrets.bitnami.com/cluster-wide: "true" }
+spec:
+  encryptedData:
+    scret1: 
+
+---
+#? Tailscale 
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
@@ -6,4 +19,4 @@ metadata:
   annotations: { sealedsecrets.bitnami.com/cluster-wide: "true" }
 spec:
   encryptedData:
-    scret1: AgAmxLhf/dthlhnqJC/WQ6RBfpcLKmgxGujWNQcX0GD1ff8Wdd6ObARlH6h7RJzYgcImaBM7l9Cjfooc8GCM0xwI09E0lriDC9GIHy6audanfhJ+yx+KP3dbtceY+TrZ+fC6rBTmkQvclLhZKrCoTc3OpvQUIiL656IYkKdiueKT4bzoWzyx6u8/PW9qVEbZtqAN6x1ARTgnB50esVJfh5wUpuncS4CQeeWtBRYoJJ9xeynfVCPlxoj8iow1XGofFG/cGtXXl77mQ99fsUK4UEIf1sNt116Lb5u1hxsl5rHDVLF2ZaVUwgWEZte0epS3yUnj15H6xwrj2DY5BQQWN3RKXMkkLH9s5a9m6oFbXpAMfBDYQNsF4iwglXlJ6KOqhNu5/2BzljIwx6752A6FZWBzz5bIilBuBcBR9OdvgjXdFgRu6Enev36t31oqldH+T57jRH+bjJkP3KU4gB+U4lSbuUIo7wscYzlVSiRrCu9MjjIJRJ51gzzetMg+iOVS84q0q5l9ICzkPARfNqm+DQD/xO/XtFpmD/k55/22rBj4tXDBhY2mk2zxk9Agcg3VO/NnH1q3VFlKPfc5r3YfMPrpXwcrbTlS2WCZOjWbGOWonFjsMu9S2GI+dz/fegtfebUeZzqEngZWw1WceUkWKh99Gt0BkpglvGGXVON8QjWdWBPc38Ehb6mHkuTKcWU30sxknNWHVhQ=
+    scret1: 
