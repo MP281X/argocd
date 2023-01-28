@@ -4,6 +4,8 @@ function EncryptSecret([String] $secret){
     return cmd.exe /c "echo|set /p=${secret}| kubeseal --raw --scope cluster-wide"
 }
 
+kubectl get secret -n kube-system -l sealedsecrets.bitnami.com/sealed-secrets-key -o yaml > secrets/sealedSecrets.key
+
 #! Infrastructure
 @”
 #? Tailscale 

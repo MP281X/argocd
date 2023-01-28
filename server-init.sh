@@ -51,6 +51,7 @@ systemctl restart k3s.service
 
 echo " ------- argocd ------- "
 kubectl create namespace argocd
+vi /var/lib/rancher/k3s/server/manifests/sealedSecrets.yaml
 vi /var/lib/rancher/k3s/server/manifests/helm-chart.yaml
 
 echo " ------- visualize the connection file ------- "
