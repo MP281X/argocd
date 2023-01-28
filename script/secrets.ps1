@@ -1,4 +1,5 @@
-$scret1 = Write-Output -n "ciao" | kubeseal --raw --scope cluster-wide
+$test = "ciao-1"
+$scret1 =  cmd.exe /c 'echo|set /p="${test}"| kubeseal --raw --scope cluster-wide'
 
 #* Test
 @”
