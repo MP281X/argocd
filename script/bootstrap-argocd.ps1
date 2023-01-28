@@ -1,6 +1,3 @@
-# configure the secrets
-kubectl apply -f secrets/secrets.yaml
-
 # get the argocd password and login in the cli
 $base64Password = kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath='{.data.password}';
 $password = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($base64Password));
