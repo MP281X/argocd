@@ -49,9 +49,13 @@ vi /etc/rancher/k3s/registries.yaml
 systemctl daemon-reload
 systemctl restart k3s.service
 
-echo " ------- argocd ------- "
+echo " ------- sealed secrets key ------- "
+vi /root/sealedSecrets.yaml
+kubectl apply -f /root/sealedSecrets.yaml
+rm /root/sealedSecrets.yaml
+
+echo " ------- argocd and sealed secrets ------- "
 kubectl create namespace argocd
-vi /var/lib/rancher/k3s/server/manifests/sealedSecrets.yaml
 vi /var/lib/rancher/k3s/server/manifests/helm-chart.yaml
 
 echo " ------- visualize the connection file ------- "
