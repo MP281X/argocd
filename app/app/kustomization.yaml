@@ -1,13 +1,13 @@
 resources:
   - db-its.yaml
-  # - homarr.yaml
+  - homarr.yaml
   - nextcloud.yaml
   - vaultwarden.yaml
 
 replicas:
   - name: db-its
-    count: 1
+    count: 0
   - name: nextcloud
-    count: 1
+    count: 0
   - name: vaultwarden
-    count: 1
+    count: 0
