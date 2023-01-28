@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: test
+  namespace: default
+  annotations:
+    sealedsecrets.bitnami.com/cluster-wide: "true"
+spec:
+  encryptedData:
+    scret1: AgAFbyhCxsQUahBLBsUJwNaOxcBCE4qYeXRbpYkP1eqQ0quI+6a6e4yljDKe7xt+nYxyw7WEhhrnDORX6F9TaWxmL1MRqLG0FMoYoNqQfmaCGqIwpX0r3ePirxIlz7Ko2VQ7leGT83JyfJh0sv0CWJ2ZoK3nzOizQn8e633bikIhB7eyv6PNW0k0p4tKM7DxRf4ApxDZYQrFA0GHsTDm8VnkTIm+XXzGNlYWVz0YoNtlLHfU99f6YqGLgMkqgDLuCb1t9yv2ZuE9Hp+qWbedY60Ni9qNPy/PPgUe6WiSlbYsDa92wJLNE01duutx+Rt9aGusbPfa7s0pjVQWaSTVRdZxjSgNowzf2mfh6sK/nlsVLcYtgiyXA5NGSVeRbk/y6fi6BDO1WYRs0VEnucPLukNqYjd6ngbAiwfVB/ZilkkoasCT93GfzoiJZvmKJs3GeHd+X2KsQYx5vxq6gOj4FXzHu29SFXWruOBWpZ1gy5b913+O7HbyxAOKku7TXsuOyVWHQN6k3dZYakTLgJllQUOw01IBIKqAoeLQpapkEo6HKJoeNZNiR6nhSrPjMQpo1ftHcPN+zB/xWUaF8F7O4++QzFrRY/ZvX32VM8yDLZwiaUMe+wykQm3NpV9o6eunjGBfVMo4lyUEhXZTfCTGuWCQeReaPOvtDgNQebD6pgFyhUWiMGaxzWN3L7B4bkp3yNyVbwmo1EbxtvvZAV1hAtA=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: test
+      namespace: default
