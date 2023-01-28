@@ -69,7 +69,9 @@ kind: IngressRoute
 metadata:
   name: traefik-dashboard
   namespace: traefik
-  annotations: { kubernetes.io/ingress.class: traefik }
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   entryPoints: [websecure]
   routes:
