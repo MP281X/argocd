@@ -12,9 +12,7 @@ kind: SealedSecret
 metadata:
   name: tailscale-config
   namespace: tailscale
-  annotations: 
-    sealedsecrets.bitnami.com/cluster-wide: "true" 
-    argocd.argoproj.io/hook: PreSync
+  annotations: { sealedsecrets.bitnami.com/cluster-wide: "true" }
 spec:
   encryptedData:
     TS_AUTH_KEY: $(EncryptSecret($tailscaleToken))
@@ -26,9 +24,7 @@ kind: SealedSecret
 metadata:
   name: cloudflare-api-token-secret
   namespace: cert-manager
-  annotations: 
-    sealedsecrets.bitnami.com/cluster-wide: "true" 
-    argocd.argoproj.io/hook: PreSync
+  annotations: { sealedsecrets.bitnami.com/cluster-wide: "true" }
 spec:
   encryptedData:
     api-token: $(EncryptSecret($cloudflareToken))
@@ -40,9 +36,7 @@ kind: SealedSecret
 metadata:
   name: s3-secrets
   namespace: longhorn-system
-  annotations: 
-    sealedsecrets.bitnami.com/cluster-wide: "true" 
-    argocd.argoproj.io/hook: PreSync
+  annotations: { sealedsecrets.bitnami.com/cluster-wide: "true" }
 spec:
   encryptedData:
     AWS_ACCESS_KEY_ID: $(EncryptSecret($s3Id))
@@ -56,9 +50,7 @@ kind: SealedSecret
 metadata:
   name: github-registry
   namespace: argocd
-  annotations: 
-    sealedsecrets.bitnami.com/cluster-wide: "true" 
-    argocd.argoproj.io/hook: PreSync
+  annotations: { sealedsecrets.bitnami.com/cluster-wide: "true" }
 spec:
   encryptedData:
     .dockerconfigjson: $(EncryptSecret($registryConfig))
@@ -73,9 +65,7 @@ kind: SealedSecret
 metadata:
   name: controller-manager
   namespace: github-actions
-  annotations: 
-    sealedsecrets.bitnami.com/cluster-wide: "true" 
-    argocd.argoproj.io/hook: PreSync
+  annotations: { sealedsecrets.bitnami.com/cluster-wide: "true" }
 spec:
   encryptedData:
     github_token: $(EncryptSecret($githubToken))
