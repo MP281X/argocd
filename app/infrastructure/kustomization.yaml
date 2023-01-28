@@ -3,5 +3,5 @@ resources:
   - cert-manager.yaml
   - longhorn.yaml
   - secrets.yaml
-  # - tailscale.yaml
+  - tailscale.yaml
   - traefik.yaml

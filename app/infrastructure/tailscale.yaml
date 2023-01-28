@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: longhorn-system
+  name: tailscale
 
 ---
 apiVersion: argoproj.io/v1alpha1
@@ -17,7 +17,12 @@ spec:
     targetRevision: 1.2.1
     helm:
       values: |-
-
+        tailscale:
+          auth:
+            secretName: tailscale
+            secretKey: AUTH_KEY
+          routes: ["10.43.0.0/16"]
+          extraEnv: [{ name: TS_EXTRA_ARGS, value: --hostname=k3s-dev }]
   destination:
     namespace: tailscale
     server: https://kubernetes.default.svc

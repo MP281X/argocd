@@ -32,6 +32,18 @@ spec:
     AWS_ACCESS_KEY_ID: $(EncryptSecret($s3Id))
     AWS_SECRET_ACCESS_KEY: $(EncryptSecret($s3Token))
     AWS_ENDPOINTS: $(EncryptSecret($s3Endpoint))
+
+---
+#? Tailscale
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: tailscale
+  namespace: tailscale
+  annotations: { sealedsecrets.bitnami.com/cluster-wide: "true" }
+spec:
+  encryptedData:
+    AUTH_KEY: $(EncryptSecret($tailscaleToken))
 “@ | Out-File -FilePath ./app/infrastructure/secrets.yaml
 
 
