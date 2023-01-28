@@ -3,7 +3,6 @@ resources:
   # - homarr.yaml
   - nextcloud.yaml
   - vaultwarden.yaml
-  - test.yaml
 
 replicas:
   - name: db-its
