@@ -1,4 +1,4 @@
-$scret1 = Write-Output "Hi" -NoNewLine | kubeseal --raw --scope cluster-wide
+$scret1 = Write-Host -n "ciao" | kubeseal --raw --scope cluster-wide
 
 #* Test
 @”
