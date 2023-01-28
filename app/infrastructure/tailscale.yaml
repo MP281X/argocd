@@ -1,61 +1,26 @@
 apiVersion: v1
-kind: Pod
+kind: Namespace
+metadata:
+  name: longhorn-system
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 metadata:
   name: tailscale
-  namespace: tailscale
+  namespace: argocd
 spec:
-  serviceAccountName: tailscale
-  containers:
-    - name: tailscale
-      imagePullPolicy: Always
-      image: ghcr.io/tailscale/tailscale:latest
-      securityContext: { runAsUser: 1000, runAsGroup: 1000 }
-      env:
-        - { name: TS_USERSPACE, value: "true" }
-        - { name: TS_KUBE_SECRET, value: tailscale-config }
-        - { name: TS_ROUTES, value: 10.43.0.0/16 }
-        - { name: TS_EXTRA_ARGS, value: --hostname=k3s-dev-subnet-router }
-        - name: TS_AUTH_KEY
-          valueFrom:
-            secretKeyRef:
-              name: tailscale-config
-              key: TS_AUTH_KEY
+  project: infrastructure
+  source:
+    chart: tailscale-subnet-router
+    repoURL: https://gtaylor.github.io/helm-charts
+    targetRevision: 1.2.1
+    helm:
+      values: |-
 
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  name: tailscale
-  namespace: tailscale
-  annotations: { argocd.argoproj.io/hook: PreSync }
-rules:
-  - apiGroups: [""]
-    resources: ["secrets"]
-    verbs: ["create"]
-  - apiGroups: [""]
-    resourceNames: ["tailscale-config"]
-    resources: ["secrets"]
-    verbs: ["get", "update", "patch"]
-
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  name: tailscale
-  namespace: tailscale
-  annotations: { argocd.argoproj.io/hook: PreSync }
-subjects:
-  - kind: ServiceAccount
-    name: tailscale
-roleRef:
-  kind: Role
-  name: tailscale
-  apiGroup: rbac.authorization.k8s.io
-
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: tailscale
-  namespace: tailscale
-  annotations: { argocd.argoproj.io/hook: PreSync }
+  destination:
+    namespace: tailscale
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    syncOptions: [CreateNamespace=true]
+    automated: { prune: true, selfHeal: true }
