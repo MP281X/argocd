@@ -1,8 +1,10 @@
 function EncryptSecret([String] $secret){
-    return cmd.exe /c "echo|set /p=${test}| kubeseal --raw --scope cluster-wide"
+    return cmd.exe /c "echo|set /p=${secret}| kubeseal --raw --scope cluster-wide"
 }
 
 $a = EncryptSecret("ciao-test-secret")
+
+echo $a
 
 #* Test
 @”
