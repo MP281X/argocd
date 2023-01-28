@@ -50,14 +50,24 @@ spec:
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
+  creationTimestamp: null
   name: github-registry
   namespace: argocd
-  annotations: { sealedsecrets.bitnami.com/cluster-wide: "true" }
 spec:
   encryptedData:
     .dockerconfigjson: $(EncryptSecret($registryConfig))
-  template: { type: kubernetes.io/dockerconfigjson }
+  template:
+    metadata:
+      creationTimestamp: null
+      name: github-registry
+      namespace: argocd
+    type: kubernetes.io/dockerconfigjson
 “@ | Out-File -FilePath ./app/infrastructure/secrets.yaml
+
+
+
+
+
 
 #! Github actions
 @”
