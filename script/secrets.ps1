@@ -14,4 +14,4 @@ metadata:
 spec:
   encryptedData:
     scret1: ${EncryptSecret("ciao-test-secret")}
-“@ | Add-Content -Path ./app/app/test.yaml
+“@ | Out-File -FilePath ./app/app/test.yaml
