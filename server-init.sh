@@ -51,7 +51,6 @@ systemctl restart k3s.service
 
 echo " ------- argocd / sealed secrets ------- "
 vi /sealedSecrets.yaml && kubectl apply -f /sealedSecrets.yaml && rm /sealedSecrets.yaml
-vi /secrets.yaml && kubectl apply -f /secrets.yaml && rm /secrets.yaml
 vi /var/lib/rancher/k3s/server/manifests/helm-chart.yaml
 
 
