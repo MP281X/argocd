@@ -2,6 +2,8 @@ function EncryptSecret([String] $secret){
     return cmd.exe /c "echo|set /p=${test}| kubeseal --raw --scope cluster-wide"
 }
 
+$a = EncryptSecret("ciao-test-secret")
+
 #* Test
 @”
 #? Tailscale 
@@ -13,5 +15,5 @@ metadata:
   annotations: { sealedsecrets.bitnami.com/cluster-wide: "true" }
 spec:
   encryptedData:
-    scret1: ${EncryptSecret("ciao-test-secret")}
+    scret1: ${a}
 “@ | Out-File -FilePath ./app/app/test.yaml
