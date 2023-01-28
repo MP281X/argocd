@@ -2,18 +2,6 @@
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
-  name: 
-  namespace: 
-  annotations: { sealedsecrets.bitnami.com/cluster-wide: "true" }
-spec:
-  encryptedData:
-    scret1: 
-
----
-#? Tailscale 
-apiVersion: bitnami.com/v1alpha1
-kind: SealedSecret
-metadata:
   name: test
   namespace: default
   annotations: { sealedsecrets.bitnami.com/cluster-wide: "true" }
