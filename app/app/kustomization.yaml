@@ -12,3 +12,5 @@ replicas:
     count: 1
   - name: vaultwarden
     count: 1
+  - name: trilium
+    count: 1
