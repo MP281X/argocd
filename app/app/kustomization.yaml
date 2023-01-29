@@ -2,6 +2,7 @@ resources:
   - db-its.yaml
   - homarr.yaml
   - nextcloud.yaml
+  - trilium.yaml
   - vaultwarden.yaml
 
 replicas:
