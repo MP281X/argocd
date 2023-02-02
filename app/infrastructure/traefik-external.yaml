@@ -34,12 +34,7 @@ spec:
 
         rbac: { enabled: true }
         ingressRoute: { dashboard: { enabled: false } }
-        service:
-          type: ClusterIP
-          externalIPs: [10.43.0.110]
-          spec:
-            externalTrafficPolicy: ''
-            clusterIP: 10.43.0.110
+        service: {ipFamilyPolicy: "PreferDualStack"}
               
         providers:
           kubernetesCRD:
