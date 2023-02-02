@@ -25,37 +25,18 @@ spec:
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: RunnerSet
 metadata:
-  name: test-runner-1
+  name: example
   namespace: github-actions
 spec:
   replicas: 1
   repository: MP281X/dicantieri
   dockerdWithinRunnerContainer: true
-  serviceName: test-runner-1
+  # Other mandatory fields from StatefulSet
+  selector:
+    matchLabels:
+      app: example
+  serviceName: example
   template:
-    spec:
-      securityContext:
-        seLinuxOptions:
-          level: "s0"
-          role: "system_r"
-          type: "super_t"
-          user: "system_u"
-      containers:
-        - name: runner
-          env: []
-          resources:
-            limits:
-              cpu: "4.0"
-              memory: "8Gi"
-            requests:
-              cpu: "2.0"
-              memory: "4Gi"
-          securityContext:
-        - name: docker
-          resources:
-            limits:
-              cpu: "4.0"
-              memory: "8Gi"
-            requests:
-              cpu: "2.0"
-              memory: "4Gi"
+    metadata:
+      labels:
+        app: example
