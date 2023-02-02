@@ -31,6 +31,7 @@ spec:
   replicas: 1
   repository: MP281X/dicantieri
   dockerdWithinRunnerContainer: true
+  serviceName: test-runner-1
   template:
     spec:
       securityContext:
