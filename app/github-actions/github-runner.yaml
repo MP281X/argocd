@@ -21,5 +21,7 @@ spec:
   replicas: 1
   template:
     spec:
+      image: summerwind/actions-runner-dind
+      dockerdWithinRunnerContainer: true
       repository: MP281X/dicantieri
-      image: ghcr.io/actions/actions-runner-controller/actions-runner-dind-rootless:v2.299.1-ubuntu-20.04-aa6dab5
+      env: []
