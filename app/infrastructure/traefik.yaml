@@ -20,15 +20,13 @@ spec:
 
         ports:
           web:
-            specificIPv4: {address: "10.43.0.100:80"}
             port: 80
             expose: true
             protocol: TCP
             exposePort: 80
             redirectTo: websecure
           websecure:
-            specificIPv4: {address: "10.43.0.100:80"}
-            port: 10.43.0.100:443
+            port: 443
             expose: true
             protocol: TCP
             exposePort: 443
