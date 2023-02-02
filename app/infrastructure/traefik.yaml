@@ -20,16 +20,16 @@ spec:
 
         ports:
           web:
-            specificIPv4: {address: "10.43.0.100:80"}
-            # port: 80
+            port: 80
             expose: true
             protocol: TCP
+            exposePort: 80
             redirectTo: websecure
           websecure:
-            specificIPv4: {address: "10.43.0.100:80"}
-            # port: 443
+            port: 443
             expose: true
             protocol: TCP
+            exposePort: 443
             tls: { enable: true }
 
         rbac: { enabled: true }
@@ -40,12 +40,6 @@ spec:
           spec:
             externalTrafficPolicy: ''
             clusterIP: 10.43.0.100
-          internal:
-            type: ClusterIP
-            externalIPs: [10.43.0.110]
-            spec:
-              externalTrafficPolicy: ''
-              clusterIP: 10.43.0.110
               
         providers:
           kubernetesCRD:
