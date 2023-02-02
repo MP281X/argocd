@@ -66,4 +66,7 @@ spec:
   routes:
     - match: Host(`traefik-external.mp281x.xyz`)
       kind: Rule
-      services: [{ name: api@internal, kind: TraefikService }]
+      services:
+        - name: api@internal
+          namespace: traefik-external
+          kind: TraefikService
