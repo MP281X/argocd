@@ -59,7 +59,7 @@ metadata:
   name: traefik-dashboard
   namespace: traefik-external
   annotations:
-    kubernetes.io/ingress.class: traefik-external
+    kubernetes.io/ingress.class: traefik
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   entryPoints: [websecure]
