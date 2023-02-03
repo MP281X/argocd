@@ -4,5 +4,4 @@ resources:
   - longhorn.yaml
   - secrets.yaml
   - tailscale.yaml
-  - traefik-external.yaml
   - traefik.yaml
