@@ -13,15 +13,10 @@ spec:
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: RunnerDeployment
 metadata:
-  name: dicantieri-runner
+  name: gitops-runner
   namespace: github-actions
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   replicas: 1
-  template:
-    spec:
-      image: summerwind/actions-runner-dind
-      dockerdWithinRunnerContainer: true
-      repository: MP281X/dicantieri
-      env: []
+  template: { spec: { repository: MP281X/dicantieri } }
