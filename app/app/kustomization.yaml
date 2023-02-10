@@ -3,7 +3,6 @@ resources:
   - homarr.yaml
   - nextcloud.yaml
   - vaultwarden.yaml
-  - soketi.yaml
 
 replicas:
   - name: db-its
@@ -11,6 +10,4 @@ replicas:
   - name: nextcloud
     count: 1
   - name: vaultwarden
-    count: 1
-  - name: soketi
     count: 1
