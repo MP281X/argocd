@@ -2,8 +2,8 @@ resources:
   - db-its.yaml
   - homarr.yaml
   - nextcloud.yaml
-  - trilium.yaml
   - vaultwarden.yaml
+  - soketi.yaml
 
 replicas:
   - name: db-its
@@ -12,5 +12,5 @@ replicas:
     count: 1
   - name: vaultwarden
     count: 1
-  - name: trilium
+  - name: soketi
     count: 1
