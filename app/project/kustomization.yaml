@@ -3,3 +3,4 @@ resources:
   - dicantieri.yaml
   - github-actions.yaml
   - infrastructure.yaml
+  - sagra.yaml
