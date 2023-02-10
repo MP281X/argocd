@@ -16,8 +16,8 @@ metadata:
   name: sagra
   namespace: argocd
   annotations:
-    # argocd-image-updater.argoproj.io/image-list: postgres:latest
-    # argocd-image-updater.argoproj.io/update-strategy: digest
+    argocd-image-updater.argoproj.io/image-list: ghcr.io/mp281x/poketbase:latest, ghcr.io/mp281x/sagra:latest
+    argocd-image-updater.argoproj.io/update-strategy: digest
 spec:
   project: sagra
   source:
