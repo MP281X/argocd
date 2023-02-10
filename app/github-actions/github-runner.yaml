@@ -30,5 +30,5 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
-  replicas: 1
+  replicas: 2
   template: { spec: { repository: MP281X/sagra } }
