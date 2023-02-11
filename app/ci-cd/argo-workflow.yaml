@@ -25,6 +25,8 @@ kind: EventSource
 metadata:
   name: kaniko
   namespace: kaniko 
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   service:
     ports:
