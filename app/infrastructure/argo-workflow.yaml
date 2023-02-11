@@ -1,42 +1,48 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd-image-updater
-  namespace: argocd
+  name: argo-events
+  namespace: kaniko
 spec:
   project: infrastructure
   source:
-    chart: argocd-image-updater
+    chart: argo-events
     repoURL: https://argoproj.github.io/argo-helm
-    targetRevision: 0.8.2
-    helm:
-      values: |-
-        extraArgs: ["--interval", "20s"]
-        config:
-          registries:
-            - name: github container registry
-              prefix: ghcr.io
-              api_url: https://ghcr.io
-              credentials: pullsecret:argocd/github-registry
-              default: true
-
+    targetRevision: 2.1.2
   destination:
     namespace: argocd
     server: https://kubernetes.default.svc
   syncPolicy: { automated: { prune: true, selfHeal: true } }
 
 ---
+apiVersion: argoproj.io/v1alpha1
+kind: EventSource
+metadata:
+  name: kaniko
+  namespace: kaniko 
+spec:
+  service:
+    ports:
+      - port: 80
+        targetPort: 80
+  webhook:
+    example:
+      port: "80"
+      endpoint: /
+      method: POST
+
+---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: argocd
-  namespace: argocd
+  name: argo-workflow
+  namespace: kaniko
   annotations:
     kubernetes.io/ingress.class: traefik
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   entryPoints: [websecure]
   routes:
-    - match: Host(`argocd.mp281x.xyz`)
+    - match: Host(`argo-events.mp281x.xyz`)
       kind: Rule
-      services: [{ name: argocd-server, port: 443 }]
+      services: [{ name: kaniko, port: 80 }]
