@@ -24,7 +24,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: EventSource
 metadata:
   name: kaniko
-  namespace: kaniko 
+  namespace: argo-events 
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
@@ -42,8 +42,8 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: argo-workflow
-  namespace: kaniko
+  name: argo-events
+  namespace: argo-events
   annotations:
     kubernetes.io/ingress.class: traefik
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
