@@ -20,6 +20,6 @@ spec:
   source:
     repoURL: https://github.com/MP281X/argocd
     targetRevision: HEAD
-    path: app ci-cd
+    path: app/ci-cd
   destination: { server: https://kubernetes.default.svc, namespace: argocd }
   syncPolicy: { automated: { selfHeal: true, prune: true } }

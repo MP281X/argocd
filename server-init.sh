@@ -57,13 +57,7 @@ mv /helm-chart.yaml /var/lib/rancher/k3s/server/manifests/helm-chart.yaml
 echo " ------- visualize the connection file ------- "
 cp /etc/rancher/k3s/k3s.yaml /home/mp281x/k3s.yaml
 sed -i 's/127.0.0.1/dev.mp281x.xyz/g' /home/mp281x/k3s.yaml
-clear && cat /home/mp281x/k3s.yaml
 
 echo " ------- clear file -------"
-rm /home/mp281x/k3s.yaml 
 rm /server-init.sh
-rm /helm-chart.yaml
-rm /registry-k3s.yaml
 rm /sealedSecrets.key
-
-
