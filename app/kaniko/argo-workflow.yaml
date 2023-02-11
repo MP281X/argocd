@@ -10,7 +10,7 @@ spec:
     repoURL: https://argoproj.github.io/argo-helm
     targetRevision: 2.1.2
   destination:
-    namespace: argocd
+    namespace: kaniko
     server: https://kubernetes.default.svc
   syncPolicy: { automated: { prune: true, selfHeal: true } }
 
