@@ -2,4 +2,5 @@ resources:
   - app.yaml
   - dicantieri.yaml
   - infrastructure.yaml
+  - kaniko.yaml
   - sagra.yaml
