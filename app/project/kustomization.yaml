@@ -1,6 +1,5 @@
 resources:
   - app.yaml
   - dicantieri.yaml
-  - github-actions.yaml
   - infrastructure.yaml
   - sagra.yaml

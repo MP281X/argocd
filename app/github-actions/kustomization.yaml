@@ -1,4 +1,0 @@
-resources:
-  - github-controller.yaml
-  - github-runner.yaml
-  - secrets.yaml
