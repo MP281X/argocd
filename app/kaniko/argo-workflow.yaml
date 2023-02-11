@@ -4,7 +4,7 @@ metadata:
   name: argo-events
   namespace: kaniko
 spec:
-  project: infrastructure
+  project: kaniko
   source:
     chart: argo-events
     repoURL: https://argoproj.github.io/argo-helm
