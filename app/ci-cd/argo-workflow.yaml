@@ -63,4 +63,4 @@ spec:
   routes:
     - match: Host(`argo-events.mp281x.xyz`)
       kind: Rule
-      services: [{ name: kaniko, port: 80 }]
+      services: [{ name: kaniko-eventsource-svc, port: 80 }]
