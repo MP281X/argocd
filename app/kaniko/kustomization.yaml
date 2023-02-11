@@ -1,0 +1,3 @@
+resources:
+  - argo-workflow.yaml
+  - secrets.yaml

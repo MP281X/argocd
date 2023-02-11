@@ -45,8 +45,11 @@ spec:
   encryptedData:
     AUTH_KEY: $(EncryptSecret($tailscaleToken))
 
----
-#? Kaniko 
+“@ | Out-File -FilePath ./app/infrastructure/secrets.yaml
+
+#! Kaniko
+@”
+
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
@@ -56,4 +59,5 @@ metadata:
 spec:
   encryptedData:
     github_token: $(EncryptSecret($githubToken))
-“@ | Out-File -FilePath ./app/infrastructure/secrets.yaml
+
+“@ | Out-File -FilePath ./app/kaniko/secrets.yaml
