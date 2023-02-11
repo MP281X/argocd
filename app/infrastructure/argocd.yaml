@@ -26,6 +26,27 @@ spec:
   syncPolicy: { automated: { prune: true, selfHeal: true } }
 
 ---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-events
+  namespace: argocd
+spec:
+  project: infrastructure
+  source:
+    chart: argo-events
+    repoURL: https://argoproj.github.io/argo-helm
+    targetRevision: 2.1.2
+    helm:
+      values: |-
+        webhook: 
+          enabled: true
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  syncPolicy: { automated: { prune: true, selfHeal: true } }
+
+---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
@@ -38,5 +59,21 @@ spec:
   entryPoints: [websecure]
   routes:
     - match: Host(`argocd.mp281x.xyz`)
+      kind: Rule
+      services: [{ name: argocd-server, port: 443 }]
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: argo-workflow-webhook
+  namespace: argocd
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  entryPoints: [websecure]
+  routes:
+    - match: Host(`argo-workflow-webhook.mp281x.xyz`)
       kind: Rule
       services: [{ name: argocd-server, port: 443 }]
