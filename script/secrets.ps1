@@ -50,7 +50,7 @@ spec:
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
-  name: github_token
+  name: github-token
   namespace: kaniko
   annotations: { sealedsecrets.bitnami.com/cluster-wide: "true" }
 spec:
