@@ -6,6 +6,7 @@ metadata:
   labels: { app: homarr }
 spec:
   replicas: 1
+  revisionHistoryLimit: 0
   selector: { matchLabels: { app: homarr } }
   template:
     metadata: { labels: { app: homarr } }
