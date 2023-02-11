@@ -1,10 +1,10 @@
 kind: AppProject
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: kaniko
+  name: ci-cd
   namespace: argocd
 spec:
-  description: kaniko
+  description: ci-cd
   sourceRepos: ["*"]
   destinations: [{ namespace: "*", server: "*" }]
   clusterResourceWhitelist: [{ group: "*", kind: "*" }]
@@ -13,13 +13,13 @@ spec:
 kind: Application
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: kaniko
+  name: ci-cd
   namespace: argocd
 spec:
-  project: kaniko
+  project: ci-cd
   source:
     repoURL: https://github.com/MP281X/argocd
     targetRevision: HEAD
-    path: app/kaniko
+    path: app ci-cd
   destination: { server: https://kubernetes.default.svc, namespace: argocd }
   syncPolicy: { automated: { selfHeal: true, prune: true } }
