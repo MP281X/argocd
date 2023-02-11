@@ -64,3 +64,27 @@ spec:
     - match: Host(`argo-events.mp281x.xyz`)
       kind: Rule
       services: [{ name: kaniko-eventsource-svc, port: 80 }]
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Sensor
+metadata:
+  name: webhook
+  namespace: argo-events
+spec:
+  dependencies:
+    - name: test-dep
+      eventSourceName: kaniko
+      eventName: github
+  triggers:
+    - template:
+        name: webhook-pod-trigger
+        k8s:
+          operation: delete
+          source:
+            resource:
+              apiVersion: v1
+              kind: Pod
+              metadata:
+                name: kaniko-sagra
+                namespace: kaniko
