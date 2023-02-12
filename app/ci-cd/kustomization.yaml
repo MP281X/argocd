@@ -1,2 +1,5 @@
 resources:
   - secrets.yaml
+  - dashboard.yaml
+  - pipeline.yaml
+  - triggers.yaml
