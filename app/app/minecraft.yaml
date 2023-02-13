@@ -25,20 +25,6 @@ metadata:
   name: minecraft
   namespace: default
 spec:
+  type: NodePort
   selector: { app: minecraft }
-  ports: [{ port: 25565, name: minecraft, targetPort: 25565 }]
-
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRouteTCP
-metadata:
-  name: minecraft
-  namespace: default
-  annotations:
-    kubernetes.io/ingress.class: traefik-external
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-spec:
-  entryPoints: [websecure]
-  routes:
-    - match: HostSNI(`*`)
-      services: [{ name: minecraft, port: 25565 }]
+  ports: [{ port: 25565, name: minecraft, targetPort: 25565, nodePort: 30100 }]
