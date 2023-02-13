@@ -40,5 +40,5 @@ metadata:
 spec:
   entryPoints: [websecure]
   routes:
-    - match: HostSNI(`minecraft.mp281x.xyz`)
+    - match: HostSNI(`*`)
       services: [{ name: minecraft, port: 25565 }]
