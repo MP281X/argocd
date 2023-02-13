@@ -17,7 +17,7 @@ spec:
           ports: [containerPort: 25565]
           env:
             - { name: EULA, value: "TRUE" }
-            - { name: MEMORY, value: "4G" }
+            - { name: MEMORY, value: "6G" }
             - { name: VERSION, value: "LATEST" }
             - { name: SERVER_NAME, value: "👍" }
             - { name: MOTD, value: "👍" }
