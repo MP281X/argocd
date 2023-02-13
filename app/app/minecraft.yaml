@@ -17,6 +17,17 @@ spec:
           ports: [containerPort: 25565]
           env:
             - { name: EULA, value: "TRUE" }
+            - { name: MEMORY, value: "4G" }
+            - { name: VERSION, value: "LATEST " }
+            - { name: SERVER_NAME, value: "👍" }
+            - { name: MOTD, value: "👍" }
+            - { name: WHITELIST, value: "mp281x,pilo13,edox27" }
+            - {
+                name: ICON,
+                value: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwurst.wiki%2Flogo&psig=AOvVaw0CcvC_1K290zgcF3c7TaGm&ust=1676366115510000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCPDt19CUkv0CFQAAAAAdAAAAABAE",
+              }
+            - { name: OVERRIDE_ICON, value: "TRUE" }
+            - { name: MAX_PLAYERS, value: "5" }
           volumeMounts: [{ name: data, mountPath: /data }]
       volumes:
         - name: data
