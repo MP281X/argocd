@@ -15,6 +15,8 @@ spec:
         - name: minecraft
           image: itzg/minecraft-server:latest
           ports: [containerPort: 25565]
+          env:
+            - { name: EULA, value: true }
 
 ---
 apiVersion: v1
@@ -33,7 +35,7 @@ metadata:
   name: minecraft
   namespace: default
   annotations:
-    kubernetes.io/ingress.class: traefik
+    kubernetes.io/ingress.class: traefik-external
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   entryPoints: [websecure]
