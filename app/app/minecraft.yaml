@@ -16,7 +16,7 @@ spec:
           image: itzg/minecraft-server:latest
           ports: [containerPort: 25565]
           env:
-            - { name: EULA, value: true }
+            - { name: EULA, value: "TRUE" }
 
 ---
 apiVersion: v1
