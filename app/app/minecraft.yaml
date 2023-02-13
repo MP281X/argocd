@@ -19,15 +19,15 @@ spec:
             - { name: EULA, value: "TRUE" }
             - { name: MEMORY, value: "4G" }
             - { name: VERSION, value: "LATEST" }
-            # - { name: SERVER_NAME, value: "👍" }
-            # - { name: MOTD, value: "👍" }
-            # # - { name: WHITELIST, value: "mp281x,pilo13,edox27" }
-            # - { name: OVERRIDE_ICON, value: "TRUE" }
-            # - { name: MAX_PLAYERS, value: "5" }
-            # - {
-            #     name: ICON,
-            #     value: "https://images.wurstclient.net/_media/logo/wurst_253x64_ll.webp",
-            #   }
+            - { name: SERVER_NAME, value: "👍" }
+            - { name: MOTD, value: "👍" }
+            - { name: WHITELIST, value: "mp281x,pilo13,edox27" }
+            - { name: OVERRIDE_ICON, value: "TRUE" }
+            - { name: MAX_PLAYERS, value: "5" }
+            - {
+                name: ICON,
+                value: "https://images.wurstclient.net/_media/logo/wurst_253x64_ll.webp",
+              }
       #     volumeMounts: [{ name: data, mountPath: /data }]
       # volumes:
       #   - name: data
