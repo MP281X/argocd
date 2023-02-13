@@ -29,11 +29,11 @@ spec:
                 name: ICON,
                 value: "https://images.wurstclient.net/_media/logo/wurst_253x64_ll.webp",
               }
-          volumeMounts: [{ name: data, mountPath: /data }]
-      volumes:
-        - name: data
-          persistentVolumeClaim: { claimName: minecraft }
-
+      #     volumeMounts: [{ name: data, mountPath: /data }]
+      # volumes:
+      #   - name: data
+      #     persistentVolumeClaim: { claimName: minecraft }
+      #
 ---
 apiVersion: v1
 kind: Service
