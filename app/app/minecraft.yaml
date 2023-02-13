@@ -17,6 +17,10 @@ spec:
           ports: [containerPort: 25565]
           env:
             - { name: EULA, value: "TRUE" }
+          volumeMounts: [{ name: data, mountPath: /data }]
+      volumes:
+        - name: data
+          persistentVolumeClaim: { claimName: minecraft }
 
 ---
 apiVersion: v1
