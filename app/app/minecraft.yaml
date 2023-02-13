@@ -21,6 +21,7 @@ spec:
             - { name: VERSION, value: "LATEST" }
             - { name: SERVER_NAME, value: "👍" }
             - { name: MOTD, value: "👍" }
+            - { name: TZ, value: "Europe/Rome" }
             - { name: WHITELIST, value: "mp281x,pilo13,edox27" }
             - { name: OVERRIDE_ICON, value: "TRUE" }
             - { name: MAX_PLAYERS, value: "5" }
