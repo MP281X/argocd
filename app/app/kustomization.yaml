@@ -7,8 +7,6 @@ resources:
 replicas:
   - name: db-its
     count: 1
-  - name: minecraft
-    count: 1
   - name: nextcloud
     count: 1
   - name: vaultwarden
