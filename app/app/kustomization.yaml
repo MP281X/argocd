@@ -1,7 +1,6 @@
 resources:
   - db-its.yaml
   - homarr.yaml
-  - minecraft.yaml
   - nextcloud.yaml
   - vaultwarden.yaml
 
