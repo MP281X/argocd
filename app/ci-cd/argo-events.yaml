@@ -31,7 +31,7 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: argocd
+  name: argo-events
   namespace: argo-events
   annotations:
     kubernetes.io/ingress.class: traefik
@@ -41,4 +41,4 @@ spec:
   routes:
     - match: Host(`argo-events.mp281x.xyz`)
       kind: Rule
-      services: [{ name: webhook, port: 443 }]
+      services: [{ name: webhook-eventsource-svc, port: 443 }]
