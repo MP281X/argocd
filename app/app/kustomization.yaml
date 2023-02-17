@@ -1,14 +1,11 @@
 resources:
   - db-its.yaml
   - homarr.yaml
-  - minecraft.yaml
   - nextcloud.yaml
   - vaultwarden.yaml
 
 replicas:
   - name: db-its
-    count: 1
-  - name: minecraft
     count: 1
   - name: nextcloud
     count: 1
