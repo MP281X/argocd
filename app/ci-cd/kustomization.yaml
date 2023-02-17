@@ -1,5 +1,5 @@
 resources:
-  # - argo-events.yaml
+  - argo-events.yaml
   - secrets.yaml
 
 bases:
