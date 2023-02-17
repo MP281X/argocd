@@ -1,2 +1,3 @@
 resources:
+  - argo-events.yaml
   - secrets.yaml
