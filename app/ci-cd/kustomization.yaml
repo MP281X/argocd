@@ -1,6 +1,2 @@
 resources:
-  - argo-events.yaml
   - secrets.yaml
-
-bases:
-  - github.com/argoproj/argo-events/manifests/cluster-install
