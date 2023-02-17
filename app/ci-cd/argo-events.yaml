@@ -5,6 +5,14 @@ metadata:
 
 ---
 apiVersion: argoproj.io/v1alpha1
+kind: EventBus
+metadata:
+  name: default
+  namespace: argo-events
+spec: { nats: { native: { replicas: 3, auth: none } } }
+
+---
+apiVersion: argoproj.io/v1alpha1
 kind: EventSource
 metadata:
   name: webhook
