@@ -34,3 +34,41 @@ spec:
   selector: { app: db-its }
   ports: [{ port: 5432, name: db-its, targetPort: 5432 }]
   clusterIP: 10.43.0.131
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: couchdb
+  namespace: default
+  labels: { app: couchdb }
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector: { matchLabels: { app: couchdb } }
+  template:
+    metadata: { labels: { app: couchdb } }
+    spec:
+      containers:
+        - name: couchdb
+          image: apache/couchdb:latest
+          ports: [containerPort: 5984]
+          # env:
+          #   - { name: POSTGRES_USER, value: db-its }
+          #   - { name: POSTGRES_DB, value: db-its }
+          #   - { name: POSTGRES_PASSWORD, value: db-its }
+      #     volumeMounts: [{ name: data, mountPath: /var/lib/postgresql }]
+      # volumes:
+      #   - name: data
+      #     persistentVolumeClaim: { claimName: db-its }
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: couchdb
+  namespace: default
+spec:
+  selector: { app: couchdb }
+  ports: [{ port: 5984, name: couchdb, targetPort: 5984 }]
+  clusterIP: 10.43.0.140
