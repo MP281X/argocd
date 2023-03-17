@@ -53,10 +53,9 @@ spec:
         - name: couchdb
           image: apache/couchdb:latest
           ports: [containerPort: 5984]
-          # env:
-          #   - { name: POSTGRES_USER, value: db-its }
-          #   - { name: POSTGRES_DB, value: db-its }
-          #   - { name: POSTGRES_PASSWORD, value: db-its }
+          env:
+            - { name: COUCHDB_USER, value: admin }
+            - { name: COUCHDB_PASSWORD, value: password }
       #     volumeMounts: [{ name: data, mountPath: /var/lib/postgresql }]
       # volumes:
       #   - name: data
