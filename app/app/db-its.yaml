@@ -56,10 +56,6 @@ spec:
           env:
             - { name: COUCHDB_USER, value: admin }
             - { name: COUCHDB_PASSWORD, value: password }
-      #     volumeMounts: [{ name: data, mountPath: /var/lib/postgresql }]
-      # volumes:
-      #   - name: data
-      #     persistentVolumeClaim: { claimName: db-its }
 
 ---
 apiVersion: v1
@@ -70,4 +66,19 @@ metadata:
 spec:
   selector: { app: couchdb }
   ports: [{ port: 5984, name: couchdb, targetPort: 5984 }]
-  clusterIP: 10.43.0.140
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: couchdb
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  entryPoints: [websecure]
+  routes:
+    - match: Host(`couchdb.mp281x.xyz`)
+      kind: Rule
+      services: [{ name: couchdb, port: 5984 }]
