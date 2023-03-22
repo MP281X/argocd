@@ -99,7 +99,7 @@ spec:
     spec:
       containers:
         - name: influxdb
-          image: influxdb:1.8.10
+          image: influxdb:latest
           ports: [containerPort: 8086]
 
 ---
