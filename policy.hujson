@@ -15,8 +15,10 @@
 
 
 		// database
-		{"action": "accept", "src": ["group:db"], "dst": ["10.43.0.130:5432"]},
-		{"action": "accept", "src": ["group:db"], "dst": ["10.43.0.131:5432"]},
+		{"action": "accept", "src": ["group:db"], "dst": ["10.43.0.130:*"]},
+		{"action": "accept", "src": ["group:db"], "dst": ["10.43.0.131:*"]},
+		{"action": "accept", "src": ["group:db"], "dst": ["10.43.0.132:*"]},
+		
 
 		
 		// public app
