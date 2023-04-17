@@ -1,39 +1,36 @@
-{	
-	// User group
-	"groups": {
-		"group:devops": ["MP281X@github"],
-		"group:db": ["MP281X@github"],
-	},
+{
+  // User group
+  "groups": {
+    "group:devops": ["MP281X@github"],
+    "group:db": ["MP281X@github"]
+  },
 
-	// Access control lists
-	"acls": [
-		// devops app
-		{"action": "accept", "src": ["group:devops"], "dst": ["10.43.0.100:80"]},
-		{"action": "accept", "src": ["group:devops"], "dst": ["10.43.0.100:443"]},
-		{"action": "accept", "src": ["group:devops"], "dst": ["10.43.0.110:80"]},
-		{"action": "accept", "src": ["group:devops"], "dst": ["10.43.0.110:443"]},
+  // Access control lists
+  "acls": [
+    // devops app
+    { "action": "accept", "src": ["group:devops"], "dst": ["10.43.0.100:80"] },
+    { "action": "accept", "src": ["group:devops"], "dst": ["10.43.0.100:443"] },
+    { "action": "accept", "src": ["group:devops"], "dst": ["10.43.0.110:80"] },
+    { "action": "accept", "src": ["group:devops"], "dst": ["10.43.0.110:443"] },
 
+    // database
+    { "action": "accept", "src": ["group:db"], "dst": ["10.43.0.130:*"] },
+    { "action": "accept", "src": ["group:db"], "dst": ["10.43.0.131:*"] },
+    { "action": "accept", "src": ["group:db"], "dst": ["10.43.0.132:*"] },
 
-		// database
-		{"action": "accept", "src": ["group:db"], "dst": ["10.43.0.130:*"]},
-		{"action": "accept", "src": ["group:db"], "dst": ["10.43.0.131:*"]},
-		{"action": "accept", "src": ["group:db"], "dst": ["10.43.0.132:*"]},
-		
+    // public app
+    {
+      "action": "accept",
+      "src": ["autogroup:shared"],
+      "dst": ["10.43.0.110:80"]
+    },
+    {
+      "action": "accept",
+      "src": ["autogroup:shared"],
+      "dst": ["10.43.0.110:443"]
+    }
+  ],
 
-		
-		// public app
-		{
-			"action": "accept",
-			"src":    ["autogroup:shared"],
-			"dst":    ["10.43.0.110:80"],
-		},
-		{
-			"action": "accept",
-			"src":    ["autogroup:shared"],
-			"dst":    ["10.43.0.110:443"],
-		},
-	],
-
-	// Auto approve k3s subnet router
-	"autoApprovers": {"routes": {"10.43.0.0/16": ["group:devops"]}},
+  // Auto approve k3s subnet router
+  "autoApprovers": { "routes": { "10.43.0.0/16": ["group:devops"] } }
 }

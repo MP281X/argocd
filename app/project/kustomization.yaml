@@ -3,5 +3,5 @@ resources:
   - dicantieri.yaml
   - infrastructure.yaml
   - ci-cd.yaml
-  - portfolio.yaml
+  # - portfolio.yaml
   - sagra.yaml
