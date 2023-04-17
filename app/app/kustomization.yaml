@@ -6,8 +6,8 @@ resources:
 
 replicas:
   - name: db-its
-    count: 0
+    count: 1
   - name: nextcloud
     count: 0
   - name: vaultwarden
-    count: 0
+    count: 1
