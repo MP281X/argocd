@@ -1,10 +1,10 @@
 . ./secrets/secrets.ps1
 
 function EncryptSecret([String] $secret){
-    return cmd.exe /c "echo|set /p=${secret}| kubeseal --raw --scope cluster-wide"
+    return cmd.exe /c "echo|set /p=${secret}| kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide"
 }
 
-kubectl get secret -n kube-system -l sealedsecrets.bitnami.com/sealed-secrets-key -o yaml > secrets/sealedSecrets.key
+kubectl get secret -n kube-system -l sealedsecrets.bitnami.com/sealed-secrets-key -o yaml > secrets/sealedSecrets.key;
 
 #! Infrastructure
 @”
@@ -60,4 +60,4 @@ spec:
   encryptedData:
     github_token: $(EncryptSecret($githubToken))
 
-“@ | Out-File -FilePath ./app/kaniko/secrets.yaml
+“@ | Out-File -FilePath ./app/ci-cd/secrets.yaml
