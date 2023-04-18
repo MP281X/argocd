@@ -2,7 +2,7 @@
   // User group
   "groups": {
     "group:devops": ["MP281X@github"],
-    "group:db": ["MP281X@github"]
+    "group:dev": ["MP281X@github"]
   },
 
   // Access control lists
@@ -13,27 +13,15 @@
     { "action": "accept", "src": ["group:devops"], "dst": ["10.43.0.110:80"] },
     { "action": "accept", "src": ["group:devops"], "dst": ["10.43.0.110:443"] },
 
-    // database
-    { "action": "accept", "src": ["group:db"], "dst": ["10.43.0.130:*"] },
+    // its
+    { "action": "accept", "src": ["group:dev"], "dst": ["10.43.0.130:*"] },
 
-    // db dicantieri
-    { "action": "accept", "src": ["group:db"], "dst": ["10.43.0.140:*"] },
+    // dicantieri
+    { "action": "accept", "src": ["group:dev"], "dst": ["10.43.0.140:*"] },
 
-    // db portfolio
-    { "action": "accept", "src": ["group:db"], "dst": ["10.43.0.150:*"] },
-    { "action": "accept", "src": ["group:db"], "dst": ["10.43.0.151:*"] },
-
-    // public app
-    {
-      "action": "accept",
-      "src": ["autogroup:shared"],
-      "dst": ["10.43.0.110:80"]
-    },
-    {
-      "action": "accept",
-      "src": ["autogroup:shared"],
-      "dst": ["10.43.0.110:443"]
-    }
+    // portfolio
+    { "action": "accept", "src": ["group:dev"], "dst": ["10.43.0.150:*"] },
+    { "action": "accept", "src": ["group:dev"], "dst": ["10.43.0.151:*"] }
   ],
 
   // Auto approve k3s subnet router
