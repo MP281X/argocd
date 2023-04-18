@@ -15,7 +15,9 @@
 
     // database
     { "action": "accept", "src": ["group:db"], "dst": ["10.43.0.130:*"] },
-    { "action": "accept", "src": ["group:db"], "dst": ["10.43.0.131:*"] },
+
+    // db dicantieri
+    { "action": "accept", "src": ["group:db"], "dst": ["10.43.0.140:*"] },
 
     // db portfolio
     { "action": "accept", "src": ["group:db"], "dst": ["10.43.0.150:*"] },
