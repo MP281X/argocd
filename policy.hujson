@@ -23,7 +23,6 @@
     { "action": "accept", "src": ["group:db"], "dst": ["10.43.0.150:*"] },
     { "action": "accept", "src": ["group:db"], "dst": ["10.43.0.151:*"] },
 
-
     // public app
     {
       "action": "accept",
