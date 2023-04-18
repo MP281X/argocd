@@ -33,4 +33,4 @@ metadata:
 spec:
   selector: { app: db-its }
   ports: [{ port: 5432, name: db-its, targetPort: 5432 }]
-  clusterIP: 10.43.0.131
+  clusterIP: 10.43.0.130
