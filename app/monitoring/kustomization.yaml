@@ -1,0 +1,4 @@
+resources:
+  - grafana.yaml
+  - loki.yaml
+  - namespace.yaml
