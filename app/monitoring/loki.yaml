@@ -9,6 +9,12 @@ spec:
     chart: loki-stack
     repoURL: https://grafana.github.io/helm-charts
     targetRevision: 2.9.10
+    helm:
+      values: |-
+        promtail:
+          enabled: false
+        fluent-bit:
+          enabled: true
   destination:
     namespace: monitoring
     server: https://kubernetes.default.svc
