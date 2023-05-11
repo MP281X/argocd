@@ -22,6 +22,10 @@
     // portfolio
     { "action": "accept", "src": ["group:dev"], "dst": ["10.43.0.150:*"] },
     { "action": "accept", "src": ["group:dev"], "dst": ["10.43.0.151:*"] }
+
+    // portfolio
+    { "action": "accept", "src": ["group:dev"], "dst": ["10.43.0.160:*"] },
+    { "action": "accept", "src": ["group:dev"], "dst": ["10.43.0.161:*"] }
   ],
 
   // Auto approve k3s subnet router
