@@ -1,10 +1,10 @@
 kind: AppProject
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: waveInBox
+  name: waveinbox
   namespace: argocd
 spec:
-  description: waveInBox
+  description: waveinbox
   sourceRepos: ["*"]
   destinations: [{ namespace: "*", server: "*" }]
   clusterResourceWhitelist: [{ group: "*", kind: "*" }]
@@ -13,13 +13,13 @@ spec:
 kind: Application
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: waveInBox
+  name: waveinbox
   namespace: argocd
   annotations:
-    argocd-image-updater.argoproj.io/image-list: ghcr.io/mp281x/waveInBox:latest
+    argocd-image-updater.argoproj.io/image-list: ghcr.io/mp281x/waveinbox:latest
     argocd-image-updater.argoproj.io/update-strategy: digest
 spec:
-  project: waveInBox
+  project: waveinbox
   source:
     repoURL: https://github.com/MP281X/waveInBox
     targetRevision: main

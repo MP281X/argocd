@@ -5,4 +5,4 @@ resources:
   - infrastructure.yaml
   - portfolio.yaml
   - sagra.yaml
-  - waveInBox.yaml
+  - waveinbox.yaml
