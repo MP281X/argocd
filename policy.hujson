@@ -21,7 +21,7 @@
 
     // portfolio
     { "action": "accept", "src": ["group:dev"], "dst": ["10.43.0.150:*"] },
-    { "action": "accept", "src": ["group:dev"], "dst": ["10.43.0.151:*"] }
+    { "action": "accept", "src": ["group:dev"], "dst": ["10.43.0.151:*"] },
 
     // waveInBox
     { "action": "accept", "src": ["group:dev"], "dst": ["10.43.0.160:*"] },
