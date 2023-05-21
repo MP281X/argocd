@@ -1,35 +1,38 @@
 {
-  // User group
-  "groups": {
-    "group:devops": ["MP281X@github"],
-    "group:dev": ["MP281X@github"]
-  },
+	// User group
+	"groups": {
+		"group:devops": ["MP281X@github"],
+		"group:dev":    ["MP281X@github"],
+	},
+	
+	// tags
+	"tagOwners": {
+		"tag:dev": ["MP281X@github"]
+	},
 
-  // Access control lists
-  "acls": [
-    // devops app
-    { "action": "accept", "src": ["group:devops"], "dst": ["10.43.0.100:80"] },
-    { "action": "accept", "src": ["group:devops"], "dst": ["10.43.0.100:443"] },
-    { "action": "accept", "src": ["group:devops"], "dst": ["10.43.0.110:80"] },
-    { "action": "accept", "src": ["group:devops"], "dst": ["10.43.0.110:443"] },
+	// Access control lists
+	"acls": [
+		// devops app
+		{"action": "accept", "src": ["group:devops"], "dst": ["10.43.0.100:80"]},
+		{"action": "accept", "src": ["group:devops"], "dst": ["10.43.0.100:443"]},
+		{"action": "accept", "src": ["group:devops"], "dst": ["10.43.0.110:80"]},
+		{"action": "accept", "src": ["group:devops"], "dst": ["10.43.0.110:443"]},
 
-    // its
-    { "action": "accept", "src": ["group:dev"], "dst": ["10.43.0.130:*"] },
+		// its
+		{"action": "accept", "src": ["group:dev"], "dst": ["10.43.0.130:*"]},
 
-    // dicantieri
-    { "action": "accept", "src": ["group:dev"], "dst": ["10.43.0.140:*"] },
+		// dicantieri
+		{"action": "accept", "src": ["group:dev"], "dst": ["10.43.0.140:*"]},
 
-    // portfolio
-    { "action": "accept", "src": ["group:dev"], "dst": ["10.43.0.150:*"] },
-    { "action": "accept", "src": ["group:dev"], "dst": ["10.43.0.151:*"] },
+		// portfolio
+		{"action": "accept", "src": ["group:dev"], "dst": ["10.43.0.150:*"]},
+		{"action": "accept", "src": ["group:dev"], "dst": ["10.43.0.151:*"]},
 
-    // waveInBox
-    { "action": "accept", "src": ["group:dev"], "dst": ["10.43.0.160:*"] },
-    { "action": "accept", "src": ["group:dev"], "dst": ["10.43.0.161:*"] },
+		// waveInBox
+		{"action": "accept", "src": ["group:dev"], "dst": ["10.43.0.160:*"]},
+		{"action": "accept", "src": ["group:dev"], "dst": ["tag:dev:*"]},
+	],
 
-    { "action": "accept", "src": ["group:dev"], "dst": ["alpine-dev:*"] },
-  ],
-
-  // Auto approve k3s subnet router
-  "autoApprovers": { "routes": { "10.43.0.0/16": ["group:devops"] } }
+	// Auto approve k3s subnet router
+	"autoApprovers": {"routes": {"10.43.0.0/16": ["group:devops"]}},
 }
