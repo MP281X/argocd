@@ -25,7 +25,9 @@
 
     // waveInBox
     { "action": "accept", "src": ["group:dev"], "dst": ["10.43.0.160:*"] },
-    { "action": "accept", "src": ["group:dev"], "dst": ["10.43.0.161:*"] }
+    { "action": "accept", "src": ["group:dev"], "dst": ["10.43.0.161:*"] },
+
+    { "action": "accept", "src": ["group:dev"], "dst": ["alpine-dev:*"] },
   ],
 
   // Auto approve k3s subnet router
