@@ -1,7 +1,7 @@
 # delete the ssh known_hosts file
-rm C:\Users\mp281x\.ssh\known_hosts
-rm C:\Users\mp281x\.ssh\known_hosts.old
-rm C:\Users\mp281x\.kube\config
+rm ~/.ssh/known_hosts
+rm ~/.ssh/known_hosts.old
+rm ~/.kube/config
 
 # copy the config file
 scp server-init.sh root@dev.mp281x.xyz:/
@@ -16,4 +16,4 @@ ssh root@dev.mp281x.xyz "apt install dos2unix -y && dos2unix /server-init.sh && 
 ssh root@dev.mp281x.xyz "sh /server-init.sh"
 
 # copy the k8s config file
-scp mp281x@dev.mp281x.xyz:/home/mp281x/k3s.yaml C:\Users\mp281x\.kube\config
+scp mp281x@dev.mp281x.xyz:/home/mp281x/k3s.yaml ~/.kube/config
