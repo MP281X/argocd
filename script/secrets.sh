@@ -16,7 +16,7 @@ metadata:
   annotations: { sealedsecrets.bitnami.com/cluster-wide: 'true' }
 spec:
   encryptedData:
-    api-token: $(echo -n $CLOUDFLARE_TOKEN | dos2unix | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
+    api-token: $(echo -n $CLOUDFLARE_TOKEN | tr -d '\r' | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
 
 ---
 #? Longhorn
@@ -28,9 +28,9 @@ metadata:
   annotations: { sealedsecrets.bitnami.com/cluster-wide: 'true' }
 spec:
   encryptedData:
-    AWS_ACCESS_KEY_ID: $(echo -n $S3_ID | dos2unix | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
-    AWS_SECRET_ACCESS_KEY: $(echo -n $S3_TOKEN | dos2unix | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
-    AWS_ENDPOINTS: $(echo -n $S3_ENDPOINT | dos2unix | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
+    AWS_ACCESS_KEY_ID: $(echo -n $S3_ID | tr -d '\r' | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
+    AWS_SECRET_ACCESS_KEY: $(echo -n $S3_TOKEN | tr -d '\r' | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
+    AWS_ENDPOINTS: $(echo -n $S3_ENDPOINT | tr -d '\r' | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
 
 ---
 #? Tailscale
@@ -42,7 +42,7 @@ metadata:
   annotations: { sealedsecrets.bitnami.com/cluster-wide: 'true' }
 spec:
   encryptedData:
-    AUTH_KEY: $(echo -n $TAILSCALE_TOKEN | dos2unix | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
+    AUTH_KEY: $(echo -n $TAILSCALE_TOKEN | tr -d '\r' | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
 
 " > app/infrastructure/secrets.yaml
 
@@ -56,6 +56,6 @@ metadata:
   annotations: { sealedsecrets.bitnami.com/cluster-wide: 'true' }
 spec:
   encryptedData:
-    github_token: $(echo -n $GITHUB_TOKEN | dos2unix | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
+    github_token: $(echo -n $GITHUB_TOKEN | tr -d '\r' | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
 
 " > app/ci-cd/secrets.yaml
