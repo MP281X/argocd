@@ -16,7 +16,7 @@ metadata:
   annotations: { sealedsecrets.bitnami.com/cluster-wide: 'true' }
 spec:
   encryptedData:
-    api-token: $(printf $CLOUDFLARE_TOKEN| kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
+    api-token: $(echo -n $CLOUDFLARE_TOKEN| kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
 
 ---
 #? Longhorn
@@ -28,9 +28,9 @@ metadata:
   annotations: { sealedsecrets.bitnami.com/cluster-wide: 'true' }
 spec:
   encryptedData:
-    AWS_ACCESS_KEY_ID: $(printf $S3_ID| kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
-    AWS_SECRET_ACCESS_KEY: $(printf $S3_TOKEN| kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
-    AWS_ENDPOINTS: $(printf $S3_ENDPOINT| kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
+    AWS_ACCESS_KEY_ID: $(echo -n $S3_ID| kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
+    AWS_SECRET_ACCESS_KEY: $(echo -n $S3_TOKEN| kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
+    AWS_ENDPOINTS: $(echo -n $S3_ENDPOINT| kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
 
 ---
 #? Tailscale
@@ -42,7 +42,7 @@ metadata:
   annotations: { sealedsecrets.bitnami.com/cluster-wide: 'true' }
 spec:
   encryptedData:
-    AUTH_KEY: $(printf $TAILSCALE_TOKEN| kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
+    AUTH_KEY: $(echo -n $TAILSCALE_TOKEN| kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
 
 " > app/infrastructure/secrets.yaml
 
@@ -56,6 +56,6 @@ metadata:
   annotations: { sealedsecrets.bitnami.com/cluster-wide: 'true' }
 spec:
   encryptedData:
-    github_token: $(printf $GITHUB_TOKEN| kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
+    github_token: $(echo -n $GITHUB_TOKEN| kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
 
 " > app/ci-cd/secrets.yaml
