@@ -1,0 +1,28 @@
+kind: AppProject
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: devdash
+  namespace: argocd
+spec:
+  description: devdash
+  sourceRepos: ["*"]
+  destinations: [{ namespace: "*", server: "*" }]
+  clusterResourceWhitelist: [{ group: "*", kind: "*" }]
+
+---
+kind: Application
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: devdash
+  namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: ghcr.io/mp281x/devdash:latest
+    argocd-image-updater.argoproj.io/update-strategy: digest
+spec:
+  project: devdash
+  source:
+    repoURL: https://github.com/MP281X/devDash
+    targetRevision: main
+    path: k8s
+  destination: { server: https://kubernetes.default.svc, namespace: argocd }
+  syncPolicy: { automated: { selfHeal: true, prune: true } }
