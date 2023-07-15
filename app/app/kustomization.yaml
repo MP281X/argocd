@@ -1,12 +1,9 @@
 resources:
-  - db-its.yaml
   - nextcloud.yaml
   - vaultwarden.yaml
 
 replicas:
-  - name: db-its
-    count: 1
   - name: nextcloud
-    count: 1
+    count: 0
   - name: vaultwarden
-    count: 1
+    count: 0
