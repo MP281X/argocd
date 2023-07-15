@@ -1,7 +1,6 @@
 resources:
   - app.yaml
   - ci-cd.yaml
-  - devDash.yaml
   - dicantieri.yaml
   - infrastructure.yaml
   - portfolio.yaml
