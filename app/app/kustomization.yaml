@@ -4,6 +4,6 @@ resources:
 
 replicas:
   - name: nextcloud
-    count: 0
+    count: 1
   - name: vaultwarden
-    count: 0
+    count: 1
