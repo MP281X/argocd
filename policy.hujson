@@ -34,6 +34,7 @@
     // blixter
 		{"action": "accept", "src": ["group:dev"], "dst": ["10.43.0.205:*"]},
 		{"action": "accept", "src": ["group:dev"], "dst": ["10.43.0.206:*"]},
+    {"action": "accept", "src": ["group:dev"], "dst": ["10.43.0.207:*"]},
 	],
 
 	// Auto approve k3s subnet router
