@@ -38,7 +38,7 @@ metadata:
   name: vaultwarden
   namespace: default
   annotations:
-    kubernetes.io/ingress.class: traefik-external
+    kubernetes.io/ingress.class: traefik
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   entryPoints: [websecure]

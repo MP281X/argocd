@@ -2,8 +2,5 @@ resources:
   - app.yaml
   - blixter.yaml
   - ci-cd.yaml
-  - dicantieri.yaml
   - infrastructure.yaml
   - portfolio.yaml
-  - sagra.yaml
-  - waveInBox.yaml
