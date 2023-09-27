@@ -16,7 +16,7 @@ metadata:
   name: blixter
   namespace: argocd
   annotations:
-    argocd-image-updater.argoproj.io/image-list: ghcr.io/mp281x/blixter-frontend:latest,ghcr.io/mp281x/job-handler:latest
+    argocd-image-updater.argoproj.io/image-list: ghcr.io/mp281x/blixter-frontend:latest,ghcr.io/mp281x/blixter-jobs-handler:latest,ghcr.io/mp281x/blixter-cron-jobs:latest
     argocd-image-updater.argoproj.io/update-strategy: digest
 spec:
   project: blixter
