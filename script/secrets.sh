@@ -45,17 +45,3 @@ spec:
     AUTH_KEY: $(echo -n $TAILSCALE_TOKEN | tr -d '\r' | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
 
 " > app/infrastructure/secrets.yaml
-
-#! Kaniko
-printf "%s
-apiVersion: bitnami.com/v1alpha1
-kind: SealedSecret
-metadata:
-  name: github-token
-  namespace: kaniko
-  annotations: { sealedsecrets.bitnami.com/cluster-wide: 'true' }
-spec:
-  encryptedData:
-    github_token: $(echo -n $GITHUB_TOKEN | tr -d '\r' | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
-
-" > app/ci-cd/secrets.yaml
