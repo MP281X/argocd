@@ -1,6 +1,5 @@
 resources:
   - app.yaml
   - blixter.yaml
-  - ci-cd.yaml
   - infrastructure.yaml
   - portfolio.yaml
