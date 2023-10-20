@@ -1,4 +1,5 @@
 resources:
+  - its.yaml
   - nextcloud.yaml
   - vaultwarden.yaml
 
