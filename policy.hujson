@@ -1,42 +1,38 @@
 {
-	// User group
-	"groups": {
-		"group:devops": ["MP281X@github"],
-		"group:dev":    ["MP281X@github"],
-	},
-	
 	// tags
 	"tagOwners": {
-		"tag:dev": ["MP281X@github"]
+		"tag:dev": ["MP281X@github"],
+    "tag:devops": ["MP281X@github"]
+    "tag:nicolas": ["MP281X@github"],
 	},
 
 	// Access control lists
 	"acls": [
 		// devops app
-		{"action": "accept", "src": ["group:devops"], "dst": ["10.43.0.100:80"]},
-		{"action": "accept", "src": ["group:devops"], "dst": ["10.43.0.100:443"]},
-		{"action": "accept", "src": ["group:devops"], "dst": ["10.43.0.110:80"]},
-		{"action": "accept", "src": ["group:devops"], "dst": ["10.43.0.110:443"]},
+		{"action": "accept", "src": ["tag:devops"], "dst": ["10.43.0.100:80"]},
+		{"action": "accept", "src": ["tag:devops"], "dst": ["10.43.0.100:443"]},
+		{"action": "accept", "src": ["tag:devops"], "dst": ["10.43.0.110:80"]},
+		{"action": "accept", "src": ["tag:devops"], "dst": ["10.43.0.110:443"]},
 
 		// its
-		{"action": "accept", "src": ["group:dev"], "dst": ["10.43.0.130:*"]},
+		{"action": "accept", "src": ["tag:dev", "tag:nicolas"], "dst": ["10.43.0.130:*"]},
 
 		// dicantieri
-		{"action": "accept", "src": ["group:dev"], "dst": ["10.43.0.140:*"]},
+		{"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.140:*"]},
 
 		// portfolio
-		{"action": "accept", "src": ["group:dev"], "dst": ["10.43.0.150:*"]},
-		{"action": "accept", "src": ["group:dev"], "dst": ["10.43.0.151:*"]},
+		{"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.150:*"]},
+		{"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.151:*"]},
 
 		// waveInBox
-		{"action": "accept", "src": ["group:dev"], "dst": ["10.43.0.160:*"]},
+		{"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.160:*"]},
     
     // blixter
-		{"action": "accept", "src": ["group:dev"], "dst": ["10.43.0.205:*"]},
-		{"action": "accept", "src": ["group:dev"], "dst": ["10.43.0.206:*"]},
-    {"action": "accept", "src": ["group:dev"], "dst": ["10.43.0.207:*"]},
+		{"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.205:*"]},
+		{"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.206:*"]},
+    {"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.207:*"]},
 	],
 
 	// Auto approve k3s subnet router
-	"autoApprovers": {"routes": {"10.43.0.0/16": ["group:devops"]}},
+	"autoApprovers": {"routes": {"10.43.0.0/16": ["tag:dev"]}},
 }
