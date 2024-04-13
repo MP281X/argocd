@@ -1,9 +1,8 @@
 {
 	// tags
 	"tagOwners": {
-		"tag:dev": ["MP281X@github"],
-    "tag:devops": ["MP281X@github"],
-    "tag:nicolas": ["MP281X@github"],
+		"tag:dev":     ["MP281X@github"],
+		"tag:devops":  ["MP281X@github"]
 	},
 
 	// Access control lists
@@ -14,9 +13,6 @@
 		{"action": "accept", "src": ["tag:devops"], "dst": ["10.43.0.110:80"]},
 		{"action": "accept", "src": ["tag:devops"], "dst": ["10.43.0.110:443"]},
 
-		// its
-		{"action": "accept", "src": ["tag:dev", "tag:nicolas"], "dst": ["10.43.0.130:*"]},
-
 		// dicantieri
 		{"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.140:*"]},
 
@@ -26,18 +22,19 @@
 
 		// waveInBox
 		{"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.160:*"]},
-    
-    // blixter
+
+		// blixter
 		{"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.205:*"]},
 		{"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.206:*"]},
-    {"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.207:*"]},
+		{"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.207:*"]},
 
 		// svelto
 		{"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.215:*"]},
 		{"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.216:*"]},
-    {"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.217:*"]},
+		{"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.217:*"]},
 	],
 
 	// Auto approve k3s subnet router
 	"autoApprovers": {"routes": {"10.43.0.0/16": ["tag:dev"]}},
 }
+
