@@ -1,10 +1,10 @@
 kind: AppProject
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: apps
+  name: monitoring
   namespace: argocd
 spec:
-  description: apps
+  description: monitoring
   sourceRepos: ["*"]
   destinations: [{ namespace: "*", server: "*" }]
   clusterResourceWhitelist: [{ group: "*", kind: "*" }]
@@ -13,16 +13,13 @@ spec:
 kind: Application
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: apps
+  name: monitoring
   namespace: argocd
-  annotations:
-    argocd-image-updater.argoproj.io/image-list: vaultwarden/server:latest
-    argocd-image-updater.argoproj.io/update-strategy: digest
 spec:
-  project: apps
+  project: monitoring
   source:
     repoURL: https://github.com/MP281X/argocd
     targetRevision: HEAD
-    path: app/apps
+    path: app/monitoring
   destination: { server: https://kubernetes.default.svc, namespace: argocd }
   syncPolicy: { automated: { selfHeal: true, prune: true } }
