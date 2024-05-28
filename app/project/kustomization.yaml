@@ -2,6 +2,5 @@ resources:
   - apps.yaml
   - blixter.yaml
   - infrastructure.yaml
-  - monitoring.yaml
   - portfolio.yaml
   - svelto.yaml
