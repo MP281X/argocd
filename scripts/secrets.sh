@@ -19,6 +19,21 @@ spec:
     api-token: $(echo -n $CLOUDFLARE_TOKEN | tr -d '\r' | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
 
 ---
+#? Restic
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: restic-secrets
+  namespace: restic
+  annotations: { sealedsecrets.bitnami.com/cluster-wide: 'true' }
+spec:
+  encryptedData:
+    RESTIC_REPOSITORY: $(echo -n $RESTIC_REPOSITORY | tr -d '\r' | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
+    RESTIC_PASSWORD: $(echo -n $RESTIC_PASSWORD | tr -d '\r' | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
+    AWS_ACCESS_KEY_ID: $(echo -n $S3_ID | tr -d '\r' | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
+    AWS_SECRET_ACCESS_KEY: $(echo -n $S3_TOKEN | tr -d '\r' | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
+
+---
 #? Longhorn
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
