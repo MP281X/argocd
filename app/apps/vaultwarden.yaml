@@ -19,7 +19,7 @@ spec:
           volumeMounts: [{ name: data, mountPath: /data }]
       volumes:
         - name: data
-          persistentVolumeClaim: { claimName: vaultwarden }
+          hostPath: { path: "/k3s-storage/vaultwarden", type: DirectoryOrCreate }
 
 ---
 apiVersion: v1
