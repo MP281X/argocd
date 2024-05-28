@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # load env
-source secrets/.env;
+. secrets/.env;
 
 kubectl get secret -n kube-system -l sealedsecrets.bitnami.com/sealed-secrets-key -o yaml > secrets/sealedSecrets.key;
 

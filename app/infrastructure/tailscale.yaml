@@ -23,7 +23,8 @@ spec:
           routes: ["10.43.0.0/16"]
           extraEnv: [{ name: TS_EXTRA_ARGS, value: "--hostname=k3s-dev --advertise-exit-node" }]
         image:
-          tag: "unstable-v1.63"
+          tag: "unstable"
+          pullPolicy: Always
   destination:
     namespace: tailscale
     server: https://kubernetes.default.svc

@@ -14,7 +14,7 @@ spec:
   source:
     chart: traefik
     repoURL: https://helm.traefik.io/traefik
-    targetRevision: 23.1.0
+    targetRevision: 28.1.0
     helm:
       values: |-
         globalArguments:
@@ -46,7 +46,7 @@ spec:
           spec:
             externalTrafficPolicy: ''
             clusterIP: 10.43.0.100
-              
+
         providers:
           kubernetesCRD:
             enabled: true
@@ -70,7 +70,7 @@ spec:
   source:
     chart: traefik
     repoURL: https://helm.traefik.io/traefik
-    targetRevision: 23.1.0
+    targetRevision: 28.1.0
     helm:
       values: |-
         globalArguments:
@@ -97,7 +97,7 @@ spec:
         rbac: { enabled: true }
         ingressRoute: { dashboard: { enabled: false } }
         service: {ipFamilyPolicy: "PreferDualStack"}
-              
+
         providers:
           kubernetesCRD:
             enabled: true

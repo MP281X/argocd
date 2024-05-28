@@ -13,15 +13,9 @@
 		{"action": "accept", "src": ["tag:devops"], "dst": ["10.43.0.110:80"]},
 		{"action": "accept", "src": ["tag:devops"], "dst": ["10.43.0.110:443"]},
 
-		// dicantieri
-		{"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.140:*"]},
-
 		// portfolio
 		{"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.150:*"]},
 		{"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.151:*"]},
-
-		// waveInBox
-		{"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.160:*"]},
 
 		// blixter
 		{"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.205:*"]},

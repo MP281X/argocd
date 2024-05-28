@@ -1,10 +1,10 @@
 kind: AppProject
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: app
+  name: apps
   namespace: argocd
 spec:
-  description: app
+  description: apps
   sourceRepos: ["*"]
   destinations: [{ namespace: "*", server: "*" }]
   clusterResourceWhitelist: [{ group: "*", kind: "*" }]
@@ -13,16 +13,16 @@ spec:
 kind: Application
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: app
+  name: apps
   namespace: argocd
   annotations:
     argocd-image-updater.argoproj.io/image-list: postgres:latest, nextcloud:latest, vaultwarden/server:latest
     argocd-image-updater.argoproj.io/update-strategy: digest
 spec:
-  project: app
+  project: apps
   source:
     repoURL: https://github.com/MP281X/argocd
     targetRevision: HEAD
-    path: app/app
+    path: app/apps
   destination: { server: https://kubernetes.default.svc, namespace: argocd }
   syncPolicy: { automated: { selfHeal: true, prune: true } }
