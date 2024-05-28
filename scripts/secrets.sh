@@ -30,22 +30,8 @@ spec:
   encryptedData:
     RESTIC_REPOSITORY: $(echo -n $RESTIC_REPOSITORY | tr -d '\r' | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
     RESTIC_PASSWORD: $(echo -n $RESTIC_PASSWORD | tr -d '\r' | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
-    AWS_ACCESS_KEY_ID: $(echo -n $S3_ID | tr -d '\r' | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
-    AWS_SECRET_ACCESS_KEY: $(echo -n $S3_TOKEN | tr -d '\r' | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
-
----
-#? Longhorn
-apiVersion: bitnami.com/v1alpha1
-kind: SealedSecret
-metadata:
-  name: s3-secrets
-  namespace: longhorn-system
-  annotations: { sealedsecrets.bitnami.com/cluster-wide: 'true' }
-spec:
-  encryptedData:
-    AWS_ACCESS_KEY_ID: $(echo -n $S3_ID | tr -d '\r' | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
-    AWS_SECRET_ACCESS_KEY: $(echo -n $S3_TOKEN | tr -d '\r' | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
-    AWS_ENDPOINTS: $(echo -n $S3_ENDPOINT | tr -d '\r' | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
+    AWS_ACCESS_KEY_ID: $(echo -n $AWS_ACCESS_KEY_ID | tr -d '\r' | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
+    AWS_SECRET_ACCESS_KEY: $(echo -n $AWS_SECRET_ACCESS_KEY | tr -d '\r' | kubeseal --controller-name=sealed-secrets --raw --scope cluster-wide)
 
 ---
 #? Tailscale

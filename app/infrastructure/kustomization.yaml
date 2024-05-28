@@ -1,7 +1,6 @@
 resources:
   - argocd.yaml
   - cert-manager.yaml
-  - longhorn.yaml
   - restic.yaml
   - secrets.yaml
   - tailscale.yaml
