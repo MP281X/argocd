@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: restic
+
+# ---
+# apiVersion: apps/v1
+# kind: DaemonSet
+# metadata:
+#   name: restic
+#   namespace: restic
+# spec:
+#   selector: { matchLabels: {app: restic} }
+#   template:
+#     metadata: { labels: {app: restic} }
+#     spec:
+#       containers: { name: restic, image: restic/restic:latest }
+#       volumeMounts: [{ name: storage, mountPath: /var/lib/rancher/k3s/storage }]
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: demo-pvc-k
+  namespace: default
+spec:
+  accessModes: [ReadWriteOnce]
+  storageClassName: local-path
+  resources: { requests: { storage: 2Gi } }
+  # volumeName: "pvc-demo-pvc-k"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vaultwarden-1
+  namespace: default
+  labels: { app: vaultwarden-1 }
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector: { matchLabels: { app: vaultwarden-1 } }
+  template:
+    metadata: { labels: { app: vaultwarden-1 } }
+    spec:
+      containers:
+        - name: vaultwarden-1
+          image: vaultwarden/server:latest
+          volumeMounts: [{ name: data, mountPath: /data }]
+      volumes:
+        - name: data
+          persistentVolumeClaim: { claimName: demo-pvc-k }
