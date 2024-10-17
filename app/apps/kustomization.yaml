@@ -1,6 +1,9 @@
 resources:
   - vaultwarden.yaml
+  - demo-ipc.yaml
 
 replicas:
   - name: vaultwarden
+    count: 1
+  - name: demo-ipc
     count: 1

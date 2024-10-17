@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-ipc
+  namespace: default
+  labels: { app: demo-ipc }
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector: { matchLabels: { app: demo-ipc } }
+  template:
+    metadata: { labels: { app: demo-ipc } }
+    spec:
+      shareProcessNamespace: true
+      containers:
+        - name: python
+          image: python:3.10.9
+          command: ["sh", "-c", "echo 'python' && sleep infinity"]
+
+        - name: openjdk
+          image: openjdk:17.0.2-jdk-oracle
+          command: ["sh", "-c", "echo 'openjdk' && sleep infinity"]
+          securityContext: { privileged: true }
+
+# docs:
+
+# install required deps in the openjdk container:
+# microdnf install -y util-linux procps
+
+# find the PID of the python container shell
+# pgrep -f python
+
+# connect to the python shell
+# nsenter --target {pid} -a -- python main.py
+
+# create the test python file (run in the python container)
+# echo 'print("python container")' > main.py
+
+# full command:
+# nsenter --target $(pgrep -f python) -a -- python main.py
