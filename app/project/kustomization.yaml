@@ -1,6 +1,7 @@
 resources:
   - apps.yaml
   - blixter.yaml
+  - demo-argocd.yaml
   - infrastructure.yaml
   - portfolio.yaml
   - svelto.yaml
