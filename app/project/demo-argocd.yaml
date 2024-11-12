@@ -18,8 +18,8 @@ metadata:
 spec:
   project: demo-argocd
   source:
-    targetRevision: main
     repoURL: https://github.com/MP281X/demo-argocd
+    targetRevision: dev
     path: .
   destination: { server: https://kubernetes.default.svc, namespace: argocd }
   syncPolicy: { automated: { selfHeal: true, prune: true } }
