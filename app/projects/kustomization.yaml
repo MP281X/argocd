@@ -1,4 +1,3 @@
 resources:
-  # - blixter.yaml
   - infrastructure.yaml
   # - portfolio.yaml

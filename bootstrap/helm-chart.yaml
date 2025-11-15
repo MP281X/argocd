@@ -91,4 +91,3 @@ metadata:
 type: Opaque
 stringData:
   AUTH_KEY: ${TAILSCALE_TOKEN}
-
