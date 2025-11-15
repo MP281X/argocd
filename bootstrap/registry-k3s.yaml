@@ -1,0 +1,9 @@
+mirrors:
+  ghcr.io:
+    endpoint:
+      - "https://ghcr.io"
+configs:
+  "ghcr.io":
+    auth:
+      username: ${GITHUB_USERNAME}
+      password: ${GITHUB_TOKEN}

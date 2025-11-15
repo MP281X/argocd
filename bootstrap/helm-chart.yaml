@@ -1,0 +1,94 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argocd
+
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  chart: argo-cd
+  repo: https://argoproj.github.io/argo-helm
+  targetNamespace: argocd
+  valuesContent: |-
+    configs:
+      cm:
+        exec.enabled: true
+        kustomize.buildOptions: --enable-helm
+      secret: 
+        createSecret: true,
+        argocdServerAdminPassword: ${ARGOCD_PASSWORD}
+      credentialTemplates:
+        mp281x:
+          url: https://github.com/MP281X
+          username: ${GITHUB_USERNAME}
+          password: ${GITHUB_TOKEN}
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: github-registry
+  namespace: argocd
+type: kubernetes.io/dockerconfigjson
+stringData:
+  .dockerconfigjson: |
+    {
+      "auths": {
+        "https://ghcr.io": {
+          "username": "${GITHUB_USERNAME}",
+          "password": "${GITHUB_TOKEN}",
+          "auth": "${GITHUB_REGISTRY_AUTH}"
+        }
+      }
+    }
+
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: sealed-secrets
+  namespace: kube-system
+spec:
+  chart: sealed-secrets
+  repo: https://bitnami-labs.github.io/sealed-secrets
+  targetNamespace: kube-system
+
+---
+# Cert Manager Cloudflare API Token
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cert-manager
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cloudflare-api-token-secret
+  namespace: cert-manager
+type: Opaque
+stringData:
+  api-token: ${CLOUDFLARE_TOKEN}
+
+---
+# Tailscale Auth Key
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: tailscale
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: tailscale
+  namespace: tailscale
+type: Opaque
+stringData:
+  AUTH_KEY: ${TAILSCALE_TOKEN}
+

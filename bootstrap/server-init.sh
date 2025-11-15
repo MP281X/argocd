@@ -57,14 +57,8 @@ curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" INSTALL_K3S_EXEC=" \
     --disable=traefik \
     --node-name k3s-dev" sh -
 
-mv /registry-k3s.yaml /etc/rancher/k3s/registries.yaml
 systemctl daemon-reload
 systemctl restart k3s.service
-
-echo " ------- argocd / sealed secrets ------- "
-kubectl apply -f /sealedSecrets.key
-mv /helm-chart.yaml /var/lib/rancher/k3s/server/manifests/helm-chart.yaml
-
 
 echo " ------- visualize the connection file ------- "
 cp /etc/rancher/k3s/k3s.yaml /home/mp281x/k3s.yaml
@@ -72,4 +66,3 @@ sed -i 's/127.0.0.1/dev.mp281x.xyz/g' /home/mp281x/k3s.yaml
 
 echo " ------- clear file -------"
 rm /server-init.sh
-rm /sealedSecrets.key
