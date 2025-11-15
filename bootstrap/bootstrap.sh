@@ -65,4 +65,4 @@ cp /etc/rancher/k3s/k3s.yaml /home/mp281x/k3s.yaml
 sed -i 's/127.0.0.1/dev.mp281x.xyz/g' /home/mp281x/k3s.yaml
 
 echo " ------- clear file -------"
-rm /server-init.sh
+rm /bootstrap.sh

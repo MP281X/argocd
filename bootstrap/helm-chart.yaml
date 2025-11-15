@@ -19,7 +19,7 @@ spec:
         exec.enabled: true
         kustomize.buildOptions: --enable-helm
       secret: 
-        createSecret: true,
+        createSecret: true
         argocdServerAdminPassword: ${ARGOCD_PASSWORD}
       credentialTemplates:
         mp281x:

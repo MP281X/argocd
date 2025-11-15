@@ -1,5 +1,4 @@
 resources:
-  - apps.yaml
-  - blixter.yaml
+  # - blixter.yaml
   - infrastructure.yaml
-  - portfolio.yaml
+  # - portfolio.yaml
