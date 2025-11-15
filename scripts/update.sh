@@ -1,11 +1,8 @@
 #!/bin/bash
 set -e
 
-# Load and process environment variables
-export $(cat .env | xargs)
-
-# Update apt packages
-ssh mp281x@dev.mp281x.xyz "sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove -y"
+# load .env
+export $(grep -v '^#' .env | grep -v '^$' | xargs)
 
 # Update registry configuration
 envsubst < bootstrap/registry-k3s.yaml | ssh mp281x@dev.mp281x.xyz "cat > /home/mp281x/registry-k3s.yaml"
@@ -20,3 +17,6 @@ ssh mp281x@dev.mp281x.xyz "sudo k3s crictl rmi --prune"
 
 # Restart k3s service
 ssh mp281x@dev.mp281x.xyz "sudo systemctl restart k3s.service"
+
+# Update apt packages
+ssh mp281x@dev.mp281x.xyz "sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove -y"

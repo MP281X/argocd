@@ -19,10 +19,10 @@ chown -R mp281x:mp281x /home/mp281x/.ssh
 
 echo " ------- firewall ------- "
 sed -i 's/IPV6=yes/IPV6=no/g' /etc/default/ufw
-ufw default deny incoming
 ufw default allow outgoing
+ufw default deny incoming
 ufw allow 6443
-ufw limit 22/tcp
+ufw allow 22
 ufw enable
 
 echo " ------- ssh ------- "
@@ -33,18 +33,14 @@ PermitRootLogin no
 PubkeyAuthentication yes
 PasswordAuthentication no
 
-# Rate limiting & DoS protection
-MaxSessions 3
-MaxAuthTries 3
-LoginGraceTime 30
-
 # Security options
 PrintMotd no
 Compression no
 PrintLastLog no
 X11Forwarding no
-AllowTcpForwarding no
-ClientAliveInterval 120
+ClientAliveCountMax 3
+AllowTcpForwarding yes
+ClientAliveInterval 300
 EOF
 
 sudo chmod -x /etc/update-motd.d/*
