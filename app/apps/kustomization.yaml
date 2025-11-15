@@ -1,6 +1,0 @@
-resources:
-  - vaultwarden.yaml
-
-replicas:
-  - name: vaultwarden
-    count: 1

@@ -1,7 +1,6 @@
 resources:
   - argocd.yaml
   - cert-manager.yaml
-  - restic.yaml
   - secrets.yaml
   - tailscale.yaml
   - traefik.yaml

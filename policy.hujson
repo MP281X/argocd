@@ -1,8 +1,8 @@
 {
 	// tags
 	"tagOwners": {
-		"tag:dev":     ["MP281X@github"],
-		"tag:devops":  ["MP281X@github"]
+		"tag:dev":     ["mp281x@github"],
+		"tag:devops":  ["mp281x@github"]
 	},
 
 	// Access control lists
@@ -21,11 +21,6 @@
 		{"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.205:*"]},
 		{"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.206:*"]},
 		{"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.207:*"]},
-
-		// svelto
-		{"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.215:*"]},
-		{"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.216:*"]},
-		{"action": "accept", "src": ["tag:dev"], "dst": ["10.43.0.217:*"]},
 	],
 
 	// Auto approve k3s subnet router

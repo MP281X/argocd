@@ -2,7 +2,7 @@
 
 echo " -------------- packages -------------- "
 apt-get update && apt-get upgrade -y
-apt-get install -y ufw sed sudo vim curl wget htop jq open-iscsi nfs-common
+apt-get install -y ufw sed sudo vim curl wget htop
 apt-get autoremove -y && apt update && apt upgrade -y
 
 echo " -------------- user -------------- "
@@ -13,7 +13,7 @@ hostnamectl set-hostname dev.mp281x.xyz
 
 echo " ------- ssh key ------- "
 mkdir -p /home/mp281x/.ssh
-echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC/GDK6kPlz3/1O6E0v415HKnoWjYLcdCu/N1ya6DmNEX4e3kiz15SO20bILdtuPzvOXhYpkPogLfincQkGZqCsoIwKBnfPUcODL40M4aWiRpYJnRYDLAO6RNpcm2pnHVExL2Rnw0nGAS+rhmXEHKt3bW5EafhXPOYj7TfzRrU8rOPDHy3qtA2lGzIOeDlYngARvz1nWgo5fd8/8WfDCBTpAJDd9cvvYYokCx7C8M/wgQRx0+nYTLu4EkaFhiwMMRUZ/2I4c6bE8+qbim7W0V5u5NiwXFabU+i5hwoTWLg5mlt+F9xLV2BeGSqN9Su4sfzzkG2AIcEeMC7i0wrG9QGdFxsB3vUi24M7Cp/d2TjLW1eFQwoxB9HGNVydjQW9YrwsKfyLmXnM7aY51UJcHd9u83Zu8nCao2Xg+RURWMHGZsnL1F4F7kfu3JJTU6n3dkxxks5iVl95taIidl7cX1fEtQ9BesVlJD+tmXtxaAWasymaydtdiLU8IVM/b2jAwuk= administrator@mp281x" >> /home/mp281x/.ssh/authorized_keys
+echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOxArbBf6JivomRmW6pB5OtmGPp1jHJAiAIDMZ/Kh0Hb paludgnachmatteo.dev@gmail.com" >> /home/mp281x/.ssh/authorized_keys
 
 echo " ------- firewall ------- "
 sed -i 's/IPV6=yes/IPV6=no/g' /etc/default/ufw
@@ -45,7 +45,7 @@ curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" INSTALL_K3S_EXEC=" \
     --disable=traefik \
     --node-name k3s-dev" sh -
 
-mv /registry-k3s.yaml /etc/rancher/k3s/registries.yaml    
+mv /registry-k3s.yaml /etc/rancher/k3s/registries.yaml
 systemctl daemon-reload
 systemctl restart k3s.service
 
